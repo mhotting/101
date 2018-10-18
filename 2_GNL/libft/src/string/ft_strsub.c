@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 14:45:20 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 14:00:02 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 18:48:12 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,9 +26,8 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	i = 0;
 	while (i < len)
 	{
-		res[i] = s[start];
+		res[i] = s[start + i];
 		i++;
-		start++;
 	}
 	return (res);
 }
