@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 08:24:04 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/18 10:14:09 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/18 14:36:27 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -77,7 +77,8 @@ SRCS =		ft_strlen.c		\
 			ft_lstswap_c.c	\
 			ft_lstsort_bc.c \
 			ft_lststrdel.c	\
-			ft_lstremove.c
+			ft_lstremove.c	\
+			get_next_line.c
 OBJ =		$(SRCS:.c=.o)
 HEADER =	./libft.h
 CFLAGS = 	-Wall -Wextra -Werror -I $(HEADER)

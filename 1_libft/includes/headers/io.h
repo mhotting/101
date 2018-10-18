@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 10:21:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 10:25:36 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 14:36:09 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,9 @@
 #ifndef IO_H
 # define IO_H
 # include <unistd.h>
+# define BUFF_SIZE 100
 
+int				get_next_line(const int fd, char **line);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);
