@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/02 16:35:23 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/02 17:10:04 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 14:02:44 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,13 +22,13 @@ char	*ft_strstr(const char *str, const char *sub)
 	if (sub[0] == '\0')
 		return ((char *)str);
 	i = -1;
-	while (++i < ft_strlen(str))
+	while (str[++i])
 	{
 		j = 0;
 		if (str[i] == sub[j])
 		{
 			mem_i = i++;
-			while (j++ < ft_strlen(sub))
+			while (sub[j++])
 			{
 				if (str[i] != sub[j] || (str[i] == '\0' && sub[j] == '\0'))
 					break ;

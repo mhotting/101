@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/02 17:25:49 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/02 17:25:52 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 14:02:39 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,13 +22,13 @@ char	*ft_strnstr(const char *str, const char *sub, size_t len)
 	if (sub[0] == '\0')
 		return ((char *)str);
 	i = -1;
-	while (++i < ft_strlen(str) && i < len && len >= ft_strlen(sub))
+	while (str[++i] && i < len && len >= ft_strlen(sub))
 	{
 		j = 0;
 		if (str[i] == sub[j])
 		{
 			mem_i = i++;
-			while (j++ < ft_strlen(sub) && i < len)
+			while (sub[j++] && i < len)
 			{
 				if (str[i] != sub[j] || (str[i] == '\0' && sub[j] == '\0'))
 					break ;

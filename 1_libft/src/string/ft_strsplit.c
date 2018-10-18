@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 16:25:12 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/08 16:16:30 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 13:59:44 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ static size_t	ft_countwd(char const *s, char c)
 	i = 0;
 	cpt = 0;
 	in_wd = 0;
-	while (i < ft_strlen(s))
+	while (s[i])
 	{
 		if (s[i] != c && in_wd == 0)
 		{
@@ -41,7 +41,7 @@ static	size_t	ft_evallen(char const *s, char c, size_t pos)
 	size_t	len;
 
 	len = 0;
-	while (pos < ft_strlen(s) && s[pos] != c)
+	while (s[pos] && s[pos] != c)
 	{
 		len++;
 		pos++;
@@ -55,7 +55,7 @@ static char		*ft_extract(char const *s, char c, size_t *pos)
 	size_t	len;
 	char	*res;
 
-	while (*pos < ft_strlen(s) && s[*pos] == c)
+	while (s[*pos] && s[*pos] == c)
 		*pos = *pos + 1;
 	len = ft_evallen(s, c, *pos);
 	res = ft_strnew(len);

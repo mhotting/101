@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/02 13:25:18 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/02 13:42:51 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 14:09:08 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,10 +22,11 @@ char	*ft_strdup(const char *s)
 	if (!temp)
 		return (NULL);
 	i = 0;
-	while (i <= ft_strlen(s))
+	while (s[i])
 	{
 		temp[i] = s[i];
 		i++;
 	}
+	s[i] = '\0';
 	return (temp);
 }

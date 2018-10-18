@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 15:14:06 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/03 15:39:32 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 14:00:20 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ char	*ft_strtrim(char const *s)
 	if (s == NULL)
 		return (NULL);
 	i = 0;
-	while (i < ft_strlen(s) && (s[i] == ' ' || s[i] == '\t' || s[i] == '\n'))
+	while (s[i] && (s[i] == ' ' || s[i] == '\t' || s[i] == '\n'))
 		i++;
 	j = ft_strlen(s) - 1;
 	while (j > i && (s[j] == ' ' || s[j] == '\t' || s[j] == '\n'))
