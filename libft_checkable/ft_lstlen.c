@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strchr.c                                      .::    .:/ .      .::   */
+/*   ft_lstlen.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/02 15:58:07 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 13:53:38 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/09 11:48:43 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/09 11:57:09 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-char	*ft_strchr(const char *s, int c)
+size_t	ft_lstlen(t_list *lst)
 {
-	size_t	i;
+	size_t	len;
 
-	i = 0;
-	while (s[i])
+	if (lst == NULL)
+		return (0);
+	len = 0;
+	while (lst != NULL)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
+		lst = lst->next;
+		len++;
 	}
-	if (c == '\0' && s[i] == '\0')
-		return ((char *)s + i);
-	return (NULL);
+	return (len);
 }

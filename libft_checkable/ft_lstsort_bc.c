@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strchr.c                                      .::    .:/ .      .::   */
+/*   ft_lstsort_bc.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/02 15:58:07 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 13:53:38 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/09 13:50:22 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/09 13:55:01 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_lstsort_bc(t_list *lst, int (*f)(void *, void *))
 {
-	size_t	i;
+	t_list	*current;
+	t_list	*after;
 
-	i = 0;
-	while (s[i])
+	if (lst == NULL || lst->next == NULL)
+		return ;
+	current = lst;
+	while (current->next != NULL)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
+		after = current->next;
+		while (after != NULL)
+		{
+			if ((*f)(current->content, after->content) > 0)
+				ft_lstswap_c(current, after);
+			after = after->next;
+		}
+		current = current->next;
 	}
-	if (c == '\0' && s[i] == '\0')
-		return ((char *)s + i);
-	return (NULL);
 }

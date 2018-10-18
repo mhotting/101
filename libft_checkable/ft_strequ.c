@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strchr.c                                      .::    .:/ .      .::   */
+/*   ft_strequ.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/02 15:58:07 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 13:53:38 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/03 14:27:42 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/04 14:09:36 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strequ(char const *s1, char const *s2)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
+	if (s1 != NULL && s2 != NULL)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
+		if (ft_strcmp(s1, s2) == 0)
+			return (1);
 	}
-	if (c == '\0' && s[i] == '\0')
-		return ((char *)s + i);
-	return (NULL);
+	return (0);
 }

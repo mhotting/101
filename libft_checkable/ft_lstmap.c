@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strmapi.c                                     .::    .:/ .      .::   */
+/*   ft_lstmap.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/03 14:14:52 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 13:57:44 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/04 11:39:12 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/04 13:03:40 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char			*res;
-	unsigned int	i;
+	t_list	*new_lst;
+	t_list	*current;
+	t_list	*temp;
 
-	if (s != NULL)
+	new_lst = NULL;
+	if (lst != NULL && f != NULL)
 	{
-		res = ft_strnew(ft_strlen(s));
-		if (res == NULL)
+		temp = (*f)(lst);
+		new_lst = ft_lstnew(temp->content, temp->content_size);
+		if (new_lst == NULL)
 			return (NULL);
-		i = 0;
-		while (s[i] != '\0')
+		lst = lst->next;
+		current = new_lst;
+		while (lst != NULL)
 		{
-			res[i] = (*f)(i, s[i]);
-			i++;
+			temp = (*f)(lst);
+			current->next = ft_lstnew(temp->content, temp->content_size);
+			current = current->next;
+			if (current == NULL)
+				return (NULL);
+			lst = lst->next;
 		}
-		return (res);
 	}
-	return (NULL);
+	return (new_lst);
 }

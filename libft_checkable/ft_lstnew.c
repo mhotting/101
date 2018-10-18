@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strchr.c                                      .::    .:/ .      .::   */
+/*   ft_lstnew.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/02 15:58:07 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 13:53:38 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/04 09:48:40 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/04 10:48:40 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-char	*ft_strchr(const char *s, int c)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	size_t	i;
+	t_list	*new;
 
-	i = 0;
-	while (s[i])
+	new = (t_list *)malloc(sizeof(t_list));
+	if (new == NULL)
+		return (NULL);
+	new->next = NULL;
+	if (content == NULL)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
+		new->content = NULL;
+		new->content_size = 0;
 	}
-	if (c == '\0' && s[i] == '\0')
-		return ((char *)s + i);
-	return (NULL);
+	else
+	{
+		new->content = ft_memalloc(content_size);
+		ft_memcpy(new->content, content, content_size);
+		new->content_size = content_size;
+	}
+	return (new);
 }

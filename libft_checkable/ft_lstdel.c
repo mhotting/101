@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strchr.c                                      .::    .:/ .      .::   */
+/*   ft_lstdel.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/02 15:58:07 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 13:53:38 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/04 10:53:33 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/04 11:20:56 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-char	*ft_strchr(const char *s, int c)
-{
-	size_t	i;
+/*
+** Clear a list (fully)
+** Possible to do it using recursivity
+*/
 
-	i = 0;
-	while (s[i])
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+{
+	t_list	*next;
+
+	if (alst != NULL && *alst != NULL && del != NULL)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
+		while (*alst != NULL)
+		{
+			next = (*alst)->next;
+			ft_lstdelone(alst, del);
+			*alst = next;
+		}
 	}
-	if (c == '\0' && s[i] == '\0')
-		return ((char *)s + i);
-	return (NULL);
 }

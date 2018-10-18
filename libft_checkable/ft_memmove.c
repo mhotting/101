@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strchr.c                                      .::    .:/ .      .::   */
+/*   ft_memmove.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/02 15:58:07 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 13:53:38 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/02 11:34:36 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/03 09:33:03 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	i;
+	unsigned char	*temp_src;
+	unsigned char	*temp_dest;
+	unsigned char	*temp;
+	size_t			i;
 
-	i = 0;
-	while (s[i])
+	temp = (unsigned char *)malloc(n * sizeof(char));
+	if (temp != NULL && n > 0)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
+		temp_src = (unsigned char *)src;
+		temp_dest = (unsigned char *)dest;
+		i = -1;
+		while (++i < n)
+			temp[i] = temp_src[i];
+		i = -1;
+		while (++i < n)
+			temp_dest[i] = temp[i];
 	}
-	if (c == '\0' && s[i] == '\0')
-		return ((char *)s + i);
-	return (NULL);
+	if (temp != NULL)
+		free(temp);
+	return (dest);
 }

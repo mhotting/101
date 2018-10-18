@@ -1,30 +1,49 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strchr.c                                      .::    .:/ .      .::   */
+/*   ft_putnbr_fd.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/02 15:58:07 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 13:53:38 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/03 11:07:09 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/03 11:07:27 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-char	*ft_strchr(const char *s, int c)
+static long	eval_mul(long num)
 {
-	size_t	i;
+	long	mul;
 
-	i = 0;
-	while (s[i])
+	mul = 1;
+	if (num == 0)
+		return (1);
+	while (num != 0)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
+		mul *= 10;
+		num /= 10;
 	}
-	if (c == '\0' && s[i] == '\0')
-		return ((char *)s + i);
-	return (NULL);
+	return (mul / 10);
+}
+
+void		ft_putnbr_fd(int n, int fd)
+{
+	long	num;
+	long	mul;
+
+	num = (long)n;
+	if (num < 0)
+	{
+		ft_putchar_fd('-', fd);
+		num *= -1;
+	}
+	mul = eval_mul(num);
+	while (mul != 0)
+	{
+		ft_putchar_fd((int)(num / mul) + '0', fd);
+		num %= mul;
+		mul /= 10;
+	}
 }

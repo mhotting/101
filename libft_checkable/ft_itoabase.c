@@ -1,28 +1,42 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strjoin.c                                     .::    .:/ .      .::   */
+/*   ft_itoabase.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/03 15:02:54 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 13:56:04 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/08 14:40:49 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/08 15:36:36 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+static void	ft_convert(int n, int base, char *ref, char *res)
+{
+	if (n / base == 0)
+	{
+		res[ft_strlen(res)] = ref[n % base];
+		return ;
+	}
+	ft_convert((n / base), base, ref, res);
+	res[ft_strlen(res)] = ref[n % base];
+}
+
+char		*ft_itoabase(int n, int base)
 {
 	char	*res;
+	char	*ref;
 
-	if (s1 == NULL || s2 == NULL)
+	if (base == 10)
+		return (ft_itoa(n));
+	ref = ft_strdup("0123456789abcdefghijklmnopqrstuvwxyz");
+	if (base < 2 || base > 30 || n < 0)
 		return (NULL);
-	res = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
+	res = ft_strnew(36);
 	if (res == NULL)
 		return (NULL);
-	ft_strcpy(res, s1);
-	ft_strcat(res, s2);
+	ft_convert(n, base, ref, res);
 	return (res);
 }
