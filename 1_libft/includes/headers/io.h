@@ -6,14 +6,14 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 10:21:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 10:21:37 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 10:25:36 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef IO_H
-#define IO_H
-#include <unistd.h>
+# define IO_H
+# include <unistd.h>
 
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
