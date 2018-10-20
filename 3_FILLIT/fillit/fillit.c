@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 16:13:23 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 16:38:00 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/20 16:20:55 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,10 @@
 
 int	main(int argc, char **argv)
 {
-	int	fd;
+	int		fd;
+	int		check;
+	t_list	*lst;
+	char	**grid;
 
 	if (argc != 2)
 	{
@@ -23,13 +26,14 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	if ((fd = open(argv[1])) == -1)
-	{
-		ft_putendl("error");
-		return (0);
-	}
-	// reading part
+		return (ft_puterror());
+	check = ft_readfile(fd, lst);
 	close (fd);
-	// solving part
-	// displaying part
+	if (check == 0)
+		return (ft_puterror());
+	grid = ft_solve(lst);
+	ft_lstdel(&lst, &ft_lstdelshape);
+	ft_display(grid);
+	ft_strtabdel(grid);
 	return (0);
 }
