@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   io.h                                             .::    .:/ .      .::   */
+/*   ft_strlcat.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/18 10:21:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/20 16:33:53 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/02 14:59:18 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/18 13:57:16 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef IO_H
-# define IO_H
-# define BUFF_SIZE 32
-# include <unistd.h>
+#include "./libft.h"
 
-int				get_next_line(const int fd, char **line);
-void			ft_putchar(char c);
-void			ft_putstr(char const *s);
-void			ft_putendl(char const *s);
-void			ft_putnbr(int n);
-void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char const *s, int fd);
-void			ft_putendl_fd(char const *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	i;
 
-#endif
+	src_len = ft_strlen(src);
+	dst_len = ft_strlen(dst);
+	if (size < dst_len)
+		return (src_len + size);
+	i = 0;
+	while (i < src_len && (dst_len + i) < (size - 1))
+	{
+		dst[dst_len + i] = src[i];
+		i++;
+	}
+	dst[dst_len + i] = '\0';
+	if (i < src_len)
+		return (dst_len + src_len);
+	else
+		return (dst_len + i);
+}

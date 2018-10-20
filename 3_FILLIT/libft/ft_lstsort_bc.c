@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   io.h                                             .::    .:/ .      .::   */
+/*   ft_lstsort_bc.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/18 10:21:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/20 16:33:53 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/09 13:50:22 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/09 13:55:01 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef IO_H
-# define IO_H
-# define BUFF_SIZE 32
-# include <unistd.h>
+#include "./libft.h"
 
-int				get_next_line(const int fd, char **line);
-void			ft_putchar(char c);
-void			ft_putstr(char const *s);
-void			ft_putendl(char const *s);
-void			ft_putnbr(int n);
-void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char const *s, int fd);
-void			ft_putendl_fd(char const *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
+void	ft_lstsort_bc(t_list *lst, int (*f)(void *, void *))
+{
+	t_list	*current;
+	t_list	*after;
 
-#endif
+	if (lst == NULL || lst->next == NULL)
+		return ;
+	current = lst;
+	while (current->next != NULL)
+	{
+		after = current->next;
+		while (after != NULL)
+		{
+			if ((*f)(current->content, after->content) > 0)
+				ft_lstswap_c(current, after);
+			after = after->next;
+		}
+		current = current->next;
+	}
+}

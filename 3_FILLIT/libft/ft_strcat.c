@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   io.h                                             .::    .:/ .      .::   */
+/*   ft_strcat.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/18 10:21:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/20 16:33:53 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/02 14:22:54 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/19 20:01:30 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef IO_H
-# define IO_H
-# define BUFF_SIZE 32
-# include <unistd.h>
+#include "./libft.h"
 
-int				get_next_line(const int fd, char **line);
-void			ft_putchar(char c);
-void			ft_putstr(char const *s);
-void			ft_putendl(char const *s);
-void			ft_putnbr(int n);
-void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char const *s, int fd);
-void			ft_putendl_fd(char const *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
+char	*ft_strcat(char *dest, const char *src)
+{
+	char	*ptr;
 
-#endif
+	ptr = dest;
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = 0;
+	return (ptr);
+}

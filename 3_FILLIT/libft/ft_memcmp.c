@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   io.h                                             .::    .:/ .      .::   */
+/*   ft_memcmp.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/18 10:21:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/20 16:33:53 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/02 12:05:01 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/04 09:55:08 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef IO_H
-# define IO_H
-# define BUFF_SIZE 32
-# include <unistd.h>
+#include "./libft.h"
 
-int				get_next_line(const int fd, char **line);
-void			ft_putchar(char c);
-void			ft_putstr(char const *s);
-void			ft_putendl(char const *s);
-void			ft_putnbr(int n);
-void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char const *s, int fd);
-void			ft_putendl_fd(char const *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	unsigned char *temp_s1;
+	unsigned char *temp_s2;
 
-#endif
+	temp_s1 = (unsigned char *)s1;
+	temp_s2 = (unsigned char *)s2;
+	while (n > 0)
+	{
+		if (*temp_s1 != *temp_s2)
+			return (*temp_s1 - *temp_s2);
+		temp_s1++;
+		temp_s2++;
+		n--;
+	}
+	return (0);
+}

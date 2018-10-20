@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   io.h                                             .::    .:/ .      .::   */
+/*   ft_lststrdel.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/18 10:21:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/20 16:33:53 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/11 13:57:48 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/11 14:09:35 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef IO_H
-# define IO_H
-# define BUFF_SIZE 32
-# include <unistd.h>
+#include "./libft.h"
+#include <stdio.h>
 
-int				get_next_line(const int fd, char **line);
-void			ft_putchar(char c);
-void			ft_putstr(char const *s);
-void			ft_putendl(char const *s);
-void			ft_putnbr(int n);
-void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char const *s, int fd);
-void			ft_putendl_fd(char const *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
+void	ft_lststrdel(void *ptr, size_t size)
+{
+	size_t	i;
 
-#endif
+	i = size;
+	i++;
+	free(ptr);
+}
