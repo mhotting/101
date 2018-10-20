@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 13:15:18 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/03 13:17:38 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/20 09:33:18 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 void	ft_striter(char *s, void (*f)(char*))
 {
-	if (s != NULL)
+	if (s != NULL && f != NULL)
 	{
 		while (*s != '\0')
 		{
