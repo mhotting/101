@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 08:24:04 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/18 14:32:56 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/18 10:20:09 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -77,8 +77,7 @@ SRCS =		./src/string/ft_strlen.c		\
 			./src/list/ft_lstswap_c.c		\
 			./src/list/ft_lstsort_bc.c 		\
 			./src/list/ft_lststrdel.c		\
-			./src/list/ft_lstremove.c		\
-			./src/io/get_next_line.c
+			./src/list/ft_lstremove.c
 OBJ =		$(SRCS:.c=.o)
 HEADER =	./includes
 CFLAGS = 	-Wall -Wextra -Werror -I $(HEADER)

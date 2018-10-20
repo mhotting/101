@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 18:22:36 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 18:45:47 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/19 19:05:41 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,41 +44,42 @@ static void		ft_slicestr(t_list *cur, char **line, int *readc)
 
 static int		ft_readfile(t_list *cur, const int fd, char **line, char *buf)
 {
-	int		readc;
+	int		rc;
 	char	*temp;
 	char	*eol;
 
+	rc = 0;
 	eol = ft_strchr(cur->content, '\n');
-	while (eol == NULL && (readc = read(fd, buf, BUFF_SIZE)) > 0)
+	while (eol == NULL && (rc = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		buf[readc] = '\0';
+		buf[rc] = '\0';
 		if ((temp = ft_strjoin(cur->content, buf)) == NULL)
 			return (-1);
 		ft_strdel((char **)&(cur->content));
 		cur->content = temp;
 		eol = ft_strchr(buf, '\n');
 	}
-	if (readc >= 0 && eol)
-		ft_slicestr(cur, line, &readc);
-	else if (readc == 0 && ((char *)cur->content)[0] == 0)
+	if (rc >= 0 && eol)
+		ft_slicestr(cur, line, &rc);
+	else if (rc == 0 && ((char *)cur->content)[0] == 0)
 		return (0);
-	else if (readc >= 0)
+	else if (rc >= 0 && (rc = 1))
 	{
 		*line = cur->content;
 		cur->content = NULL;
-		readc = 1;
 	}
-	return (readc);
+	return (rc);
 }
 
 int				get_next_line(const int fd, char **line)
 {
-	static t_list	*fd_list;
+	static t_list	*fd_list = NULL;
 	t_list			*cur;
 	int				readc;
 	char			buf[BUFF_SIZE + 1];
 
-	if (fd < 0 || line == NULL)
+	readc = 0;
+	if (fd < 0 || line == NULL || (read(fd, buf, 0)) < 0)
 		return (-1);
 	if ((cur = ft_lstfindfd(fd_list, fd)) == NULL)
 	{
