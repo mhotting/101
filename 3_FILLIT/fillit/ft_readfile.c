@@ -143,7 +143,5 @@ int			ft_readfile(int fd, t_list **lst)
 		if (rc > 0)
 			free(str);
 	}
-	if (rc == -1 || ft_lstlen(*lst) > 26)
-		return (0);
-	return (1);
+	return ((rc == -1 || ft_lstlen(*lst) > 26) ? 0 : 1);
 }
