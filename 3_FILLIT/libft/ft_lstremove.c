@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "./includes/libft.h"
 
 void	ft_lstremove(t_list **lst, t_list **rem, void (*del)(void *, size_t))
 {

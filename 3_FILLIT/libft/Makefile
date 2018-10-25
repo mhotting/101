@@ -80,7 +80,7 @@ SRCS =		ft_strlen.c		\
 			ft_lstremove.c	\
 			get_next_line.c
 OBJ =		$(SRCS:.c=.o)
-HEADER =	./libft.h
+HEADER =	./includes
 CFLAGS = 	-Wall -Wextra -Werror -I $(HEADER)
 CC =		gcc
 

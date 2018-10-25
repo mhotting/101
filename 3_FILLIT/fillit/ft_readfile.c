@@ -12,6 +12,22 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
+
+static int	ft_pushshape(int cpt, t_list **lst, t_list **cur, t_shape **s)
+{
+	if (cpt != 4)
+	{
+		ft_memdel((void **)s);
+		return (0);
+	}
+	ft_lstaddend(lst, (*cur = ft_lstnew(NULL, 0)));
+	if (*cur == NULL)
+		return (0);
+	(*cur)->content = *s;
+	(*cur)->content_size = sizeof(t_shape *);
+	return (1);
+}
 
 /*
 ** Function that reads a shape from a string table
@@ -24,37 +40,29 @@ static int	ft_saveshape(char **sh, t_list **lst, t_list **cur)
 {
 	static char	c = 'A';
 	t_shape		*s;
-	int			i;
-	int			j;
-	int			cpt;
+	int			tab[3];
 
 	if ((s = (t_shape *)ft_memalloc(sizeof(t_shape))) == NULL)
 		return (0);
 	s->letter = c++;
-	cpt = 0;
-	i = -1;
-	while (++i < SHAPE_SIZE)
+	tab[0] = 0;
+	tab[1] = -1;
+	while (++(tab[1]) < SHAPE_SIZE && (tab[2] = -1))
 	{
-		if (ft_strlen(sh[i]) != 4)
+		if (ft_strlen(sh[tab[1]]) != 4 && (tab[0] = 1))
 			break ;
-		j = -1;
-		while (++j < 4 && (sh[i][j] == '.' || sh[i][j] == '#'))
-			if (sh[i][j] == '#' && cpt++ < 4)
+		while (++(tab[2]) < 4)
+		{
+			if (sh[tab[1]][tab[2]] != '.' && sh[tab[1]][tab[2]] != '#')
+				return (ft_pushshape(0, NULL, NULL, &s));
+			if (sh[tab[1]][tab[2]] == '#' && (tab[0])++ < 4)
 			{
-				s->coord[cpt - 1][0] = i;
-				s->coord[cpt - 1][1] = j;
+				s->coord[tab[0] - 1][0] = tab[1];
+				s->coord[tab[0] - 1][1] = tab[2];
 			}
+		}
 	}
-	if (cpt != 4)
-	{
-		ft_memdel((void **)&s);
-		return (0);
-	}
-	ft_lstaddend(lst, (*cur = ft_lstnew(NULL, 0)));
-	// PROTECT MALLOC
-	(*cur)->content = s;
-	(*cur)->content_size = sizeof(t_shape *);
-	return (1);
+	return (ft_pushshape(tab[0], lst, cur, &s));
 }
 
 /*
@@ -132,6 +140,8 @@ int			ft_readfile(int fd, t_list **lst)
 		rc = get_next_line(fd, &str);
 		if (rc < 0 || (rc > 0 && ft_strequ(str, "") == 0))
 			rc = -1;
+		if (rc > 0)
+			free(str);
 	}
 	if (rc == -1 || ft_lstlen(*lst) > 26)
 		return (0);

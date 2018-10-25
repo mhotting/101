@@ -26,15 +26,14 @@ static int	ft_countfriends(t_shape *s, size_t i)
 	size_t	j;
 
 	j = 0;
-	cpt = 1;
+	cpt = 0;
 	while (j < SHAPE_SIZE)
 	{
 		if (j != i)
 		{
-			if (
-					(ft_abs(s->coord[j][0] - s->coord[i][0]) == 1 &&
-					 ft_abs(s->coord[j][1] - s->coord[i][1]) == 0) ||
-					(ft_abs(s->coord[j][1] - s->coord[i][1]) == 0 &&
+			if ((ft_abs(s->coord[j][0] - s->coord[i][0]) == 1 &&
+					ft_abs(s->coord[j][1] - s->coord[i][1]) == 0) ||
+					(ft_abs(s->coord[j][0] - s->coord[i][0]) == 0 &&
 					 ft_abs(s->coord[j][1] - s->coord[i][1]) == 1)) 
 				cpt++;
 		}

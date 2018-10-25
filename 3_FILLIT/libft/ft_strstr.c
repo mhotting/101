@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "./includes/libft.h"
 
 char	*ft_strstr(const char *str, const char *sub)
 {

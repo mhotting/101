@@ -30,16 +30,20 @@ int	main(int argc, char **argv)
 	}
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		return (ft_puterror());
+	lst = NULL;
 	check = ft_readfile(fd, &lst);
 	close (fd);
 	if (check == 0)
+	{
+		ft_lstdel(&lst, &ft_lstdelshape);
 		return (ft_puterror());
+	}
 	// DEBUG
 	cur = lst;
 	while (cur != NULL)
 	{
 		s = cur->content;
-		printf("MAILLON:\n");
+		printf("\nMAILLON:\n");
 		printf("Letter: %c\n", s->letter);
 		printf("Coord1: (%d, %d)\n", s->coord[0][0], s->coord[0][1]);
 		printf("Coord2: (%d, %d)\n", s->coord[1][0], s->coord[1][1]);

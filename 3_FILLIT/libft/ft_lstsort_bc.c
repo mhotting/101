@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "./includes/libft.h"
 
 void	ft_lstsort_bc(t_list *lst, int (*f)(void *, void *))
 {

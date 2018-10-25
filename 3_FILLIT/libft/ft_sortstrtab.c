@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "./includes/libft.h"
 
 static void		ft_swap(char **tab, size_t i, size_t j)
 {
