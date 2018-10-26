@@ -13,13 +13,14 @@
 
 #include "fillit.h"
 
-void	ft_strtabdel(char **tab)
+int		ft_strtabdel(char **tab)
 {
 	while (*tab)
 	{
 		ft_strdel(tab);
 		tab++;
 	}
+	return (1);
 }
 
 void	ft_lstdelshape(void *s, size_t size)

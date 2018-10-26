@@ -28,7 +28,7 @@ typedef struct	s_shape
 int		ft_readfile(int fd, t_list **lst);
 int		ft_checkshape(t_list *cur);
 int		ft_puterror(void);
-void	ft_strtabdel(char **tab);
+int		ft_strtabdel(char **tab);
 void	ft_lstdelshape(void *s, size_t size);
 
 #endif

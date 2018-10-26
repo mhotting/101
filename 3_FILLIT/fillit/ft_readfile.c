@@ -12,7 +12,6 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 static int	ft_pushshape(int cpt, t_list **lst, t_list **cur, t_shape **s)
 {
@@ -29,13 +28,6 @@ static int	ft_pushshape(int cpt, t_list **lst, t_list **cur, t_shape **s)
 	return (1);
 }
 
-/*
-** Function that reads a shape from a string table
-** It checks if the shape is well formatted (len of the string, only '.' and '#', only 4 '#')
-** If everything is ok, the shape is stored at the end of the linked list pointed by lst and 1 is returned
-** If there is an error, memory is freed and 0 is returned
-** The shape's stored coordonates are not usable for the moment and need to be "converted"
-*/
 static int	ft_saveshape(char **sh, t_list **lst, t_list **cur)
 {
 	static char	c = 'A';
@@ -65,10 +57,6 @@ static int	ft_saveshape(char **sh, t_list **lst, t_list **cur)
 	return (ft_pushshape(tab[0], lst, cur, &s));
 }
 
-/*
-** Function that will translate all the points stored in the shape pointed by cur->content
-** The target is to obtain a shape with (0,0) as origin
-*/
 static void	ft_convertcoord(t_list *cur)
 {
 	int		diff_i;
@@ -88,13 +76,6 @@ static void	ft_convertcoord(t_list *cur)
 	}
 }
 
-/*
-** Function that will add a correct shape to the lst pointed by *lst
-** It calls ft_saveshape to store the shape
-** It calls ft_convertcoord to put all the shape's coords from the same origin point (0, 0)
-** It calls ft_checkshape to check if the shape's coords are correct
-** If every thing is ok, 1 is returned, else, 0 is returned.
-*/
 static int	ft_addshape(char **shape, t_list **lst)
 {
 	t_list	*cur;
@@ -103,6 +84,8 @@ static int	ft_addshape(char **shape, t_list **lst)
 	ok = ft_saveshape(shape, lst, &cur);
 	if (ok == 0)
 		return (0);
+	if (ft_lstlen(*lst) > 26)
+		return (0);
 	ft_convertcoord(cur);
 	ok = ft_checkshape(cur);
 	if (ok == 0)
@@ -110,13 +93,6 @@ static int	ft_addshape(char **shape, t_list **lst)
 	return (1);
 }
 
-/*
-** Function that will read the file
-** It reads 4 lines, stores them
-** The stored lines are checked by ft_checkshape
-** If there is a mistake, the value returned is 0
-** If the file is ok, the value returned is 1
-*/
 int			ft_readfile(int fd, t_list **lst)
 {
 	char	*str;
@@ -124,24 +100,23 @@ int			ft_readfile(int fd, t_list **lst)
 	int		rc;
 	int		cpt;
 
-	shape[SHAPE_SIZE] = NULL;
+	ft_bzero(shape, (SHAPE_SIZE + 1) * sizeof(char *));
 	rc = 1;
-	while (rc > 0)
+	while (rc > 0 && (cpt = 0) == 0)
 	{
-		cpt = 0;
 		while (cpt != SHAPE_SIZE && (rc = get_next_line(fd, &str)) > 0)
 			shape[cpt++] = str;
-		if (cpt < SHAPE_SIZE && (rc = -1))
+		if (cpt < SHAPE_SIZE && (rc = -1) && ft_strtabdel(shape))
 			break ;
 		rc = ft_addshape(shape, lst);
 		ft_strtabdel(shape);
 		if ((cpt < SHAPE_SIZE || rc == 0) && (rc = -1))
 			break ;
 		rc = get_next_line(fd, &str);
-		if (rc < 0 || (rc > 0 && ft_strequ(str, "") == 0))
+		if (rc < 0)
 			rc = -1;
-		if (rc > 0)
-			free(str);
+		else if (rc > 0 || (rc > 0 && ft_strequ(str, "") == 0 && (rc = -1)))
+			ft_strdel(&str);
 	}
-	return ((rc == -1 || ft_lstlen(*lst) > 26) ? 0 : 1);
+	return ((rc == -1) ? 0 : 1);
 }
