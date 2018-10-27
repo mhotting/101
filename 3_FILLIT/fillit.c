@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 16:13:23 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/27 18:04:54 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/27 18:18:20 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,6 @@ int	main(int argc, char **argv)
 	int		fd;
 	int		check;
 	t_list	*lst;
-	t_shape	*s;
 	char	**grid;
 
 	if (argc != 2)

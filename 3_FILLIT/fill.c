@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/27 16:29:19 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/27 17:22:42 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/27 18:19:26 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,7 +53,7 @@ int		ft_findindex(char **grid, int *tab)
 	return (0);
 }
 
-int		ft_putshape(char **grid, t_shape *s, int *tab, size_t size)
+int		ft_putshape(char **grid, t_shape *s, int *tab, int size)
 {
 	int	i;
 	int	j;

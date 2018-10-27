@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/27 14:01:14 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/27 17:22:39 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/27 18:19:55 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,7 +67,7 @@ char			**ft_fillgrid(char **grid, t_list *lst, size_t size)
 		ok = ft_findindex(grid, tab);
 		if (ok == 0)
 			return (NULL);
-		ok = ft_putshape(grid, s, tab, size);
+		ok = ft_putshape(grid, s, tab, (int)size);
 		if (ok)
 		{
 			if ((ft_fillgrid(grid, lst->next, size)) != NULL)

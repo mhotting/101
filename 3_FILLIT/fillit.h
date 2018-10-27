@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 14:55:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/27 18:06:53 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/27 18:19:37 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,6 +35,6 @@ void			ft_display(char **grid);
 char			**ft_solve(t_list *lst);
 void			ft_clear(t_shape *s, char **grid, int *tab);
 int				ft_findindex(char **grid, int *tab);
-int				ft_putshape(char **grid, t_shape *s, int *tab, size_t size);
+int				ft_putshape(char **grid, t_shape *s, int *tab, int size);
 
 #endif
