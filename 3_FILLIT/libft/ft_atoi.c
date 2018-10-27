@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "./libft.h"
 
 static long long int	eval_mul(const char *str, int i)
 {
