@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/30 15:23:47 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/30 17:11:38 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/30 21:24:37 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -14,7 +14,7 @@
 NAME =		fdf
 SRCS =		./src/main.c			\
 			./src/error.c			\
-			./src/parser.c			\
+			./src/coord_tools.c		\
 			./src/util.c			\
 			./src/draw_line.c		\
 			./src/ft_display.c		\
