@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/27 20:08:20 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/30 23:06:32 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/31 00:24:19 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,20 +14,21 @@
 #include "../includes/fdf.h"
 #include <stdio.h>
 
-void	ft_debuglst(t_list	*lst)
+void	ft_debuglst(t_list *lst)
 {
 	size_t	i;
 
 	i = 0;
 	while (lst != NULL)
 	{
-		printf("MAILLON %zu: (%d, %d, %d)\n", i, ((int *)lst->content)[0], ((int *)lst->content)[1], ((int *)lst->content)[2]);
+		printf("MAILLON %zu: (%d, %d, %d)\n", i, ((int *)lst->content)[0],
+				((int *)lst->content)[1], ((int *)lst->content)[2]);
 		i++;
 		lst = lst->next;
 	}
 }
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	int		fd;
 	t_list	*lst;

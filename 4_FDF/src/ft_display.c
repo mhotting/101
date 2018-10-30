@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 17:00:38 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/30 23:28:27 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/31 00:23:37 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,7 +44,8 @@ void	ft_header_footer(void **ptr)
 
 void	ft_write_header_footer(void **ptr)
 {
-	mlx_string_put(ptr[0], ptr[1], 1140, 50, 0, "FDF - Wireframe map displayer");
+	mlx_string_put(ptr[0], ptr[1], 1140, 50, 0,
+			"FDF - Wireframe map displayer");
 	mlx_string_put(ptr[0], ptr[1], 2350, 1315, 0, "2018 - 101 project");
 }
 

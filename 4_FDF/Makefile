@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/30 15:23:47 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/30 21:24:37 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/31 00:18:49 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -18,7 +18,8 @@ SRCS =		./src/main.c			\
 			./src/util.c			\
 			./src/draw_line.c		\
 			./src/ft_display.c		\
-			./src/event_manager.c
+			./src/event_manager.c	\
+			./src/matrix_generator.c
 OBJ =		$(SRCS:.c=.o)
 HEADER =	./includes/
 CFLAGS = 	-Wall -Wextra -Werror -I $(HEADER)
