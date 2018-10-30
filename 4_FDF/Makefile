@@ -5,28 +5,43 @@
 #                                                  +:+:+   +:    +:  +:+:+     #
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
-#    Created: 2018/10/30 15:32:50 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/30 15:33:44 by mhotting    ###    #+. /#+    ###.fr      #
+#    Created: 2018/10/30 15:23:47 by mhotting     #+#   ##    ##    #+#        #
+#    Updated: 2018/10/30 17:11:38 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
-NOM 	=	libmlx.a
-SRC 	=	mlx_shaders.c mlx_new_window.m mlx_init_loop.m mlx_new_image.m mlx_xpm.c mlx_int_str_to_wordtab.c
-OBJ1 	=	$(SRC:.c=.o)
-OBJ		=	$(OBJ1:.m=.o)
-CFLAGS+=-O2
+NAME =		fdf
+SRCS =		./src/main.c			\
+			./src/error.c			\
+			./src/parser.c			\
+			./src/util.c			\
+			./src/draw_line.c		\
+			./src/ft_display.c		\
+			./src/event_manager.c
+OBJ =		$(SRCS:.c=.o)
+HEADER =	./includes/
+CFLAGS = 	-Wall -Wextra -Werror -I $(HEADER)
+CC =		gcc
 
-all: $(NOM)
+all: $(NAME)
 
-$(NOM):	$(OBJ)
-	@ar -r $(NOM) $(OBJ)
-	@ranlib $(NOM)
+$(NAME): $(OBJ)
+	@make -s -C ./libft
+	@make -s -C ./minilibx
+	@$(CC) $(OBJ) -L./libft -lft -L./minilibx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
+$(OBJ): %.o : %.c $(HEADER)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
-	@rm -f mlx_app
+	@make -s -C ./libft clean
+	@make -s -C ./minilibx clean
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	@rm -f $(NOM) $(OBJ) *~
+	@make -s -C ./libft fclean
+	@make -s -C ./minilibx fclean
+	@/bin/rm -f $(NAME)
 
 re: fclean all
