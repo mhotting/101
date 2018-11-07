@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 12:03:26 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 13:55:12 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 14:38:09 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@ static void	ft_isocoord(t_list *lst, int ***matrix, int *size)
 		{
 			coord = (int *)cur->content;
 			matrix[i][j][0] = (int)(ISO_CST1 * coord[0] - ISO_CST2 * coord[1]);
-			matrix[i][j][1] = (int)(coord[2] + (ISO_CST1 / 2) * coord[0] +
+			matrix[i][j][1] = (int)(-1 * coord[2] + (ISO_CST1 / 2) * coord[0] +
 					(ISO_CST2 / 2) * coord[1]);
 			cur = cur->next;
 			j++;
@@ -52,7 +52,7 @@ static int	***ft_initmatrix(int *size)
 	{
 		matrix[i] = (int **)ft_memalloc(size[1] * sizeof(int *));
 		if (matrix[i] == NULL)
-			return (NULL);
+			exit(0);
 	}
 	i = -1;
 	while (++i < size[0] && (j = -1))
@@ -60,18 +60,16 @@ static int	***ft_initmatrix(int *size)
 		{
 			matrix[i][j] = (int *)ft_memalloc(2 * sizeof(int));
 			if (matrix[i][j] == NULL)
-				return (NULL);
+				exit(0);
 		}
 	return (matrix);
 }
 
-int			***ft_isomatrix(t_list *lst, int *size)
+void		ft_isomatrix(t_list *lst, int *size, int ****matrix)
 {
-	int	***matrix;
-
-	matrix = ft_initmatrix(size);
-	if (matrix == NULL)
-		return (NULL);
-	ft_isocoord(lst, matrix, size);
-	return (matrix);
+	if (*matrix == NULL)
+		*matrix = ft_initmatrix(size);
+	if (*matrix == NULL)
+		return ;
+	ft_isocoord(lst, *matrix, size);
 }

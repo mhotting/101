@@ -6,12 +6,26 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 13:07:39 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/30 15:14:43 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 15:00:44 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+int		ft_max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+int		ft_abs(int a)
+{
+	if (a < 0)
+		return (-1 * a);
+	return (a);
+}
 
 void	ft_lstintdel(void *content, size_t size)
 {

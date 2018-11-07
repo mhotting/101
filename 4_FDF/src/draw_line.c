@@ -6,14 +6,49 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/28 01:37:45 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/30 23:12:35 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 18:04:10 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+#include <stdio.h>
 
-static void	ft_dl1(int *dxy, int *coord, int *inc, void **ptr)
+static char	ft_hextochar(char a, char b)
+{
+	char	c1;
+	char	c2;
+
+	if (a >= 0 && a <= 9)
+		c1 = a - '0';
+	else
+		c1 = a - 'a' + 10;
+	if (b >= 0 && b <= 9)
+		c2 = b - '0';
+	else
+		c2 = b - 'a' + 10;
+	return (16 * c1 + c2);
+}
+
+static void	ft_putpixelstr(int x, int y, int color, char *img_str)
+{
+	char	*color_hex;
+	char	sub[3];
+
+	sub[2] = '\0';
+	color_hex = ft_itoabase(color, 16);
+	sub[0] = color_hex[0];
+	sub[1] = color_hex[1];
+	img_str[y * 2360 * 4 + 4 * x] = ft_hextochar(sub[0], sub[1]);
+	sub[0] = color_hex[2];
+	sub[1] = color_hex[3];
+	img_str[y * 2360 * 4 + 4 * x + 1] = ft_hextochar(sub[0], sub[1]);
+	sub[0] = color_hex[4];
+	sub[1] = color_hex[5];
+	img_str[y * 2360 * 4 + 4 * x + 2] = ft_hextochar(sub[0], sub[1]);
+}
+
+static void	ft_dl1(int *dxy, int *coord, int *inc, char *img_str)
 {
 	int	i;
 	int	cumul;
@@ -29,11 +64,12 @@ static void	ft_dl1(int *dxy, int *coord, int *inc, void **ptr)
 			cumul -= dxy[0];
 			coord[1] += inc[1];
 		}
-		mlx_pixel_put(ptr[0], ptr[1], coord[0], coord[1], 16777215);
+		ft_putpixelstr(coord[0], coord[1], 16777215, img_str);
+		//mlx_pixel_put(ptr[0], ptr[1], coord[0], coord[1], 16777215);
 	}
 }
 
-static void	ft_dl2(int *dxy, int *coord, int *inc, void **ptr)
+static void	ft_dl2(int *dxy, int *coord, int *inc, char *img_str)
 {
 	int	i;
 	int	cumul;
@@ -49,11 +85,12 @@ static void	ft_dl2(int *dxy, int *coord, int *inc, void **ptr)
 			cumul -= dxy[1];
 			coord[0] += inc[0];
 		}
-		mlx_pixel_put(ptr[0], ptr[1], coord[0], coord[1], 16777215);
+		ft_putpixelstr(coord[0], coord[1], 16777215, img_str);
+		//mlx_pixel_put(ptr[0], ptr[1], coord[0], coord[1], 16777215);
 	}
 }
 
-void		ft_drawline(int *point1, int *point2, void **ptr)
+void		ft_drawline(int *point1, int *point2, char *img_str)
 {
 	int	dxy[2];
 	int	inc[2];
@@ -67,9 +104,10 @@ void		ft_drawline(int *point1, int *point2, void **ptr)
 	inc[1] = (dxy[1] > 0) ? 1 : -1;
 	dxy[0] = abs(dxy[0]);
 	dxy[1] = abs(dxy[1]);
-	mlx_pixel_put(ptr[0], ptr[1], coord[0], coord[1], 16777215);
+	ft_putpixelstr(coord[0], coord[1], 16777215, img_str);
+	//mlx_pixel_put(ptr[0], ptr[1], coord[0], coord[1], 16777215);
 	if (dxy[0] > dxy[1])
-		ft_dl1(dxy, coord, inc, ptr);
+		ft_dl1(dxy, coord, inc, img_str);
 	else
-		ft_dl2(dxy, coord, inc, ptr);
+		ft_dl2(dxy, coord, inc, img_str);
 }

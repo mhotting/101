@@ -6,14 +6,14 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 21:24:12 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 13:41:31 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 18:04:02 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void		ft_updatecoord(t_list *lst, int h, int l)
+void		ft_updatecoord(t_list *lst, int h, int l, int z)
 {
 	t_list	*cur;
 	int		xgap;
@@ -32,6 +32,8 @@ void		ft_updatecoord(t_list *lst, int h, int l)
 	{
 		((int *)(cur->content))[0] += 1300 + ((int *)(cur->content))[0] * xgap;
 		((int *)(cur->content))[1] += -200 + ((int *)(cur->content))[1] * ygap;
+		if (z > 0 && z < 200)
+			((int *)(cur->content))[2] *= (200 / z);
 		cur = cur->next;
 	}
 }
@@ -63,17 +65,18 @@ int			ft_parse(int fd, t_list **lst, int *coord)
 	int		ok;
 
 	coord[0] = -1;
+	coord[2] = 0;
 	while ((ok = get_next_line(fd, &str)) == 1 && (++(coord[0])) != -2)
 	{
 		coord[1] = -1;
 		if ((pts = ft_strsplit(str, ' ')) == NULL)
-		{
-			free(str);
-			return (0);
-		}
+			exit(0);
 		while (pts[++(coord[1])] != NULL)
+		{
 			ok = ft_pointadd(lst, coord[1], coord[0],
-					-10 * ft_atoi(pts[coord[1]]));
+					ft_atoi(pts[coord[1]]));
+			coord[2] = ft_max(coord[2], ft_abs(ft_atoi(pts[coord[1]])));
+		}
 		ft_strtabdel(pts);
 		free(pts);
 		free(str);
