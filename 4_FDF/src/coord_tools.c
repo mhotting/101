@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 21:24:12 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/31 00:21:53 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 13:41:31 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,9 +25,9 @@ void		ft_updatecoord(t_list *lst, int h, int l)
 	else
 		xgap = 900;
 	if (h != 1)
-		ygap = 700 / (h - 1);
+		ygap = 900 / (h - 1);
 	else
-		ygap = 700;
+		ygap = 900;
 	while (cur != NULL)
 	{
 		((int *)(cur->content))[0] += 1300 + ((int *)(cur->content))[0] * xgap;
@@ -73,7 +73,7 @@ int			ft_parse(int fd, t_list **lst, int *coord)
 		}
 		while (pts[++(coord[1])] != NULL)
 			ok = ft_pointadd(lst, coord[1], coord[0],
-					-15 * ft_atoi(pts[coord[1]]));
+					-10 * ft_atoi(pts[coord[1]]));
 		ft_strtabdel(pts);
 		free(pts);
 		free(str);
