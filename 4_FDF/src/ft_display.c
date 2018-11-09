@@ -5,8 +5,21 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/11/09 20:15:09 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/09 20:15:12 by mhotting    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_display.c                                     .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 17:00:38 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 20:04:09 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 20:14:13 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,13 +27,42 @@
 #include "../includes/fdf.h"
 #include <stdio.h>
 
+void	ft_sidelines(void **ptr)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 195;
+	while (i <= 200)
+	{
+		j = 0;
+		while (j < 1300)
+		{
+			mlx_pixel_put(ptr[0], ptr[1], i, j, 16777215);
+			j++;
+		}
+		i++;
+	}
+	i = 2361;
+	while (i <= 2366)
+	{
+		j = 0;
+		while (j < 1300)
+		{
+			mlx_pixel_put(ptr[0], ptr[1], i, j, 16777215);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	ft_header_footer(void **ptr)
 {
 	size_t	i;
 	size_t	j;
 
-	i = 200;
-	while (i < 2360)
+	i = 199;
+	while (i < 2361)
 	{
 		j = 95;
 		while (j < 100)
@@ -93,6 +135,7 @@ void	ft_display(t_list *lst, int *size)
 	mlx_mouse_hook(ptr[1], &ft_mousemanager, ptr);
 	mlx_key_hook(ptr[1], &ft_keymanager, ptr);
 	ft_header_footer(ptr);
+	ft_sidelines(ptr);
 	ft_write_header_footer(ptr);
 	mlx_loop(ptr[0]);
 }
