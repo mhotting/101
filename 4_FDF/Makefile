@@ -6,20 +6,22 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/30 15:23:47 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/07 12:09:21 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/09 18:52:23 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 NAME =		fdf
-SRCS =		./src/main.c			\
-			./src/error.c			\
-			./src/coord_tools.c		\
-			./src/util.c			\
-			./src/draw_line.c		\
-			./src/ft_display.c		\
-			./src/event_manager.c	\
-			./src/matrix_generator.c
+SRCS =		./src/main.c				\
+			./src/error.c				\
+			./src/coord_tools.c			\
+			./src/util.c				\
+			./src/draw_line.c			\
+			./src/ft_display.c			\
+			./src/event_manager.c		\
+			./src/matrix_generator.c	\
+			./src/slide.c				\
+			./src/zoom.c
 OBJ =		$(SRCS:.c=.o)
 HEADER =	./includes/
 CFLAGS = 	-Wall -Wextra -Werror -I $(HEADER)

@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 17:00:38 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 18:04:00 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 19:40:57 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,10 +19,10 @@ void	ft_header_footer(void **ptr)
 	size_t	i;
 	size_t	j;
 
-	i = 0;
-	while (i < 2560)
+	i = 200;
+	while (i < 2360)
 	{
-		j = 0;
+		j = 95;
 		while (j < 100)
 		{
 			mlx_pixel_put(ptr[0], ptr[1], i, j, 16777215);
@@ -45,22 +45,24 @@ void	ft_header_footer(void **ptr)
 
 void	ft_write_header_footer(void **ptr)
 {
-	mlx_string_put(ptr[0], ptr[1], 1140, 50, 0,
+	mlx_string_put(ptr[0], ptr[1], 1140, 40, 16777215,
 			"FDF - Wireframe map displayer");
 	mlx_string_put(ptr[0], ptr[1], 2350, 1315, 0, "2018 - 101 project");
 }
 
-void	ft_dispmatrix(int ***matrix, int *size, void **ptr, void *img)
+void	ft_dispmatrix(int *size, void **ptr)
 {
 	int		i;
 	int		j;
 	char	*str_img;
-	int		d1, d2, d3;
+	int		d[3];
+	int		***matrix;
 
-	if (img != NULL)
-		mlx_destroy_image(ptr[0], img);
-	img = mlx_new_image(ptr[0], 2360, 1200);
-	str_img = mlx_get_data_addr(img, &d1, &d2, &d3);
+	matrix = (int ***)ptr[3];
+	if (ptr[4] != NULL)
+		mlx_destroy_image(ptr[0], ptr[4]);
+	ptr[4] = mlx_new_image(ptr[0], 2160, 1200);
+	str_img = mlx_get_data_addr(ptr[4], d, d + 1, d + 2);
 	i = -1;
 	while (++i < size[0])
 	{
@@ -73,20 +75,23 @@ void	ft_dispmatrix(int ***matrix, int *size, void **ptr, void *img)
 				ft_drawline(matrix[i][j], matrix[i][j + 1], str_img);
 		}
 	}
-	mlx_put_image_to_window(ptr[0], ptr[1], img, 100, 100);
+	mlx_put_image_to_window(ptr[0], ptr[1], ptr[4], 200, 100);
 }
 
 void	ft_display(t_list *lst, int *size)
 {
-	void	*ptr[2];
-	int		***matrix;
+	void	*ptr[6];
 
-	matrix = NULL;
 	ptr[0] = mlx_init();
 	ptr[1] = mlx_new_window(ptr[0], 2560, 1350, "F.D.F -> Fans Domifile Fixe");
-	ft_isomatrix(lst, size, &matrix);
-	ft_dispmatrix(matrix, size, ptr, NULL);
-	mlx_key_hook(ptr[1], &ft_testkey, ptr);
+	ptr[2] = (void *)lst;
+	ptr[3] = NULL;
+	ptr[5] = (void *)size;
+	ft_isomatrix(ptr);
+	ptr[4] = NULL;
+	ft_dispmatrix(size, ptr);
+	mlx_mouse_hook(ptr[1], &ft_mousemanager, ptr);
+	mlx_key_hook(ptr[1], &ft_keymanager, ptr);
 	ft_header_footer(ptr);
 	ft_write_header_footer(ptr);
 	mlx_loop(ptr[0]);

@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 21:24:12 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 18:04:02 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 13:58:25 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,19 +21,21 @@ void		ft_updatecoord(t_list *lst, int h, int l, int z)
 
 	cur = lst;
 	if (l != 1)
-		xgap = 900 / (l - 1);
+		xgap = 700 / (l - 1);
 	else
-		xgap = 900;
+		xgap = 700;
 	if (h != 1)
-		ygap = 900 / (h - 1);
+		ygap = 700 / (h - 1);
 	else
-		ygap = 900;
+		ygap = 700;
 	while (cur != NULL)
 	{
 		((int *)(cur->content))[0] += 1300 + ((int *)(cur->content))[0] * xgap;
 		((int *)(cur->content))[1] += -200 + ((int *)(cur->content))[1] * ygap;
 		if (z > 0 && z < 200)
 			((int *)(cur->content))[2] *= (200 / z);
+		else
+			((int *)(cur->content))[2] /= 2;
 		cur = cur->next;
 	}
 }

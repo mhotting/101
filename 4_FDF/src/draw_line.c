@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/28 01:37:45 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 18:04:10 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 19:41:37 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,18 +34,23 @@ static void	ft_putpixelstr(int x, int y, int color, char *img_str)
 {
 	char	*color_hex;
 	char	sub[3];
+	int		num;
 
-	sub[2] = '\0';
-	color_hex = ft_itoabase(color, 16);
-	sub[0] = color_hex[0];
-	sub[1] = color_hex[1];
-	img_str[y * 2360 * 4 + 4 * x] = ft_hextochar(sub[0], sub[1]);
-	sub[0] = color_hex[2];
-	sub[1] = color_hex[3];
-	img_str[y * 2360 * 4 + 4 * x + 1] = ft_hextochar(sub[0], sub[1]);
-	sub[0] = color_hex[4];
-	sub[1] = color_hex[5];
-	img_str[y * 2360 * 4 + 4 * x + 2] = ft_hextochar(sub[0], sub[1]);
+	num = y * 2160 * 4 + 4 * x;
+	if (num > 0 && num < (2160 * 4 * 1200) && x < 2160 && x > 0)
+	{
+		sub[2] = '\0';
+		color_hex = ft_itoabase(color, 16);
+		sub[0] = color_hex[0];
+		sub[1] = color_hex[1];
+		img_str[num] = ft_hextochar(sub[0], sub[1]);
+		sub[0] = color_hex[2];
+		sub[1] = color_hex[3];
+		img_str[num + 1] = ft_hextochar(sub[0], sub[1]);
+		sub[0] = color_hex[4];
+		sub[1] = color_hex[5];
+		img_str[num + 2] = ft_hextochar(sub[0], sub[1]);
+	}
 }
 
 static void	ft_dl1(int *dxy, int *coord, int *inc, char *img_str)
@@ -65,7 +70,6 @@ static void	ft_dl1(int *dxy, int *coord, int *inc, char *img_str)
 			coord[1] += inc[1];
 		}
 		ft_putpixelstr(coord[0], coord[1], 16777215, img_str);
-		//mlx_pixel_put(ptr[0], ptr[1], coord[0], coord[1], 16777215);
 	}
 }
 
@@ -86,7 +90,6 @@ static void	ft_dl2(int *dxy, int *coord, int *inc, char *img_str)
 			coord[0] += inc[0];
 		}
 		ft_putpixelstr(coord[0], coord[1], 16777215, img_str);
-		//mlx_pixel_put(ptr[0], ptr[1], coord[0], coord[1], 16777215);
 	}
 }
 
@@ -105,7 +108,6 @@ void		ft_drawline(int *point1, int *point2, char *img_str)
 	dxy[0] = abs(dxy[0]);
 	dxy[1] = abs(dxy[1]);
 	ft_putpixelstr(coord[0], coord[1], 16777215, img_str);
-	//mlx_pixel_put(ptr[0], ptr[1], coord[0], coord[1], 16777215);
 	if (dxy[0] > dxy[1])
 		ft_dl1(dxy, coord, inc, img_str);
 	else

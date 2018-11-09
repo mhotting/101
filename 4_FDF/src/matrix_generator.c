@@ -6,23 +6,26 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/07 12:03:26 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 14:38:09 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 15:56:28 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../includes/fdf.h"
+#include <stdio.h>
 
-static void	ft_isocoord(t_list *lst, int ***matrix, int *size)
+static void	ft_isocoord(t_list *lst, void **ptr, int *size)
 {
 	t_list	*cur;
 	int		i;
 	int		j;
 	int		*coord;
+	int		***matrix;
 
+	matrix = (int ***)ptr[3];
 	cur = lst;
-	i = 0;
-	while (i < size[0])
+	i = -1;
+	while (++i < size[0])
 	{
 		j = 0;
 		while (j < size[1])
@@ -34,8 +37,8 @@ static void	ft_isocoord(t_list *lst, int ***matrix, int *size)
 			cur = cur->next;
 			j++;
 		}
-		i++;
 	}
+	ptr[3] = (void *)matrix;
 }
 
 static int	***ft_initmatrix(int *size)
@@ -65,11 +68,16 @@ static int	***ft_initmatrix(int *size)
 	return (matrix);
 }
 
-void		ft_isomatrix(t_list *lst, int *size, int ****matrix)
+void		ft_isomatrix(void **ptr)
 {
-	if (*matrix == NULL)
-		*matrix = ft_initmatrix(size);
-	if (*matrix == NULL)
+	int		*size;
+	t_list	*lst;
+
+	size = (int *)ptr[5];
+	lst = (t_list *)ptr[2];
+	if (ptr[3] == NULL)
+		ptr[3] = (void *)ft_initmatrix(size);
+	if (ptr[3] == NULL)
 		return ;
-	ft_isocoord(lst, *matrix, size);
+	ft_isocoord(lst, ptr, size);
 }
