@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 17:12:13 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/11 12:43:39 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/11 17:36:05 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,6 +41,6 @@ void		ft_slide(int key, void **ptr)
 		ft_coordslide(lst, -50, 50);
 	else
 		ft_coordslide(lst, 50, -50);
-	ft_isomatrix(ptr);
+	ft_isomatrix(ptr, 1);
 	ft_dispmatrix((int *)ptr[5], ptr);
 }

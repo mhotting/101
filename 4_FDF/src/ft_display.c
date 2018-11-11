@@ -6,13 +6,12 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 17:00:38 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/11 17:12:33 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/11 17:35:45 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-#include <stdio.h>
 
 void	ft_dispmatrix(int *size, void **ptr)
 {
@@ -52,7 +51,7 @@ void	ft_display(t_list *lst, int *size)
 	ptr[2] = (void *)lst;
 	ptr[3] = NULL;
 	ptr[5] = (void *)size;
-	ft_isomatrix(ptr);
+	ft_isomatrix(ptr, 0);
 	ptr[4] = NULL;
 	ft_dispmatrix(size, ptr);
 	mlx_mouse_hook(ptr[1], &ft_mousemanager, ptr);

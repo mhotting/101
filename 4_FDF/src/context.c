@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/11 16:45:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/11 17:07:56 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/11 17:33:17 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -71,9 +71,23 @@ static void	ft_header_footer(void **ptr, int color)
 	}
 }
 
-static void	ft_write_header_footer(void **ptr)
+static void	ft_write_header_footer(void **ptr, int color)
 {
-	mlx_string_put(ptr[0], ptr[1], 1140, 40, 16777215,
+	size_t	i;
+	size_t	j;
+
+	i = 1000;
+	while (i < 2000)
+	{
+		j = 35;
+		while (j < 80)
+		{
+			mlx_pixel_put(ptr[0], ptr[1], i, j, 0);
+			j++;
+		}
+		i++;
+	}
+	mlx_string_put(ptr[0], ptr[1], 1140, 40, color,
 			"FDF - Wireframe map displayer");
 	mlx_string_put(ptr[0], ptr[1], 2350, 1315, 0, "2018 - 101 project");
 }
@@ -82,5 +96,5 @@ void		ft_context(void **ptr, int color)
 {
 	ft_header_footer(ptr, color);
 	ft_sidelines(ptr, color);
-	ft_write_header_footer(ptr);
+	ft_write_header_footer(ptr, color);
 }

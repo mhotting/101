@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/11 12:11:29 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/11 14:36:10 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/11 17:36:32 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,6 +50,6 @@ void		ft_editheight(int key, void **ptr)
 		ft_height(lst, 10);
 	else
 		ft_height(lst, -10);
-	ft_isomatrix(ptr);
+	ft_isomatrix(ptr, 1);
 	ft_dispmatrix((int *)ptr[5], ptr);
 }

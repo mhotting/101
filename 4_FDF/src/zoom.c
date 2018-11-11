@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 18:37:05 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/11 12:06:27 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/11 17:38:08 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,6 +50,6 @@ void		ft_zoom(int mouse, void **ptr)
 		ft_applyzoom(lst, -1);
 	else
 		ft_applyzoom(lst, 1);
-	ft_isomatrix(ptr);
+	ft_isomatrix(ptr, 1);
 	ft_dispmatrix((int *)ptr[5], ptr);
 }

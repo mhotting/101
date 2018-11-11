@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/28 01:38:57 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/11 16:52:45 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/11 17:35:42 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,7 +34,7 @@ void	ft_updatecoord(t_list *lst, int h, int l, int z);
 /*
 ** MATRIX
 */
-void	ft_isomatrix(void **ptr);
+void	ft_isomatrix(void **ptr, int first);
 void	ft_dispmatrix(int *size, void **ptr);
 void	ft_display(t_list *lst, int *size);
 
