@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/08 14:40:49 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/08 15:36:36 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/11 15:31:28 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,6 +27,7 @@ static void	ft_convert(int n, int base, char *ref, char *res)
 char		*ft_itoabase(int n, int base)
 {
 	char	*res;
+	char	*temp;
 	char	*ref;
 
 	if (base == 10)
@@ -38,5 +39,8 @@ char		*ft_itoabase(int n, int base)
 	if (res == NULL)
 		return (NULL);
 	ft_convert(n, base, ref, res);
-	return (res);
+	free(ref);
+	temp = ft_strdup(res);
+	free(res);
+	return (temp);
 }

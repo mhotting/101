@@ -1,55 +1,55 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   zoom.c                                           .::    .:/ .      .::   */
+/*   height.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/09 18:37:05 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/11 12:06:27 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/11 12:11:29 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/11 14:36:10 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../includes/fdf.h"
 
-static void	ft_applyzoom(t_list *lst, int sign)
+static void	ft_height(t_list *lst, int h)
 {
 	int			*coord;
-	t_list		*cur;
-	static int	zoomed = 0;
+	static int	up = 0;
 
-	cur = lst;
-	while (cur != NULL)
+	while (lst != NULL)
 	{
-		coord = (int *)cur->content;
-		if (sign > 0)
+		coord = (int *)lst->content;
+		if (h > 0)
 		{
-			coord[0] = coord[0] * 2 - 1700;
-			coord[1] = coord[1] * 2;
-			coord[2] *= 2;
-			zoomed++;
+			if (coord[2] > 0)
+				coord[2] += h;
+			else if (coord[2] < 0)
+				coord[2] -= h;
+			up++;
 		}
-		else if (zoomed > 0)
+		else if (h < 0 && up > 0)
 		{
-			coord[0] = coord[0] / 2 + 850;
-			coord[1] /= 2;
-			coord[2] /= 2;
-			zoomed--;
+			if (coord[2] > 0)
+				coord[2] += h;
+			else if (coord[2] < 0)
+				coord[2] -= h;
+			up--;
 		}
-		cur = cur->next;
+		lst = lst->next;
 	}
 }
 
-void		ft_zoom(int mouse, void **ptr)
+void		ft_editheight(int key, void **ptr)
 {
 	t_list	*lst;
 
 	lst = (t_list *)ptr[2];
-	if (mouse == 1)
-		ft_applyzoom(lst, -1);
+	if (key == 69)
+		ft_height(lst, 10);
 	else
-		ft_applyzoom(lst, 1);
+		ft_height(lst, -10);
 	ft_isomatrix(ptr);
 	ft_dispmatrix((int *)ptr[5], ptr);
 }

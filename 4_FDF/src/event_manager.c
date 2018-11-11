@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 18:20:58 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 20:04:04 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/11 16:14:16 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,10 @@ int	ft_keymanager(int key, void *param)
 		exit(0);
 	if (key >= 123 && key <= 126)
 		ft_slide(key, ptr);
+	if (key == 69 || key == 78)
+		ft_editheight(key, ptr);
+	if (key == 8)
+		ft_changecolor(ptr);
 	return (0);
 }
 

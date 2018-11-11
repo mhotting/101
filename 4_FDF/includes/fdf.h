@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/28 01:38:57 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 19:17:39 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/11 16:52:45 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@
 /*
 ** COORD AND PARSING
 */
-void	ft_drawline(int *point1, int *point2, char *img_str);
+void	ft_drawline(int *point1, int *point2, char *img_str, int color);
 int		ft_parse(int fd, t_list **lst, int *size);
 void	ft_updatecoord(t_list *lst, int h, int l, int z);
 
@@ -43,8 +43,17 @@ void	ft_display(t_list *lst, int *size);
 */
 void	ft_slide(int key, void **ptr);
 void	ft_zoom(int mouse, void **ptr);
+void	ft_editheight(int key, void **ptr);
+void	ft_changecolor(void **ptr);
 int		ft_keymanager(int key, void *param);
 int		ft_mousemanager(int key, int x, int y, void *param);
+
+/*
+** COLOR MANAGEMENT / WINDOW DECORATION
+*/
+void	ft_putrgb(char **color);
+char	ft_hextochar(char a, char b);
+void	ft_context(void **ptr, int color);
 
 /*
 ** UTIL.C

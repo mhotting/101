@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 21:24:12 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 13:58:25 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/11 13:29:14 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,30 +60,30 @@ static int	ft_pointadd(t_list **lst, int x, int y, int z)
 	return (1);
 }
 
-int			ft_parse(int fd, t_list **lst, int *coord)
+int			ft_parse(int fd, t_list **lst, int *size)
 {
 	char	*str;
 	char	**pts;
 	int		ok;
 
-	coord[0] = -1;
-	coord[2] = 0;
-	while ((ok = get_next_line(fd, &str)) == 1 && (++(coord[0])) != -2)
+	size[0] = -1;
+	size[2] = 0;
+	while ((ok = get_next_line(fd, &str)) == 1 && (++(size[0])) != -2)
 	{
-		coord[1] = -1;
+		size[1] = -1;
 		if ((pts = ft_strsplit(str, ' ')) == NULL)
 			exit(0);
-		while (pts[++(coord[1])] != NULL)
+		while (pts[++(size[1])] != NULL)
 		{
-			ok = ft_pointadd(lst, coord[1], coord[0],
-					ft_atoi(pts[coord[1]]));
-			coord[2] = ft_max(coord[2], ft_abs(ft_atoi(pts[coord[1]])));
+			ok = ft_pointadd(lst, size[1], size[0],
+					ft_atoi(pts[size[1]]));
+			size[2] = ft_max(size[2], ft_abs(ft_atoi(pts[size[1]])));
 		}
 		ft_strtabdel(pts);
 		free(pts);
 		free(str);
 	}
-	++(coord[0]);
+	++(size[0]);
 	ft_lstreverse(lst);
 	return ((ok >= 0) ? 1 : 0);
 }
