@@ -6,14 +6,41 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 17:00:38 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/11 17:35:45 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/11 23:40:31 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	ft_dispmatrix(int *size, void **ptr)
+static void	ft_cleanmem(void **ptr)
+{
+	int		***matrix;
+	t_list	*lst;
+	int		*size;
+	int		i;
+	int		j;
+
+	matrix = (int ***)ptr[3];
+	lst = (t_list *)ptr[2];
+	size = (int *)ptr[5];
+	if (ptr[1] != NULL)
+		mlx_destroy_window(ptr[0], ptr[1]);
+	if (ptr[4] != NULL)
+		mlx_destroy_image(ptr[0], ptr[4]);
+	free(ptr[0]);
+	ft_lstdel(&lst, &ft_lstintdel);
+	i = -1;
+	while (++i < size[0] && (j = -1))
+	{
+		while (++j < size[1])
+			free(matrix[i][j]);
+		free(matrix[i]);
+	}
+	free(matrix);
+}
+
+void		ft_dispmatrix(int *size, void **ptr)
 {
 	int		i;
 	int		j;
@@ -42,7 +69,7 @@ void	ft_dispmatrix(int *size, void **ptr)
 	mlx_put_image_to_window(ptr[0], ptr[1], ptr[4], 200, 100);
 }
 
-void	ft_display(t_list *lst, int *size)
+void		ft_display(t_list *lst, int *size)
 {
 	void	*ptr[6];
 
@@ -58,4 +85,5 @@ void	ft_display(t_list *lst, int *size)
 	mlx_key_hook(ptr[1], &ft_keymanager, ptr);
 	ft_context(ptr, 16777215);
 	mlx_loop(ptr[0]);
+	ft_cleanmem(ptr);
 }

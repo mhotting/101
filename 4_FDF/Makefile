@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/30 15:23:47 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/11 16:52:32 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/11 20:50:46 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -24,7 +24,8 @@ SRCS =		./src/main.c				\
 			./src/zoom.c				\
 			./src/height.c				\
 			./src/color.c				\
-			./src/context.c
+			./src/context.c				\
+			./src/rotate.c
 OBJ =		$(SRCS:.c=.o)
 HEADER =	./includes/
 CFLAGS = 	-Wall -Wextra -Werror -I $(HEADER)

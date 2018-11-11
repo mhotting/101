@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/28 01:38:57 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/11 17:35:42 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/11 20:51:14 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,6 +45,7 @@ void	ft_slide(int key, void **ptr);
 void	ft_zoom(int mouse, void **ptr);
 void	ft_editheight(int key, void **ptr);
 void	ft_changecolor(void **ptr);
+void	ft_rotate(int key, void **ptr);
 int		ft_keymanager(int key, void *param);
 int		ft_mousemanager(int key, int x, int y, void *param);
 

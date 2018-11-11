@@ -6,12 +6,13 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/30 21:24:12 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/11 17:34:19 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/11 23:00:27 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+#include <stdio.h>
 
 void		ft_updatecoord(t_list *lst, int h, int l, int z)
 {
