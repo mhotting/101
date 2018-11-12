@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/28 01:37:45 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/11 17:08:00 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/12 01:35:27 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,8 +19,8 @@ static void	ft_putpixelstr(int x, int y, int color, char *img_str)
 	char	sub[3];
 	int		num;
 
-	num = y * 2160 * 4 + 4 * x;
-	if (num > 0 && num < (2160 * 4 * 1200) && x < 2160 && x > 0)
+	num = y * 2110 * 4 + 4 * x;
+	if (num > 0 && num < (2110 * 4 * 1200) && x < 2110 && x > 0)
 	{
 		sub[2] = '\0';
 		color_hex = ft_itoabase(color, 16);
