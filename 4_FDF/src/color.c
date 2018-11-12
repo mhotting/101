@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/11 14:48:53 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/11 17:12:31 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/12 01:43:53 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -83,8 +83,8 @@ void		ft_changecolor(void **ptr)
 	color = matrix[0][0][2];
 	size = (int *)ptr[5];
 	if (color == 16777215)
-		color = 255;
-	else if (color == 255)
+		color = 65280;
+	else if (color == 65280)
 		color = 31231;
 	else if (color == 31231)
 		color = 15335169;

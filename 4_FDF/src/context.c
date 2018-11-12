@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/11 16:45:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/12 01:35:20 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/12 01:42:05 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -112,10 +112,10 @@ static void	ft_instructions(void **ptr, int color)
 	mlx_string_put(ptr[0], ptr[1], 10, 450, color, "- x : X rotation");
 	mlx_string_put(ptr[0], ptr[1], 10, 475, color, "- y : Y rotation");
 	mlx_string_put(ptr[0], ptr[1], 10, 500, color, "- z : Z rotation");
-	mlx_string_put(ptr[0], ptr[1], 10, 575, color, "- L-Clic : Zoom in");
-	mlx_string_put(ptr[0], ptr[1], 10, 600, color, "- R-Clic : Zoom out");
+	mlx_string_put(ptr[0], ptr[1], 10, 575, color, "- R-Clic : Zoom in");
+	mlx_string_put(ptr[0], ptr[1], 10, 600, color, "- L-Clic : Zoom out");
 	mlx_string_put(ptr[0], ptr[1], 10, 675, color, "- Num +: Inc. height");
-	mlx_string_put(ptr[0], ptr[1], 10, 725, color, "- Num -: Dec. height");
+	mlx_string_put(ptr[0], ptr[1], 10, 700, color, "- Num -: Dec. height");
 	mlx_string_put(ptr[0], ptr[1], 10, 775, color, "- c: Color changer");
 	mlx_string_put(ptr[0], ptr[1], 10, 850, color, "Press ESC to quit...");
 }
