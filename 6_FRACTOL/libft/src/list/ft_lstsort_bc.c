@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_lstsort_bc.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/27 20:08:20 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 19:18:12 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/09 13:50:22 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/09 13:55:01 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "./../../includes/libft.h"
 
-int		main(int argc, char **argv)
+void	ft_lstsort_bc(t_list *lst, int (*f)(void *, void *))
 {
-	int		fd;
-	t_list	*lst;
-	int		ok;
-	int		size[3];
+	t_list	*current;
+	t_list	*after;
 
-	if (argc != 2)
-		return (ft_usage());
-	if ((fd = open(argv[1], O_RDONLY)) == -1)
-		return (ft_puterror("ERROR - File cannot be read\n"));
-	lst = NULL;
-	if ((ok = ft_parse(fd, &lst, size)) == 0)
+	if (lst == NULL || lst->next == NULL)
+		return ;
+	current = lst;
+	while (current->next != NULL)
 	{
-		ft_lstdel(&lst, &ft_lstintdel);
-		ft_puterror("ERROR - Impossible to extract data from file\n");
+		after = current->next;
+		while (after != NULL)
+		{
+			if ((*f)(current->content, after->content) > 0)
+				ft_lstswap_c(current, after);
+			after = after->next;
+		}
+		current = current->next;
 	}
-	ft_updatecoord(lst, size[0], size[1], size[2]);
-	ft_display(lst, size);
-	return (0);
 }

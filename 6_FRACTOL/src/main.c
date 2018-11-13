@@ -5,32 +5,24 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/27 20:08:20 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 19:18:12 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/13 18:54:47 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/13 19:31:54 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "./../includes/fractol.h"
 
-int		main(int argc, char **argv)
+int	main(void)
 {
-	int		fd;
-	t_list	*lst;
-	int		ok;
-	int		size[3];
+	t_bag	bag;
+	void	*ptr_bag;
 
-	if (argc != 2)
-		return (ft_usage());
-	if ((fd = open(argv[1], O_RDONLY)) == -1)
-		return (ft_puterror("ERROR - File cannot be read\n"));
-	lst = NULL;
-	if ((ok = ft_parse(fd, &lst, size)) == 0)
-	{
-		ft_lstdel(&lst, &ft_lstintdel);
-		ft_puterror("ERROR - Impossible to extract data from file\n");
-	}
-	ft_updatecoord(lst, size[0], size[1], size[2]);
-	ft_display(lst, size);
+	ptr_bag = (void *)&bag;
+	bag.mlx = mlx_init();
+	bag.win = mlx_new_window(bag.mlx, 2560, 1350, "FRACTOL: A WAY TO INFINITY");
+	ft_context(ptr_bag, 16777215);
+	mlx_key_hook(bag.win, &ft_keymg, ptr_bag);
+	mlx_loop(bag.mlx);
 	return (0);
 }

@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_lstnew.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/27 20:08:20 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 19:18:12 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/04 09:48:40 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/04 10:48:40 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "./../../includes/libft.h"
 
-int		main(int argc, char **argv)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	int		fd;
-	t_list	*lst;
-	int		ok;
-	int		size[3];
+	t_list	*new;
 
-	if (argc != 2)
-		return (ft_usage());
-	if ((fd = open(argv[1], O_RDONLY)) == -1)
-		return (ft_puterror("ERROR - File cannot be read\n"));
-	lst = NULL;
-	if ((ok = ft_parse(fd, &lst, size)) == 0)
+	new = (t_list *)malloc(sizeof(t_list));
+	if (new == NULL)
+		return (NULL);
+	new->next = NULL;
+	if (content == NULL)
 	{
-		ft_lstdel(&lst, &ft_lstintdel);
-		ft_puterror("ERROR - Impossible to extract data from file\n");
+		new->content = NULL;
+		new->content_size = 0;
 	}
-	ft_updatecoord(lst, size[0], size[1], size[2]);
-	ft_display(lst, size);
-	return (0);
+	else
+	{
+		new->content = ft_memalloc(content_size);
+		ft_memcpy(new->content, content, content_size);
+		new->content_size = content_size;
+	}
+	return (new);
 }

@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_strlcat.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/27 20:08:20 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 19:18:12 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/02 14:59:18 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/18 13:57:16 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "./../../includes/libft.h"
 
-int		main(int argc, char **argv)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int		fd;
-	t_list	*lst;
-	int		ok;
-	int		size[3];
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	i;
 
-	if (argc != 2)
-		return (ft_usage());
-	if ((fd = open(argv[1], O_RDONLY)) == -1)
-		return (ft_puterror("ERROR - File cannot be read\n"));
-	lst = NULL;
-	if ((ok = ft_parse(fd, &lst, size)) == 0)
+	src_len = ft_strlen(src);
+	dst_len = ft_strlen(dst);
+	if (size < dst_len)
+		return (src_len + size);
+	i = 0;
+	while (i < src_len && (dst_len + i) < (size - 1))
 	{
-		ft_lstdel(&lst, &ft_lstintdel);
-		ft_puterror("ERROR - Impossible to extract data from file\n");
+		dst[dst_len + i] = src[i];
+		i++;
 	}
-	ft_updatecoord(lst, size[0], size[1], size[2]);
-	ft_display(lst, size);
-	return (0);
+	dst[dst_len + i] = '\0';
+	if (i < src_len)
+		return (dst_len + src_len);
+	else
+		return (dst_len + i);
 }

@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_memcmp.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/27 20:08:20 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 19:18:12 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/02 12:05:01 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/04 09:55:08 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "./../../includes/libft.h"
 
-int		main(int argc, char **argv)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		fd;
-	t_list	*lst;
-	int		ok;
-	int		size[3];
+	unsigned char *temp_s1;
+	unsigned char *temp_s2;
 
-	if (argc != 2)
-		return (ft_usage());
-	if ((fd = open(argv[1], O_RDONLY)) == -1)
-		return (ft_puterror("ERROR - File cannot be read\n"));
-	lst = NULL;
-	if ((ok = ft_parse(fd, &lst, size)) == 0)
+	temp_s1 = (unsigned char *)s1;
+	temp_s2 = (unsigned char *)s2;
+	while (n > 0)
 	{
-		ft_lstdel(&lst, &ft_lstintdel);
-		ft_puterror("ERROR - Impossible to extract data from file\n");
+		if (*temp_s1 != *temp_s2)
+			return (*temp_s1 - *temp_s2);
+		temp_s1++;
+		temp_s2++;
+		n--;
 	}
-	ft_updatecoord(lst, size[0], size[1], size[2]);
-	ft_display(lst, size);
 	return (0);
 }

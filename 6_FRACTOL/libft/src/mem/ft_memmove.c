@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_memmove.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/27 20:08:20 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 19:18:12 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/02 11:34:36 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/03 09:33:03 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "./../../includes/libft.h"
 
-int		main(int argc, char **argv)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int		fd;
-	t_list	*lst;
-	int		ok;
-	int		size[3];
+	unsigned char	*temp_src;
+	unsigned char	*temp_dest;
+	unsigned char	*temp;
+	size_t			i;
 
-	if (argc != 2)
-		return (ft_usage());
-	if ((fd = open(argv[1], O_RDONLY)) == -1)
-		return (ft_puterror("ERROR - File cannot be read\n"));
-	lst = NULL;
-	if ((ok = ft_parse(fd, &lst, size)) == 0)
+	temp = (unsigned char *)malloc(n * sizeof(char));
+	if (temp != NULL && n > 0)
 	{
-		ft_lstdel(&lst, &ft_lstintdel);
-		ft_puterror("ERROR - Impossible to extract data from file\n");
+		temp_src = (unsigned char *)src;
+		temp_dest = (unsigned char *)dest;
+		i = -1;
+		while (++i < n)
+			temp[i] = temp_src[i];
+		i = -1;
+		while (++i < n)
+			temp_dest[i] = temp[i];
 	}
-	ft_updatecoord(lst, size[0], size[1], size[2]);
-	ft_display(lst, size);
-	return (0);
+	if (temp != NULL)
+		free(temp);
+	return (dest);
 }

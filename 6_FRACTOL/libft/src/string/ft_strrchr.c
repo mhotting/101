@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_strrchr.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/27 20:08:20 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 19:18:12 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/02 16:25:09 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/18 13:58:37 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "./../../includes/libft.h"
 
-int		main(int argc, char **argv)
+char	*ft_strrchr(const char *s, int c)
 {
-	int		fd;
-	t_list	*lst;
-	int		ok;
-	int		size[3];
+	size_t	i;
 
-	if (argc != 2)
-		return (ft_usage());
-	if ((fd = open(argv[1], O_RDONLY)) == -1)
-		return (ft_puterror("ERROR - File cannot be read\n"));
-	lst = NULL;
-	if ((ok = ft_parse(fd, &lst, size)) == 0)
+	if (c == '\0')
+		return ((char *)s + ft_strlen(s));
+	if (ft_strlen(s) == 0)
+		return (NULL);
+	i = ft_strlen(s) - 1;
+	while (i > 0)
 	{
-		ft_lstdel(&lst, &ft_lstintdel);
-		ft_puterror("ERROR - Impossible to extract data from file\n");
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i--;
 	}
-	ft_updatecoord(lst, size[0], size[1], size[2]);
-	ft_display(lst, size);
-	return (0);
+	if (s[i] == (char)c)
+		return ((char *)s + i);
+	return (NULL);
 }

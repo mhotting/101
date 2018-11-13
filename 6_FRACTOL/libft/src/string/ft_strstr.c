@@ -1,36 +1,43 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_strstr.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/27 20:08:20 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 19:18:12 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/02 16:35:23 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/18 14:02:44 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "./../../includes/libft.h"
 
-int		main(int argc, char **argv)
+char	*ft_strstr(const char *str, const char *sub)
 {
-	int		fd;
-	t_list	*lst;
-	int		ok;
-	int		size[3];
+	size_t	i;
+	size_t	mem_i;
+	size_t	j;
 
-	if (argc != 2)
-		return (ft_usage());
-	if ((fd = open(argv[1], O_RDONLY)) == -1)
-		return (ft_puterror("ERROR - File cannot be read\n"));
-	lst = NULL;
-	if ((ok = ft_parse(fd, &lst, size)) == 0)
+	if (sub[0] == '\0')
+		return ((char *)str);
+	i = -1;
+	while (str[++i])
 	{
-		ft_lstdel(&lst, &ft_lstintdel);
-		ft_puterror("ERROR - Impossible to extract data from file\n");
+		j = 0;
+		if (str[i] == sub[j])
+		{
+			mem_i = i++;
+			while (sub[j++])
+			{
+				if (str[i] != sub[j] || (str[i] == '\0' && sub[j] == '\0'))
+					break ;
+				i++;
+			}
+			if (j == ft_strlen(sub))
+				return ((char *)str + mem_i);
+			i = mem_i;
+		}
 	}
-	ft_updatecoord(lst, size[0], size[1], size[2]);
-	ft_display(lst, size);
-	return (0);
+	return (NULL);
 }
