@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 19:23:43 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 05:58:54 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 06:23:18 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,8 +23,8 @@ int	ft_zoom(t_bag *ptr_bag, int button)
 	ptr_bag->xmax -= zoom * 0.1;
 	ptr_bag->ymin += zoom * 0.1;
 	ptr_bag->ymax -= zoom * 0.1;
-	if (ptr_bag->iter_max + zoom != 0)
-		ptr_bag->iter_max += zoom;
+	if (ptr_bag->i_max + zoom != 0)
+		ptr_bag->i_max += zoom;
 	ft_mandelbrot((void *)ptr_bag);
 	return (0);
 }
@@ -32,13 +32,13 @@ int	ft_zoom(t_bag *ptr_bag, int button)
 int	ft_editparam(t_bag *ptr_bag, int key)
 {
 	if (key == 0)
-		ptr_bag->iter_max += 5;
-	else if (key == 1 && ptr_bag->iter_max > 5)
-		ptr_bag->iter_max -= 5;
+		ptr_bag->i_max += 5;
+	else if (key == 1 && ptr_bag->i_max > 5)
+		ptr_bag->i_max -= 5;
 	else if (key == 2)
-		ptr_bag->limit += 0.3;
+		ptr_bag->lim += 0.3;
 	else
-		ptr_bag->limit -= 0.3;
+		ptr_bag->lim -= 0.3;
 	ft_mandelbrot((void *)ptr_bag);
 	return (0);
 }

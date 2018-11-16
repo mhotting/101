@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:54:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 06:01:28 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 06:23:33 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,8 +25,8 @@ static void	ft_init(void *ptr)
 	ptr_bag->xmax = 0.6;
 	ptr_bag->ymin = -1.2;
 	ptr_bag->ymax = 1.2;
-	ptr_bag->iter_max = 30;
-	ptr_bag->limit = 4;
+	ptr_bag->i_max = 25;
+	ptr_bag->lim = 4;
 	ptr_bag->mlx = mlx_init();
 	ptr_bag->win = mlx_new_window(ptr_bag->mlx,
 			WIN_L, WIN_H, "FRACTOL: A WAY TO INFINITY");
