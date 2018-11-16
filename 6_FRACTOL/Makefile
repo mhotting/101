@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/13 19:10:45 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/13 19:36:54 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/16 02:47:27 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -14,7 +14,9 @@
 NAME =		fractol
 SRCS =		./src/main.c			\
 			./src/event_manager.c	\
-			./src/context.c
+			./src/context.c			\
+			./src/error.c			\
+			./src/mandelbrot.c
 OBJ =		$(SRCS:.c=.o)
 HEADER =	./includes/
 CFLAGS = 	-Wall -Wextra -Werror -I $(HEADER)

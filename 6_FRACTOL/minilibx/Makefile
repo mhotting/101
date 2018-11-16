@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/30 15:32:50 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/30 15:33:44 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/15 19:53:45 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -20,7 +20,7 @@ CFLAGS+=-O2
 all: $(NOM)
 
 $(NOM):	$(OBJ)
-	@ar -r $(NOM) $(OBJ)
+	@ar -rc $(NOM) $(OBJ)
 	@ranlib $(NOM)
 
 clean:

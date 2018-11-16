@@ -6,22 +6,22 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 19:32:13 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 19:36:49 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 04:15:49 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../includes/fractol.h"
 
-static void	ft_sidelines(t_bag *ptr, int color)
+static void	ft_sidelines2(t_bag *ptr, int color)
 {
 	size_t	i;
 	size_t	j;
 
-	i = 245;
-	while (i < 250)
+	i = 0;
+	while (i < 3)
 	{
-		j = 0;
+		j = 50;
 		while (j < 1300)
 		{
 			mlx_pixel_put(ptr->mlx, ptr->win, i, j, color);
@@ -29,10 +29,39 @@ static void	ft_sidelines(t_bag *ptr, int color)
 		}
 		i++;
 	}
-	i = 2361;
-	while (i <= 2366)
+	i = 2558;
+	while (i < 2561)
 	{
-		j = 0;
+		j = 50;
+		while (j < 1300)
+		{
+			mlx_pixel_put(ptr->mlx, ptr->win, i, j, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+static void	ft_sidelines(t_bag *ptr, int color)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 395;
+	while (i < 400)
+	{
+		j = 50;
+		while (j < 1300)
+		{
+			mlx_pixel_put(ptr->mlx, ptr->win, i, j, color);
+			j++;
+		}
+		i++;
+	}
+	i = 2360;
+	while (i < 2365)
+	{
+		j = 50;
 		while (j < 1300)
 		{
 			mlx_pixel_put(ptr->mlx, ptr->win, i, j, color);
@@ -47,19 +76,19 @@ static void	ft_header_footer(t_bag *ptr, int color)
 	size_t	i;
 	size_t	j;
 
-	i = 249;
-	while (i < 2361)
+	i = 0;
+	while (i < 2561)
 	{
-		j = 95;
-		while (j < 100)
+		j = 0;
+		while (j < 50)
 		{
 			mlx_pixel_put(ptr->mlx, ptr->win, i, j, color);
 			j++;
 		}
 		i++;
 	}
-	i = 245;
-	while (i < 2367)
+	i = 0;
+	while (i < 2561)
 	{
 		j = 1349;
 		while (j > 1299)
@@ -71,11 +100,11 @@ static void	ft_header_footer(t_bag *ptr, int color)
 	}
 }
 
-static void	ft_write_header_footer(t_bag *ptr, int color)
+static void	ft_write_header_footer(t_bag *ptr)
 {
-	mlx_string_put(ptr->mlx, ptr->win, 1140, 40, color,
+	mlx_string_put(ptr->mlx, ptr->win, 1150, 15, 0,
 			"FRACTOL: A WAY TO INFINITY");
-	mlx_string_put(ptr->mlx, ptr->win, 2150, 1315, 0, "2018 - 101 project");
+	mlx_string_put(ptr->mlx, ptr->win, 2300, 1315, 0, "2018 - 101 project");
 }
 
 void		ft_context(void *ptr, int color)
@@ -85,5 +114,6 @@ void		ft_context(void *ptr, int color)
 	ptr_bag = (t_bag *)ptr;
 	ft_header_footer(ptr_bag, color);
 	ft_sidelines(ptr_bag, color);
-	ft_write_header_footer(ptr_bag, color);
+	ft_sidelines2(ptr_bag, color);
+	ft_write_header_footer(ptr_bag);
 }
