@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 19:23:43 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 06:23:18 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 07:29:26 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,13 +16,15 @@
 
 int	ft_zoom(t_bag *ptr_bag, int button)
 {
-	int	zoom;
+	int		zoom;
+	double	coeff;
 
+	coeff = 0.3;
 	zoom = (button == 5 ? 1 : -1);
-	ptr_bag->xmin += zoom * 0.1;
-	ptr_bag->xmax -= zoom * 0.1;
-	ptr_bag->ymin += zoom * 0.1;
-	ptr_bag->ymax -= zoom * 0.1;
+	ptr_bag->xmin += zoom * coeff;
+	ptr_bag->xmax -= zoom * coeff;
+	ptr_bag->ymin += zoom * coeff;
+	ptr_bag->ymax -= zoom * coeff;
 	if (ptr_bag->i_max + zoom != 0)
 		ptr_bag->i_max += zoom;
 	ft_mandelbrot((void *)ptr_bag);
