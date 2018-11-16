@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 19:23:43 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 05:25:00 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 05:58:54 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,8 @@ int	ft_zoom(t_bag *ptr_bag, int button)
 	ptr_bag->xmax -= zoom * 0.1;
 	ptr_bag->ymin += zoom * 0.1;
 	ptr_bag->ymax -= zoom * 0.1;
-	ptr_bag->iter_max += zoom * 2;
+	if (ptr_bag->iter_max + zoom != 0)
+		ptr_bag->iter_max += zoom;
 	ft_mandelbrot((void *)ptr_bag);
 	return (0);
 }
@@ -32,12 +33,35 @@ int	ft_editparam(t_bag *ptr_bag, int key)
 {
 	if (key == 0)
 		ptr_bag->iter_max += 5;
-	else if (key == 1)
+	else if (key == 1 && ptr_bag->iter_max > 5)
 		ptr_bag->iter_max -= 5;
 	else if (key == 2)
 		ptr_bag->limit += 0.3;
 	else
 		ptr_bag->limit -= 0.3;
+	ft_mandelbrot((void *)ptr_bag);
+	return (0);
+}
+
+int	ft_colormg(t_bag *ptr_bag)
+{
+	ptr_bag->col = 1;
+	if (ptr_bag->color == 0xffffff)
+		ptr_bag->color = 0xffff00;
+	else if (ptr_bag->color == 0xffff00)
+		ptr_bag->color = 0x113300;
+	else if (ptr_bag->color == 0x113300)
+		ptr_bag->color = 0x0000ff;
+	else if (ptr_bag->color == 0x0000ff)
+		ptr_bag->color = 0xff0000;
+	else if (ptr_bag->color == 0xff0000)
+		ptr_bag->color = 0x00ff00;
+	else if (ptr_bag->color == 0x00ff00)
+		ptr_bag->color = 0x551155;
+	else if (ptr_bag->color == 0x551155)
+		ptr_bag->color = 0x424242;
+	else
+		ptr_bag->color = 0xffffff;
 	ft_mandelbrot((void *)ptr_bag);
 	return (0);
 }
@@ -59,6 +83,8 @@ int	ft_keymg(int key, void *ptr)
 	ptr_bag = (t_bag *)ptr;
 	if (key >= 0 && key <= 3)
 		ft_editparam(ptr_bag, key);
+	if (key == 8)
+		ft_colormg(ptr_bag);
 	if (key == 53)
 		exit(0);
 	return (0);

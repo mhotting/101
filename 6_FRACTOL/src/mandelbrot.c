@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/15 19:11:53 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 05:13:11 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 05:51:17 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,10 +44,10 @@ static void	ft_mandelbrot_calc(char *str_img, t_bag *ptr_bag)
 				zi = 2 * zi * temp + ci;
 				i++;
 			}
-			if (i == ptr_bag->iter_max)
-			{
+			if (ptr_bag->col == 1)
+				int_img[y * FRAC_L + x] = i * ptr_bag->color / ptr_bag->iter_max;
+			else if (i == ptr_bag->iter_max)
 				int_img[y * FRAC_L + x] = 0xffffff;
-			}
 			y++;
 		}
 		x++;

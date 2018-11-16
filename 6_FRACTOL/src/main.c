@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:54:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 05:14:18 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 06:01:28 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,11 +19,13 @@ static void	ft_init(void *ptr)
 	t_bag	*ptr_bag;
 
 	ptr_bag = (t_bag *)ptr;
+	ptr_bag->color = 0xffffff;
+	ptr_bag->col = 0;
 	ptr_bag->xmin = -2.1;
 	ptr_bag->xmax = 0.6;
 	ptr_bag->ymin = -1.2;
 	ptr_bag->ymax = 1.2;
-	ptr_bag->iter_max = 50;
+	ptr_bag->iter_max = 30;
 	ptr_bag->limit = 4;
 	ptr_bag->mlx = mlx_init();
 	ptr_bag->win = mlx_new_window(ptr_bag->mlx,

@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 05:17:54 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 05:49:22 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,6 +39,8 @@ typedef struct	s_bag
 	double	xmax;
 	double	ymin;
 	double	ymax;
+	int		color;
+	char	col;
 }				t_bag;
 
 /*
