@@ -73,7 +73,7 @@ int	ft_motionmg(int x, int y, void *ptr)
 	t_bag	*ptr_bag;
 
 	ptr_bag = (t_bag *)ptr;
-	if (x == 36)
+	if (x == 36 && ptr_bag != NULL)
 		printf("POS: %d - %d\n", x, y);
 	return (0);
 }
