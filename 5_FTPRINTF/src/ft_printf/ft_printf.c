@@ -18,9 +18,13 @@ static void	ft_dispatch(char *str, size_t i, va_list *ap)
 {
 	int	x;
 
-	x = va_arg(*ap, int);
+	x = va_arg(*ap, unsigned int);
 	if (str[i] == '%')
-		printf("L'entier donne est: %d\n", x);
+	{
+		ft_putstr("Le nbr est: ");
+		ft_putnbr(x);
+		ft_putendl("");
+	}
 }
 
 int		ft_printf(const char *format, ...)

@@ -16,7 +16,7 @@
 
 int	main(void)
 {
-	printf("NB1: %d\n", (int)3.14);
-	ft_printf("Bonjour a tous les %d.\n", 5);
+	printf("NB1: %u\n", -3);
+	ft_printf("Bonjour a tous les %d.\n", -3);
 	return (0);
 }
