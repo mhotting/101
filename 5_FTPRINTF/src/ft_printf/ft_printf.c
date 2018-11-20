@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:02:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/20 18:58:19 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/20 20:03:37 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,7 +44,7 @@ static char	*ft_extract(char *str, size_t i)
 	size_t	j;
 	char	*sub;
 
-	j = i;
+	j = i + 1;
 	while (str[j] != '\0' && ft_charinstr(str[j], "diouxXcspf%") == 0)
 		j++;
 	if (str[j] == '\0')
@@ -71,7 +71,7 @@ static void	ft_dispatch(char *str, size_t i, va_list *ap)
 	char	*res;
 	pf_func	f;
 
-<<<<<<< HEAD
+	res = NULL;
 	sub = ft_extract(str, i);
 	if (sub == NULL)
 		return ;
@@ -82,15 +82,6 @@ static void	ft_dispatch(char *str, size_t i, va_list *ap)
 	ft_replace(str, i, res);
 	free(res);
 	free(sub);
-=======
-	x = va_arg(*ap, unsigned int);
-	if (str[i] == '%')
-	{
-		ft_putstr("Le nbr est: ");
-		ft_putnbr(x);
-		ft_putendl("");
-	}
->>>>>>> a5dbf4ebf72d86197b3275c148ed9ba0d40a65c0
 }
 
 int			ft_printf(const char *format, ...)

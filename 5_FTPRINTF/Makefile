@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 08:24:04 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/20 18:52:43 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/20 19:40:37 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -84,16 +84,7 @@ SRCS =		./src/conv/ft_atoi.c			\
 			./src/ft_printf/ft_printf.c
 OBJ =		$(SRCS:.c=.o)
 HEADER =	./includes
-ifdef FLAGS
-	ifeq ($(FLAGS), no)
-		CFLAGS =
-	endif
-	ifeq ($(FLAGS), debug)
-		CFLAGS = -Wall -Wextra -Werror -ansi -pedantic -g
-	endif
-	else
-		CFLAGS = -Wall -Wextra -Werror -I $(HEADER)
-	endif
+CFLAGS =	-I $(HEADER)
 CC =		gcc
 
 all: $(NAME)
