@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 10:21:52 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/20 18:38:13 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/22 14:17:32 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,5 +44,6 @@ char			**ft_strsplit(char const *s, char c);
 char			*ft_strnew(size_t size);
 void			ft_sortstrtab(char **tab);
 int				ft_charinstr(char c, char *str);
+void			ft_strncut(char **str, size_t i, size_t j);
 
 #endif

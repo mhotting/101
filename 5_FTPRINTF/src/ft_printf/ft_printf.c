@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:02:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/20 20:03:37 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/22 14:54:55 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,25 +39,33 @@ static const t_conv	g_conv[] = {
 	{ "%", pf_int_arg }
 };
 
-static char	*ft_extract(char *str, size_t i)
+static char	*ft_extract(char **str, size_t i)
 {
 	size_t	j;
 	char	*sub;
 
 	j = i + 1;
-	while (str[j] != '\0' && ft_charinstr(str[j], "diouxXcspf%") == 0)
+	while ((*str)[j] != '\0' && ft_charinstr((*str)[j], "diouxXcspf%") == 0)
 		j++;
-	if (str[j] == '\0')
+	if ((*str)[j] == '\0')
 		return (NULL);
-	sub = ft_strsub(str, i, (j - i + 1));
+	sub = ft_strsub(*str, i, (j - i + 1));
 	if (sub == NULL)
 		return (NULL);
+	ft_strncut(str, i, j);
 	return (sub);
 }
 
-static void	ft_replace(char *str, size_t i, char *res)
+static void	ft_replace(char **str, size_t i, char *res)
 {
-	return ;
+	char	*final;
+
+	final = ft_strnew(ft_strlen(*str) + ft_strlen(res) - 1);
+	ft_strncpy(final, *str, i);
+	ft_strncpy(final + i, res, ft_strlen(res));
+	ft_strncpy(final + i + ft_strlen(res), *str + i + 1, ft_strlen(*str) - i);
+	free(*str);
+	*str = final;
 }
 
 static pf_func	ft_select_func(char *sub)
@@ -65,17 +73,16 @@ static pf_func	ft_select_func(char *sub)
 	return (NULL);
 }
 
-static void	ft_dispatch(char *str, size_t i, va_list *ap)
+static void	ft_dispatch(char **str, size_t i, va_list *ap)
 {
 	char	*sub;
 	char	*res;
 	pf_func	f;
 
-	res = NULL;
+	res = ft_strdup("42");
 	sub = ft_extract(str, i);
 	if (sub == NULL)
 		return ;
-	printf("Le sub est: %s\n", sub);
 	f = ft_select_func(sub);
 	if (*f != NULL)
 		res = (*f)(sub, ap);
@@ -99,7 +106,7 @@ int			ft_printf(const char *format, ...)
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
-			ft_dispatch(str, i, &ap);
+			ft_dispatch(&str, i, &ap);
 		i++;
 	}
 	ft_putstr(str);

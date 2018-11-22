@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 08:24:04 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/20 19:40:37 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/22 14:18:01 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -52,6 +52,7 @@ SRCS =		./src/conv/ft_atoi.c			\
 			./src/string/ft_sortstrtab.c	\
 			./src/string/ft_strsplit.c		\
 			./src/string/ft_charinstr.c		\
+			./src/string/ft_strncut.c		\
 			./src/type/ft_isalpha.c			\
 			./src/type/ft_isdigit.c			\
 			./src/type/ft_isalnum.c			\
