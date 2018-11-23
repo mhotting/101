@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   pf_int_arg.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/23 12:21:51 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/22 16:22:47 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/23 12:10:03 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
+#include "./../../../includes/libft.h"
 
-int	main(void)
+char	*pf_int_arg(char *sub, va_list *ap)
 {
-	ft_printf("%s et un nombre %d, suivi d'un char %c et encore d'un nombre %d.\n", "Une chaine de caracteres", 12, 'M', 36);
-	return (0);
+	char	*res;
+	int		x;
+
+	if (sub != NULL)
+		;
+	x = va_arg(*ap, int);
+	res = ft_itoa(x);
+	return (res);
 }

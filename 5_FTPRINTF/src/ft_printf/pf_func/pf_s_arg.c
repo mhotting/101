@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   pf_s_arg.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/23 12:21:51 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/23 11:26:43 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/23 11:29:04 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
+#include "./../../../includes/libft.h"
 
-int	main(void)
+char	*pf_s_arg(char *sub, va_list *ap)
 {
-	ft_printf("%s et un nombre %d, suivi d'un char %c et encore d'un nombre %d.\n", "Une chaine de caracteres", 12, 'M', 36);
-	return (0);
+	char	*res;
+
+	if (sub != NULL && ap != NULL)
+		;
+	res = va_arg(*ap, char *);
+	res = ft_strdup(res);
+	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/22 14:02:19 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/22 14:56:46 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/23 10:14:49 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,6 @@
 void	ft_strncut(char **str, size_t i, size_t j)
 {
 	char	*temp;
-	char	*res;
 	char	*sub1;
 	char	*sub2;
 

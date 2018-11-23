@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:54:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 07:25:52 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/22 16:17:31 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ void		ft_initfrac1(t_bag *ptr_bag)
 	ptr_bag->xmax = 0.6;
 	ptr_bag->ymin = -1.2;
 	ptr_bag->ymax = 1.2;
-	ptr_bag->i_max = 25;
+	ptr_bag->i_max = 100;
 	ptr_bag->lim = 4;
 }
 

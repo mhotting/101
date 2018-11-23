@@ -6,40 +6,23 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:02:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/22 14:56:38 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/23 11:38:11 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../../includes/libft.h"
-#include <stdio.h>
-
-/*
-** static const t_conv g_conv[] = {
-** { "bdiouxX", int_arg },
-** { "c", c_arg },
-** { "s", s_arg },
-** { "p", p_arg },
-** { "f", f_arg },
-** { "%", pct_arg }
-** };
-*/
-
-char	*pf_int_arg(char *sub, va_list *ap)
-{
-	return (NULL);
-}
 
 static const t_conv	g_conv[] = {
 	{ "diouxX", pf_int_arg },
-	{ "c", pf_int_arg },
-	{ "s", pf_int_arg },
-	{ "p", pf_int_arg },
-	{ "f", pf_int_arg },
-	{ "%", pf_int_arg }
+	{ "c", pf_c_arg },
+	{ "s", pf_s_arg },
+	{ "p", pf_p_arg },
+	{ "f", pf_f_arg },
+	{ "%", pf_pc_arg }
 };
 
-static char	*ft_extract(char **str, size_t i)
+static char		*ft_extract(char **str, size_t i)
 {
 	size_t	j;
 	char	*sub;
@@ -56,7 +39,7 @@ static char	*ft_extract(char **str, size_t i)
 	return (sub);
 }
 
-static void	ft_replace(char **str, size_t i, char *res)
+static void		ft_replace(char **str, size_t i, char *res)
 {
 	char	*final;
 
@@ -68,30 +51,39 @@ static void	ft_replace(char **str, size_t i, char *res)
 	*str = final;
 }
 
-static pf_func	ft_select_func(char *sub)
+static t_pf_func	ft_select_func(char *sub)
 {
+	size_t	i;
+
+	i = 0;
+	while (i < 6)
+	{
+		if (ft_charinstr(sub[ft_strlen(sub) - 1], g_conv[i].str) == 1)
+			return (g_conv[i].func);
+		i++;
+	}
 	return (NULL);
 }
 
-static void	ft_dispatch(char **str, size_t i, va_list *ap)
+static void		ft_dispatch(char **str, size_t i, va_list *ap)
 {
-	char	*sub;
-	char	*res;
-	pf_func	f;
+	char		*sub;
+	char		*res;
+	t_pf_func	f;
 
-	res = ft_strdup("42");
 	sub = ft_extract(str, i);
 	if (sub == NULL)
 		return ;
 	f = ft_select_func(sub);
-	if (*f != NULL)
-		res = (*f)(sub, ap);
+	if (*f == NULL)
+		return ;
+	res = (*f)(sub, ap);
 	ft_replace(str, i, res);
 	free(res);
 	free(sub);
 }
 
-int			ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	char	*str;
 	va_list	ap;

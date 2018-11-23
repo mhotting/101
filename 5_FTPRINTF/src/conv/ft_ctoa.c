@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_ctoa.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/20 13:13:20 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/23 11:32:04 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/23 11:37:11 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
+#include "./../../includes/libft.h"
 
-int	main(void)
+char	*ft_ctoa(char c)
 {
-	printf("NB1: %d\n", 3);
-	ft_printf("Bonjour a tous les %d.\n", -5);
-	return (0);
+	char	*res;
+
+	res = ft_strnew(1);
+	if (res == NULL)
+		return (NULL);
+	res[0] = c;
+	return (res);
 }
