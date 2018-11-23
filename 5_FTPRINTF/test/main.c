@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/20 15:32:01 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/23 11:59:40 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/23 15:46:39 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,7 @@
 int	main(void)
 {
 	int		i;
+	/*
 	char	*res;
 
 	res = (char *)malloc(8 * sizeof(char));
@@ -32,7 +33,9 @@ int	main(void)
 	res[7] = '\0';
 	i = printf("%llu\n", (unsigned long long int)res);
 	i = printf("%p\n", res);
+	*/
+	i = printf("Double: %.10f\n", 3.7897891111);
 	printf("Returned value: %d\n", i);
-	free(res);
+	//free(res);
 	return (0);
 }
