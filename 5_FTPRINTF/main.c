@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/25 09:41:31 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 10:45:10 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,7 @@
 
 int	main(void)
 {
-	ft_printf("Voici un nombre: %d\n", 12);
+	ft_printf("Voici un nombre: %lf\n", 12.1234566);
+	printf("Voici un nombre: %lf\n", 12.1234566);
 	return (0);
 }

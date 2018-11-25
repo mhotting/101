@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 08:24:04 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/23 15:55:27 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/25 10:08:54 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -17,6 +17,7 @@ SRCS =		./src/conv/ft_atoi.c					\
 			./src/conv/ft_itoabase.c				\
 			./src/conv/ft_ctoa.c					\
 			./src/conv/ft_ldtoa.c					\
+			./src/conv/ft_dtoa.c					\
 			./src/mem/ft_bzero.c					\
 			./src/mem/ft_memset.c					\
 			./src/mem/ft_memcpy.c					\
