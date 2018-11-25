@@ -6,21 +6,21 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/23 11:29:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/23 19:45:01 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 09:40:04 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../../../includes/libft.h"
 
-char	*pf_c_arg(char *sub, va_list ap)
+char	*pf_c_arg(char *sub, va_list *ap)
 {
 	char	*res;
 	char	c;
 
 	if (sub != NULL)
 		;
-	c = (char)va_arg(ap, int);
+	c = (char)va_arg(*ap, int);
 	res = ft_ctoa(c);
 	return (res);
 }

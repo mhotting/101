@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:02:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/23 20:16:11 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 09:39:19 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,7 +65,7 @@ static t_pf_func	ft_select_func(char *sub)
 	return (NULL);
 }
 
-static void			ft_dispatch(char **str, size_t i, va_list ap)
+static void			ft_dispatch(char **str, size_t i, va_list *ap)
 {
 	char		*sub;
 	char		*res;
@@ -98,7 +98,7 @@ int					ft_printf(const char *format, ...)
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
-			ft_dispatch(&str, i, ap);
+			ft_dispatch(&str, i, &ap);
 		i++;
 	}
 	ft_putstr(str);
