@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/25 23:31:27 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 23:47:25 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,6 +61,7 @@ int				ft_motionmg(int x, int y, void *ptr);
 **	FRACTAL FUNCTIONS
 */
 void			ft_mandelbrot(void *ptr);
+void			ft_initmand(t_bag *ptr);
 
 /*
 **	VARIOUS FUNCTIONS

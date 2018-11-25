@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:54:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/25 22:53:55 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 23:52:37 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,19 +14,7 @@
 #include "./../includes/fractol.h"
 #include <stdio.h>
 
-void		ft_initfrac1(t_bag *ptr_bag)
-{
-	ptr_bag->color = 0xffffff;
-	ptr_bag->col = 0;
-	ptr_bag->size = 4;
-	ptr_bag->posx = 0;
-	ptr_bag->posy = 0;
-	ptr_bag->i_max = 100;
-	ptr_bag->lim = 4;
-	ptr_bag->zoom = 1;
-}
-
-static void	ft_init(void *ptr)
+static void	ft_init(void *ptr, int choice)
 {
 	t_bag	*ptr_bag;
 
@@ -38,8 +26,9 @@ static void	ft_init(void *ptr)
 	ft_context(ptr, 16777215);
 	mlx_key_hook(ptr_bag->win, &ft_keymg, ptr);
 	mlx_mouse_hook(ptr_bag->win, &ft_mousemg, ptr);
-	//mlx_hook(ptr_bag->win, 6, 0, &ft_motionmg, ptr);
-	ft_initfrac1(ptr_bag);
+	mlx_hook(ptr_bag->win, 6, 0, &ft_motionmg, ptr);
+	if (choice == 1)
+		ft_initmand(ptr_bag);
 }
 
 int			main(int ac, char **av)
@@ -54,7 +43,7 @@ int			main(int ac, char **av)
 	if (choice < 1 || choice > TOT_FRAC)
 		return (ft_puterror("ERROR - Bad argument\n"));
 	ptr_bag = (void *)&bag;
-	ft_init(ptr_bag);
+	ft_init(ptr_bag, choice);
 	ft_mandelbrot(ptr_bag);
 	mlx_loop(bag.mlx);
 	return (0);

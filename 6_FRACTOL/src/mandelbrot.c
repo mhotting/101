@@ -6,12 +6,24 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/15 19:11:53 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/25 21:41:37 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 23:50:47 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../includes/fractol.h"
+
+void		ft_initmand(t_bag *ptr_bag)
+{
+	ptr_bag->color = 0xffffff;
+	ptr_bag->col = 0;
+	ptr_bag->size = 4;
+	ptr_bag->posx = 0;
+	ptr_bag->posy = 0;
+	ptr_bag->i_max = 100;
+	ptr_bag->lim = 4;
+	ptr_bag->zoom = 1;
+}
 
 static void	ft_mandelbrot_calc(t_bag *ptr, double zoomx, double zoomy)
 {
@@ -26,7 +38,7 @@ static void	ft_mandelbrot_calc(t_bag *ptr, double zoomx, double zoomy)
 		while (++xy[1] < FRAC_H && (i = -1))
 		{
 			c[0] = xy[0] / zoomx + ptr->posx - ptr->size / 2;
-			c[1] = xy[1] / zoomy + ptr->posy - ptr->size / 2;;
+			c[1] = xy[1] / zoomy + ptr->posy - ptr->size / 2;
 			z[0] = 0;
 			z[1] = 0;
 			while (++i < ptr->i_max && (z[0] * z[0] + z[1] * z[1] < 4))
@@ -56,8 +68,10 @@ void		ft_mandelbrot(void *ptr)
 	else
 	{
 		ptr_bag->img_ptr = mlx_new_image(ptr_bag->mlx, FRAC_L, FRAC_H);
-		ptr_bag->img = (unsigned int *)mlx_get_data_addr(ptr_bag->img_ptr, ptr_bag->trash, (ptr_bag->trash) + 1, (ptr_bag->trash) + 2);
+		ptr_bag->img = (unsigned int *)mlx_get_data_addr(ptr_bag->img_ptr,
+				ptr_bag->trash, (ptr_bag->trash) + 1, (ptr_bag->trash) + 2);
 	}
 	ft_mandelbrot_calc(ptr_bag, zoomx, zoomy);
-	mlx_put_image_to_window(ptr_bag->mlx, ptr_bag->win, ptr_bag->img_ptr, 400, 50);
+	mlx_put_image_to_window(ptr_bag->mlx, ptr_bag->win,
+			ptr_bag->img_ptr, 400, 50);
 }

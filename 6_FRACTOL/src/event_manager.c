@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 19:23:43 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/25 23:21:24 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 23:42:43 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,21 +20,24 @@ int	ft_zoom(t_bag *ptr, int button, int x, int y)
 
 	x -= 400;
 	y -= 50;
+	old_size = ptr->size;
 	if (button == 5)
 	{
-		old_size = ptr->size;
 		ptr->size = ptr->size / 2;
 		ptr->zoom = ptr->zoom * 2;
-		ptr->posx = ptr->posx + ((double)x / (double)FRAC_L) * ptr->size - ptr->size / 2;
-		ptr->posy = ptr->posy + ((double)y / (double)FRAC_H) * ptr->size - ptr->size / 2;
+		ptr->posx = ptr->posx + ((double)x / (double)FRAC_L) *
+			ptr->size - ptr->size / 2;
+		ptr->posy = ptr->posy + ((double)y / (double)FRAC_H) *
+			ptr->size - ptr->size / 2;
 	}
 	else
 	{
-		old_size = ptr->size;
 		ptr->size = ptr->size * 2;
 		ptr->zoom = ptr->zoom / 2;
-		ptr->posx = ptr->posx + ((double)x / (double)FRAC_L) * ptr->size - ptr->size / 2;
-		ptr->posy = ptr->posy + ((double)y / (double)FRAC_H) * ptr->size - ptr->size / 2;
+		ptr->posx = ptr->posx + ((double)x / (double)FRAC_L) *
+			ptr->size - ptr->size / 2;
+		ptr->posy = ptr->posy + ((double)y / (double)FRAC_H) *
+			ptr->size - ptr->size / 2;
 	}
 	ft_mandelbrot((void *)ptr);
 	return (0);
