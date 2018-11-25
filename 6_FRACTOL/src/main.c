@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:54:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/23 14:40:41 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 17:28:11 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,11 +18,11 @@ void		ft_initfrac1(t_bag *ptr_bag)
 {
 	ptr_bag->color = 0xffffff;
 	ptr_bag->col = 0;
-	ptr_bag->xmin = -2.1;
-	ptr_bag->xmax = 0.6;
-	ptr_bag->ymin = -1.2;
-	ptr_bag->ymax = 1.2;
-	ptr_bag->i_max = 1000;
+	ptr_bag->xmin = -2.0;
+	ptr_bag->xmax = 1.0;
+	ptr_bag->ymin = -1.5;
+	ptr_bag->ymax = 1.5;
+	ptr_bag->i_max = 100;
 	ptr_bag->lim = 4;
 }
 
@@ -34,7 +34,7 @@ static void	ft_init(void *ptr)
 	ptr_bag->mlx = mlx_init();
 	ptr_bag->win = mlx_new_window(ptr_bag->mlx,
 			WIN_L, WIN_H, "FRACTOL: A WAY TO INFINITY");
-	ptr_bag->img = NULL;
+	ptr_bag->img_ptr = NULL;
 	ft_context(ptr, 16777215);
 	mlx_key_hook(ptr_bag->win, &ft_keymg, ptr);
 	mlx_mouse_hook(ptr_bag->win, &ft_mousemg, ptr);

@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 06:23:38 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 17:19:22 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,24 +23,25 @@
 
 # define WIN_L		2560
 # define WIN_H		1350
-# define FRAC_L		1960
+# define FRAC_L		1250
 # define FRAC_H		1250
 # define TOT_FRAC	3
 
 typedef struct	s_bag
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	int		trash[3];
-	int		i_max;
-	double	lim;
-	double	xmin;
-	double	xmax;
-	double	ymin;
-	double	ymax;
-	int		color;
-	char	col;
+	void			*mlx;
+	void			*win;
+	void			*img_ptr;
+	unsigned int	*img;
+	int				trash[3];
+	int				i_max;
+	double			lim;
+	double			xmin;
+	double			xmax;
+	double			ymin;
+	double			ymax;
+	int				color;
+	char			col;
 }				t_bag;
 
 /*
@@ -65,5 +66,6 @@ void			ft_mandelbrot(void *ptr);
 **	VARIOUS FUNCTIONS
 */
 void			ft_context(void *ptr, int color);
+void			ft_resetimg(t_bag *ptr);
 
 #endif

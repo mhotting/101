@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/13 19:10:45 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/16 02:47:27 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/25 17:04:51 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,7 +16,8 @@ SRCS =		./src/main.c			\
 			./src/event_manager.c	\
 			./src/context.c			\
 			./src/error.c			\
-			./src/mandelbrot.c
+			./src/mandelbrot.c		\
+			./src/util.c
 OBJ =		$(SRCS:.c=.o)
 HEADER =	./includes/
 CFLAGS = 	-Wall -Wextra -Werror -I $(HEADER)
