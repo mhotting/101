@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:54:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/25 17:28:11 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 22:53:55 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,12 +18,12 @@ void		ft_initfrac1(t_bag *ptr_bag)
 {
 	ptr_bag->color = 0xffffff;
 	ptr_bag->col = 0;
-	ptr_bag->xmin = -2.0;
-	ptr_bag->xmax = 1.0;
-	ptr_bag->ymin = -1.5;
-	ptr_bag->ymax = 1.5;
+	ptr_bag->size = 4;
+	ptr_bag->posx = 0;
+	ptr_bag->posy = 0;
 	ptr_bag->i_max = 100;
 	ptr_bag->lim = 4;
+	ptr_bag->zoom = 1;
 }
 
 static void	ft_init(void *ptr)
@@ -38,7 +38,7 @@ static void	ft_init(void *ptr)
 	ft_context(ptr, 16777215);
 	mlx_key_hook(ptr_bag->win, &ft_keymg, ptr);
 	mlx_mouse_hook(ptr_bag->win, &ft_mousemg, ptr);
-	mlx_hook(ptr_bag->win, 6, 0, &ft_motionmg, ptr);
+	//mlx_hook(ptr_bag->win, 6, 0, &ft_motionmg, ptr);
 	ft_initfrac1(ptr_bag);
 }
 

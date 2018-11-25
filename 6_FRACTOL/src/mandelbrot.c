@@ -6,46 +6,13 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/15 19:11:53 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/25 17:15:28 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 21:41:37 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../includes/fractol.h"
 
-static void	ft_mandelbrot_calc(t_bag *ptr, double zoomx, double zoomy)
-{
-	int		x;
-	int		y;
-	double	cr;
-	double	ci;
-	double	zr;
-	double	zi;
-	double	temp;
-	int		i;
-
-	x = -1;
-	while (++x < FRAC_L && (y = -1))
-		while (++y < FRAC_H && (i = -1))
-		{
-			cr = x / zoomx + ptr->xmin;
-			ci = y / zoomy + ptr->ymin;
-			zr = 0;
-			zi = 0;
-			while (++i < ptr->i_max && (zr * zr + zi * zi < ptr->lim))
-			{
-				temp = zr;
-				zr = zr * zr - zi * zi + cr;
-				zi = 2 * zi * temp + ci;
-			}
-			if (ptr->col == 1)
-				ptr->img[y * FRAC_L + x] = i * ptr->color / ptr->i_max;
-			else if (i == ptr->i_max)
-				ptr->img[y * FRAC_L + x] = 0xffffff;
-		}
-}
-
-/*
 static void	ft_mandelbrot_calc(t_bag *ptr, double zoomx, double zoomy)
 {
 	int		xy[2];
@@ -58,11 +25,11 @@ static void	ft_mandelbrot_calc(t_bag *ptr, double zoomx, double zoomy)
 	while (++xy[0] < FRAC_L && (xy[1] = -1))
 		while (++xy[1] < FRAC_H && (i = -1))
 		{
-			c[0] = xy[0] / zoomx + ptr->xmin;
-			c[1] = xy[1] / zoomy + ptr->ymin;
+			c[0] = xy[0] / zoomx + ptr->posx - ptr->size / 2;
+			c[1] = xy[1] / zoomy + ptr->posy - ptr->size / 2;;
 			z[0] = 0;
 			z[1] = 0;
-			while (++i < ptr->i_max && (z[0] * z[0] + z[1] * z[1] < ptr->lim))
+			while (++i < ptr->i_max && (z[0] * z[0] + z[1] * z[1] < 4))
 			{
 				temp = z[0];
 				z[0] = z[0] * z[0] - z[1] * z[1] + c[0];
@@ -70,11 +37,10 @@ static void	ft_mandelbrot_calc(t_bag *ptr, double zoomx, double zoomy)
 			}
 			if (ptr->col == 1)
 				ptr->img[xy[1] * FRAC_L + xy[0]] = i * ptr->color / ptr->i_max;
-			else if (i == ptr->i_max)
+			else if (i < ptr->i_max)
 				ptr->img[xy[1] * FRAC_L + xy[0]] = 0xffffff;
 		}
 }
-*/
 
 void		ft_mandelbrot(void *ptr)
 {
@@ -83,8 +49,8 @@ void		ft_mandelbrot(void *ptr)
 	double			zoomy;
 
 	ptr_bag = (t_bag *)ptr;
-	zoomx = FRAC_L / (ptr_bag->xmax - ptr_bag->xmin);
-	zoomy = FRAC_H / (ptr_bag->ymax - ptr_bag->ymin);
+	zoomx = FRAC_L / (ptr_bag->size);
+	zoomy = FRAC_H / (ptr_bag->size);
 	if (ptr_bag->img_ptr != NULL)
 		ft_resetimg(ptr_bag);
 	else

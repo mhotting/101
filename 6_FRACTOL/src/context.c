@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 19:32:13 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 04:15:49 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 23:39:36 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,8 +29,8 @@ static void	ft_sidelines2(t_bag *ptr, int color)
 		}
 		i++;
 	}
-	i = 2558;
-	while (i < 2561)
+	i = 1996;
+	while (i < 2001)
 	{
 		j = 50;
 		while (j < 1300)
@@ -58,8 +58,8 @@ static void	ft_sidelines(t_bag *ptr, int color)
 		}
 		i++;
 	}
-	i = 2360;
-	while (i < 2365)
+	i = 1650;
+	while (i < 1655)
 	{
 		j = 50;
 		while (j < 1300)
@@ -77,7 +77,7 @@ static void	ft_header_footer(t_bag *ptr, int color)
 	size_t	j;
 
 	i = 0;
-	while (i < 2561)
+	while (i < 2001)
 	{
 		j = 0;
 		while (j < 50)
@@ -88,7 +88,7 @@ static void	ft_header_footer(t_bag *ptr, int color)
 		i++;
 	}
 	i = 0;
-	while (i < 2561)
+	while (i < 2001)
 	{
 		j = 1349;
 		while (j > 1299)
@@ -102,9 +102,9 @@ static void	ft_header_footer(t_bag *ptr, int color)
 
 static void	ft_write_header_footer(t_bag *ptr)
 {
-	mlx_string_put(ptr->mlx, ptr->win, 1150, 15, 0,
+	mlx_string_put(ptr->mlx, ptr->win, 940, 15, 0,
 			"FRACTOL: A WAY TO INFINITY");
-	mlx_string_put(ptr->mlx, ptr->win, 2300, 1315, 0, "2018 - 101 project");
+	mlx_string_put(ptr->mlx, ptr->win, 1800, 1315, 0, "2018 - 101 project");
 }
 
 void		ft_context(void *ptr, int color)

@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/13 19:10:45 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/25 17:04:51 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/25 17:45:59 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -20,7 +20,7 @@ SRCS =		./src/main.c			\
 			./src/util.c
 OBJ =		$(SRCS:.c=.o)
 HEADER =	./includes/
-CFLAGS = 	-Wall -Wextra -Werror -I $(HEADER)
+CFLAGS = 	-Wall -Werror -Wextra -I $(HEADER)
 CC =		gcc
 
 all: $(NAME)

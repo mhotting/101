@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 19:23:43 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 07:29:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 23:21:24 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,20 +14,29 @@
 #include "./../includes/fractol.h"
 #include <stdio.h>
 
-int	ft_zoom(t_bag *ptr_bag, int button)
+int	ft_zoom(t_bag *ptr, int button, int x, int y)
 {
-	int		zoom;
-	double	coeff;
+	double	old_size;
 
-	coeff = 0.3;
-	zoom = (button == 5 ? 1 : -1);
-	ptr_bag->xmin += zoom * coeff;
-	ptr_bag->xmax -= zoom * coeff;
-	ptr_bag->ymin += zoom * coeff;
-	ptr_bag->ymax -= zoom * coeff;
-	if (ptr_bag->i_max + zoom != 0)
-		ptr_bag->i_max += zoom;
-	ft_mandelbrot((void *)ptr_bag);
+	x -= 400;
+	y -= 50;
+	if (button == 5)
+	{
+		old_size = ptr->size;
+		ptr->size = ptr->size / 2;
+		ptr->zoom = ptr->zoom * 2;
+		ptr->posx = ptr->posx + ((double)x / (double)FRAC_L) * ptr->size - ptr->size / 2;
+		ptr->posy = ptr->posy + ((double)y / (double)FRAC_H) * ptr->size - ptr->size / 2;
+	}
+	else
+	{
+		old_size = ptr->size;
+		ptr->size = ptr->size * 2;
+		ptr->zoom = ptr->zoom / 2;
+		ptr->posx = ptr->posx + ((double)x / (double)FRAC_L) * ptr->size - ptr->size / 2;
+		ptr->posy = ptr->posy + ((double)y / (double)FRAC_H) * ptr->size - ptr->size / 2;
+	}
+	ft_mandelbrot((void *)ptr);
 	return (0);
 }
 
@@ -96,9 +105,8 @@ int	ft_mousemg(int button, int x, int y, void *param)
 {
 	t_bag	*ptr_bag;
 
-	printf("COORD: %d -%d\n", x, y);
 	ptr_bag = (t_bag *)param;
 	if (button == 4 || button == 5)
-		ft_zoom(ptr_bag, button);
+		ft_zoom(ptr_bag, button, x, y);
 	return (0);
 }

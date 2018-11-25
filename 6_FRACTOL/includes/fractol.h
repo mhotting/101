@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/25 17:19:22 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/25 23:31:27 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 
-# define WIN_L		2560
+# define WIN_L		2000
 # define WIN_H		1350
 # define FRAC_L		1250
 # define FRAC_H		1250
@@ -36,12 +36,12 @@ typedef struct	s_bag
 	int				trash[3];
 	int				i_max;
 	double			lim;
-	double			xmin;
-	double			xmax;
-	double			ymin;
-	double			ymax;
+	double			size;
+	double			posx;
+	double			posy;
 	int				color;
 	char			col;
+	double			zoom;
 }				t_bag;
 
 /*
