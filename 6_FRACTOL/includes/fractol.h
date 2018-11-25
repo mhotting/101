@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/25 23:47:25 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 00:49:24 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,6 +42,8 @@ typedef struct	s_bag
 	int				color;
 	char			col;
 	double			zoom;
+	void			(*ft_init)(struct s_bag *);
+	void			(*ft_frac)(void *);
 }				t_bag;
 
 /*
