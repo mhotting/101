@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:02:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 18:18:39 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 18:50:27 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,7 +39,7 @@ static char			*ft_extract(char **str, size_t i)
 	ft_strncut(str, i, j);
 	return (sub);
 }
-/*
+
 static void			ft_replace(char **str, size_t i, char *res)
 {
 	char	*final;
@@ -51,7 +51,7 @@ static void			ft_replace(char **str, size_t i, char *res)
 	free(*str);
 	*str = final;
 }
-*/
+
 static t_pf_func	ft_select_func(char *sub)
 {
 	size_t	i;
@@ -66,6 +66,21 @@ static t_pf_func	ft_select_func(char *sub)
 	return (NULL);
 }
 
+/*
+**	printf("SUB: %s\n", sub);
+**	printf("l: %d\n", att.l);
+**	printf("ll: %d\n", att.ll);
+**	printf("h: %d\n", att.h);
+**	printf("hh: %d\n", att.hh);
+**	printf("L: %d\n", att.longd);
+**	printf("-: %d\n", att.opt1);
+**	printf("+: %d\n", att.opt2);
+**	printf("#: %d\n", att.opt3);
+**	printf("0: %d\n", att.opt4);
+**	printf("esp: %d\n", att.opt5);
+**	printf("Width: %d\n", att.width);
+**	printf("Prec: %d\n", att.prec);
+*/
 static void			ft_dispatch(char **str, size_t i, va_list *ap)
 {
 	char			*sub;
@@ -81,22 +96,9 @@ static void			ft_dispatch(char **str, size_t i, va_list *ap)
 		return ;
 	ft_init_attributes(&att);
 	ft_eval_attributes(&att, sub);
-	printf("SUB: %s\n", sub);
-	printf("l: %d\n", att.l);
-	printf("ll: %d\n", att.ll);
-	printf("h: %d\n", att.h);
-	printf("hh: %d\n", att.hh);
-	printf("L: %d\n", att.longd);
-	printf("-: %d\n", att.opt1);
-	printf("+: %d\n", att.opt2);
-	printf("#: %d\n", att.opt3);
-	printf("0: %d\n", att.opt4);
-	printf("esp: %d\n", att.opt5);
-	printf("Width: %d\n", att.width);
-	printf("Prec: %d\n", att.prec);
 	res = NULL;
 	res = (*f)(sub, ap);
-	//ft_replace(str, i, res);
+	ft_replace(str, i, res);
 	free(res);
 	free(sub);
 }
