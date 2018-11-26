@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/20 17:54:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 18:55:04 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 19:00:35 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,12 +15,6 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 
-typedef char *(*t_pf_func)(char *, va_list *);
-typedef struct	s_conf
-{
-	char		*str;
-	t_pf_func	func;
-}				t_conv;
 typedef struct	s_attibutes
 {
 	int			h;
@@ -36,6 +30,12 @@ typedef struct	s_attibutes
 	int			opt4;
 	int			opt5;
 }				t_attributes;
+typedef char *(*t_pf_func)(char *, va_list *, t_attributes *);
+typedef struct	s_conf
+{
+	char		*str;
+	t_pf_func	func;
+}				t_conv;
 
 /*
 ** Printf function and attributes
@@ -48,11 +48,11 @@ void			ft_eval_attributes(t_attributes *ptr, char *sub);
 /*
 ** Extraction functions
 */
-char			*pf_int_arg(char *sub, va_list *ap);
-char			*pf_c_arg(char *sub, va_list *ap);
-char			*pf_s_arg(char *sub, va_list *ap);
-char			*pf_p_arg(char *sub, va_list *ap);
-char			*pf_f_arg(char *sub, va_list *ap);
-char			*pf_pc_arg(char *sub, va_list *ap);
+char			*pf_int_arg(char *sub, va_list *ap, t_attributes *att);
+char			*pf_c_arg(char *sub, va_list *ap, t_attributes *att);
+char			*pf_s_arg(char *sub, va_list *ap, t_attributes *att);
+char			*pf_p_arg(char *sub, va_list *ap, t_attributes *att);
+char			*pf_f_arg(char *sub, va_list *ap, t_attributes *att);
+char			*pf_pc_arg(char *sub, va_list *ap, t_attributes *att);
 
 #endif

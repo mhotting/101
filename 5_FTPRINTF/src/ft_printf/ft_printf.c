@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:02:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 18:50:27 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 18:59:51 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -97,7 +97,7 @@ static void			ft_dispatch(char **str, size_t i, va_list *ap)
 	ft_init_attributes(&att);
 	ft_eval_attributes(&att, sub);
 	res = NULL;
-	res = (*f)(sub, ap);
+	res = (*f)(sub, ap, &att);
 	ft_replace(str, i, res);
 	free(res);
 	free(sub);
