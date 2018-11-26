@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 19:23:43 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/25 23:42:43 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 02:05:35 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,7 +39,7 @@ int	ft_zoom(t_bag *ptr, int button, int x, int y)
 		ptr->posy = ptr->posy + ((double)y / (double)FRAC_H) *
 			ptr->size - ptr->size / 2;
 	}
-	ft_mandelbrot((void *)ptr);
+	(ptr->ft_frac)((void *)ptr);
 	return (0);
 }
 
@@ -53,7 +53,7 @@ int	ft_editparam(t_bag *ptr_bag, int key)
 		ptr_bag->lim += 0.3;
 	else
 		ptr_bag->lim -= 0.3;
-	ft_mandelbrot((void *)ptr_bag);
+	(ptr_bag->ft_frac)((void *)ptr_bag);
 	return (0);
 }
 
@@ -76,7 +76,7 @@ int	ft_colormg(t_bag *ptr_bag)
 		ptr_bag->color = 0x424242;
 	else
 		ptr_bag->color = 0xffffff;
-	ft_mandelbrot((void *)ptr_bag);
+	(ptr_bag->ft_frac)((void *)ptr_bag);
 	return (0);
 }
 

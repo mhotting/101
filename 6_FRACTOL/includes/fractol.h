@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 00:49:24 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 02:05:41 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,6 +64,8 @@ int				ft_motionmg(int x, int y, void *ptr);
 */
 void			ft_mandelbrot(void *ptr);
 void			ft_initmand(t_bag *ptr);
+void			ft_julia(void *ptr);
+void			ft_initjulia(t_bag *ptr);
 
 /*
 **	VARIOUS FUNCTIONS
