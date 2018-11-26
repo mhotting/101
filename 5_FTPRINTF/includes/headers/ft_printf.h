@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/20 17:54:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 18:18:06 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 18:55:04 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,7 @@ typedef struct	s_attibutes
 ** Printf function and attributes
 */
 int				ft_printf(const char *format,
-		...); //__attribute__((format(printf,1,2)));
+		...) __attribute__((format(printf,1,2)));
 void			ft_init_attributes(t_attributes *ptr);
 void			ft_eval_attributes(t_attributes *ptr, char *sub);
 
