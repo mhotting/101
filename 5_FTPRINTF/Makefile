@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 08:24:04 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/25 10:08:54 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/26 18:11:16 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -17,7 +17,6 @@ SRCS =		./src/conv/ft_atoi.c					\
 			./src/conv/ft_itoabase.c				\
 			./src/conv/ft_ctoa.c					\
 			./src/conv/ft_ldtoa.c					\
-			./src/conv/ft_dtoa.c					\
 			./src/mem/ft_bzero.c					\
 			./src/mem/ft_memset.c					\
 			./src/mem/ft_memcpy.c					\
@@ -55,6 +54,8 @@ SRCS =		./src/conv/ft_atoi.c					\
 			./src/string/ft_sortstrtab.c			\
 			./src/string/ft_strsplit.c				\
 			./src/string/ft_charinstr.c				\
+			./src/string/ft_charindexstr.c			\
+			./src/string/ft_cpt_charinstr.c			\
 			./src/string/ft_strncut.c				\
 			./src/type/ft_isalpha.c					\
 			./src/type/ft_isdigit.c					\
@@ -86,6 +87,7 @@ SRCS =		./src/conv/ft_atoi.c					\
 			./src/list/ft_lstremove.c				\
 			./src/list/ft_lstreverse.c				\
 			./src/ft_printf/ft_printf.c				\
+			./src/ft_printf/util.c					\
 			./src/ft_printf/pf_func/pf_int_arg.c	\
 			./src/ft_printf/pf_func/pf_c_arg.c		\
 			./src/ft_printf/pf_func/pf_s_arg.c		\

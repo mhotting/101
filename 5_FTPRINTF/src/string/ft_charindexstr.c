@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_charinstr.c                                   .::    .:/ .      .::   */
+/*   ft_charindexstr.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/20 18:35:04 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 18:09:31 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/26 18:10:19 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/26 18:10:27 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../../includes/libft.h"
 
-int	ft_charinstr(char c, char *str)
+int	ft_charindexstr(char c, char *str)
 {
 	int	i;
 
@@ -23,8 +23,8 @@ int	ft_charinstr(char c, char *str)
 	while (str[i] != '\0')
 	{
 		if (c == str[i])
-			return (1);
+			return (i);
 		i++;
 	}
-	return (0);
+	return (-1);
 }
