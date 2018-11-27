@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 08:24:04 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/27 12:28:33 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/27 22:04:53 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -14,7 +14,9 @@
 NAME =		libftprintf.a
 SRCS =		./src/conv/ft_atoi.c					\
 			./src/conv/ft_itoa.c					\
+			./src/conv/ft_uitoa.c					\
 			./src/conv/ft_itoabase.c				\
+			./src/conv/ft_uitoabase.c				\
 			./src/conv/ft_ctoa.c					\
 			./src/conv/ft_ldtoa.c					\
 			./src/mem/ft_bzero.c					\
@@ -57,6 +59,7 @@ SRCS =		./src/conv/ft_atoi.c					\
 			./src/string/ft_charindexstr.c			\
 			./src/string/ft_cpt_charinstr.c			\
 			./src/string/ft_strncut.c				\
+			./src/string/ft_strtoupper.c			\
 			./src/type/ft_isalpha.c					\
 			./src/type/ft_isdigit.c					\
 			./src/type/ft_isalnum.c					\

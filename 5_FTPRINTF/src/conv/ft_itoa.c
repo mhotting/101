@@ -6,14 +6,14 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 15:47:55 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/10 18:28:28 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 21:19:29 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../../includes/libft.h"
 
-static long		ft_evalmul(long nbr)
+static long		ft_evalmul(long long int nbr)
 {
 	long	mul;
 
@@ -28,10 +28,10 @@ static long		ft_evalmul(long nbr)
 	return (mul / 10);
 }
 
-static	size_t	ft_evalsize(long nb)
+static	size_t	ft_evalsize(long long int nb)
 {
-	size_t	i;
-	long	mul;
+	size_t			i;
+	long long int	mul;
 
 	i = 0;
 	if (nb < 0)
@@ -48,14 +48,16 @@ static	size_t	ft_evalsize(long nb)
 	return (i);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(long long int n)
 {
-	long	nbr;
-	long	mul;
-	char	*res;
-	size_t	i;
+	long long int	nbr;
+	long long int	mul;
+	char			*res;
+	size_t			i;
 
-	nbr = (long)n;
+	if (n == -9223372036854775807)
+		return (ft_strdup("-9223372036854775807"));
+	nbr = n;
 	if ((res = ft_strnew(ft_evalsize(nbr))) == NULL)
 		return (NULL);
 	i = 0;

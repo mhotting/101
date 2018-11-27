@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:02:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 19:24:40 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 23:59:02 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,21 +66,6 @@ static t_pf_func	ft_select_func(char *sub)
 	return (NULL);
 }
 
-/*
-**	printf("SUB: %s\n", sub);
-**	printf("l: %d\n", att.l);
-**	printf("ll: %d\n", att.ll);
-**	printf("h: %d\n", att.h);
-**	printf("hh: %d\n", att.hh);
-**	printf("L: %d\n", att.longd);
-**	printf("-: %d\n", att.opt1);
-**	printf("+: %d\n", att.opt2);
-**	printf("#: %d\n", att.opt3);
-**	printf("0: %d\n", att.opt4);
-**	printf("esp: %d\n", att.opt5);
-**	printf("Width: %d\n", att.width);
-**	printf("Prec: %d\n", att.prec);
-*/
 static void			ft_dispatch(char **str, size_t i, va_list *ap)
 {
 	char			*sub;
@@ -98,7 +83,8 @@ static void			ft_dispatch(char **str, size_t i, va_list *ap)
 	ft_eval_attributes(&att, sub);
 	res = NULL;
 	res = (*f)(sub, ap, &att);
-	ft_replace(str, i, res);
+	if (res != NULL)
+		ft_replace(str, i, res);
 	free(res);
 	free(sub);
 }
