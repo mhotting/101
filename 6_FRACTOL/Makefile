@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/13 19:10:45 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/26 01:21:12 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/27 16:05:05 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -20,19 +20,24 @@ SRCS =		./src/main.c			\
 			./src/julia.c			\
 			./src/util.c
 OBJ =		$(SRCS:.c=.o)
+LFT =		./libft/
+MLX =		./minilibx/
 HEADER =	./includes/
 CFLAGS = 	-Wall -Werror -Wextra -I $(HEADER)
 CC =		gcc
 
-all: $(NAME)
+all: compile
 
 $(NAME): $(OBJ)
-	@make -s -C ./libft
-	@make -s -C ./minilibx
-	@$(CC) $(OBJ) -L./libft -lft -L./minilibx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(OBJ) -L./libft -lft -L./minilibx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
-$(OBJ): %.o : %.c $(HEADER)
-	@$(CC) -o $@ -c $< $(CFLAGS)
+$(OBJ): %.o : %.c $(HEADER) $(LFT)libft.a $(MLX)libmlx.a
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+compile:
+	$(MAKE) -s -C ./libft
+	$(MAKE) -s -C ./minilibx
+	$(MAKE) $(NAME)
 
 clean:
 	@make -s -C ./libft clean

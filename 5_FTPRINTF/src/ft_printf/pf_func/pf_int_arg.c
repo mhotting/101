@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/22 16:22:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 19:24:43 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 14:59:30 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,8 +16,8 @@
 
 char		*pf_int_arg(char *sub, va_list *ap, t_attributes *att)
 {
-	char	*res;
-	int		x;
+	char				*res;
+	long long int		x;
 
 	if (sub != NULL && att != NULL)
 		;

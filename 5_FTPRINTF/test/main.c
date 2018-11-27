@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/20 15:32:01 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 18:45:29 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 15:37:33 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,8 @@
 
 int	main(void)
 {
-	int		i;
+	int				i;
+	long long int	j;
 	/*
 	char	*res;
 
@@ -34,8 +35,9 @@ int	main(void)
 	i = printf("%llu\n", (unsigned long long int)res);
 	i = printf("%p\n", res);
 	*/
-	i = printf("Print: %0.d\n", 14);
-	printf("Returned value: %d\n", i);
+	j = 5000;
+	i = (int);
+	printf("i: %lld\n", j);
 	//free(res);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 08:24:04 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/26 18:11:16 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/27 12:28:33 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -87,7 +87,7 @@ SRCS =		./src/conv/ft_atoi.c					\
 			./src/list/ft_lstremove.c				\
 			./src/list/ft_lstreverse.c				\
 			./src/ft_printf/ft_printf.c				\
-			./src/ft_printf/util.c					\
+			./src/ft_printf/attributes.c					\
 			./src/ft_printf/pf_func/pf_int_arg.c	\
 			./src/ft_printf/pf_func/pf_c_arg.c		\
 			./src/ft_printf/pf_func/pf_s_arg.c		\
