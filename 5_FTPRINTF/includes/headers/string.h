@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 10:21:52 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 22:04:29 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 01:52:16 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,5 +48,6 @@ int				ft_charindexstr(char c, char *str);
 int				ft_cpt_charinstr(char c, char *str);
 void			ft_strncut(char **str, size_t i, size_t j);
 void			ft_strtoupper(char *str);
+void			ft_strrev(char *str);
 
 #endif

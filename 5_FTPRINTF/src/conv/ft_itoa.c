@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 15:47:55 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 21:19:29 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 02:55:33 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,11 +35,10 @@ static	size_t	ft_evalsize(long long int nb)
 
 	i = 0;
 	if (nb < 0)
-	{
 		nb *= -1;
-		i++;
-	}
 	mul = ft_evalmul(nb);
+	if (mul < 0)
+		return (19);
 	while (mul > 0)
 	{
 		i++;
@@ -50,28 +49,29 @@ static	size_t	ft_evalsize(long long int nb)
 
 char			*ft_itoa(long long int n)
 {
-	long long int	nbr;
-	long long int	mul;
+	size_t			size;
 	char			*res;
 	size_t			i;
 
-	if (n == -9223372036854775807)
-		return (ft_strdup("-9223372036854775807"));
-	nbr = n;
-	if ((res = ft_strnew(ft_evalsize(nbr))) == NULL)
+	size = ft_evalsize(n);
+	if (n + 1 == -9223372036854775807)
+		return (ft_strdup("-9223372036854775808"));
+	if ((res = ft_strnew((n < 0) ? (size + 1) : size)) == NULL)
 		return (NULL);
-	i = 0;
-	if (nbr < 0)
+	if (!(i = 0) && n < 0)
 	{
 		res[i++] = '-';
-		nbr *= -1;
+		n *= -1;
 	}
-	mul = ft_evalmul(nbr);
-	while (mul != 0)
+	while (size != 0)
 	{
-		res[i++] = (nbr / mul) + '0';
-		nbr %= mul;
-		mul /= 10;
+		res[i++] = (char)(n % 10) + '0';
+		n /= 10;
+		size--;
 	}
+	if (res[0] == '-')
+		ft_strrev(res + 1);
+	else
+		ft_strrev(res);
 	return (res);
 }
