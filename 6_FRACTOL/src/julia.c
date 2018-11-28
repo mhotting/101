@@ -6,12 +6,13 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/26 01:17:26 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 02:05:44 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 05:19:51 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../includes/fractol.h"
+#include <stdio.h>
 
 void		ft_initjulia(t_bag *ptr_bag)
 {

@@ -6,13 +6,12 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 19:23:43 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 02:05:35 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 05:20:11 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../includes/fractol.h"
-#include <stdio.h>
 
 int	ft_zoom(t_bag *ptr, int button, int x, int y)
 {
