@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:02:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/30 16:32:35 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 21:54:42 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,7 +32,7 @@ static char			*ft_extract(char **str, size_t i)
 	while ((*str)[j] != '\0' && ft_charinstr((*str)[j], "diouxXcspf%") == 0)
 		j++;
 	if ((*str)[j] == '\0')
-		return (NULL);
+		return (ft_strdup(""));
 	sub = ft_strsub(*str, i, (j - i + 1));
 	if (sub == NULL)
 		return (NULL);
@@ -76,13 +76,18 @@ static void			ft_dispatch(char **str, size_t i, va_list *ap)
 	sub = ft_extract(str, i);
 	if (sub == NULL)
 		return ;
-	f = ft_select_func(sub);
-	if (*f == NULL)
-		return ;
-	ft_init_attributes(&att);
-	ft_eval_attributes(&att, sub);
-	res = NULL;
-	res = (*f)(sub, ap, &att);
+	if (ft_strlen(sub) != 0)
+	{
+		f = ft_select_func(sub);
+		if (*f == NULL)
+			return ;
+		ft_init_attributes(&att);
+		ft_eval_attributes(&att, sub);
+		res = NULL;
+		res = (*f)(sub, ap, &att);
+	}
+	else
+		res = ft_strdup(sub);
 	if (res != NULL)
 		ft_replace(str, i, res);
 	free(res);
@@ -109,7 +114,7 @@ int					ft_printf(const char *format, ...)
 	}
 	i = ft_putstr_pf(str);
 	va_end(ap);
-	len_ret = (int)ft_strlen(str) - (i * ft_strlen("@@+NULL+@@")) + i;
+	len_ret = (int)ft_strlen(str) - (i * ft_strlen(N)) + i;
 	free(str);
 	return (len_ret);
 }
