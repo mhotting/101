@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/26 01:17:26 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 05:19:51 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 19:17:51 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,6 @@
 
 void		ft_initjulia(t_bag *ptr_bag)
 {
-	ptr_bag->color = 0xffffff;
 	ptr_bag->col = 0;
 	ptr_bag->size = 2.4;
 	ptr_bag->posx = 0;
@@ -32,26 +31,25 @@ static void	ft_julia_calc(t_bag *ptr, double zoomx, double zoomy)
 	double	c[2];
 	double	z[2];
 	double	temp;
-	int		i;
+	int		i[2];
 
-	xy[0] = -1;
-	while (++xy[0] < FRAC_L && (xy[1] = -1))
-		while (++xy[1] < FRAC_H && (i = -1))
+	xy[1] = -1;
+	i[1] = 0;
+	while (++xy[1] < FRAC_H && (xy[0] = -1))
+		while (++xy[0] < FRAC_L && (i[0] = -1))
 		{
 			c[0] = 0.280;
 			c[1] = 0.01;
 			z[0] = xy[0] / zoomx + ptr->posx - ptr->size / 2;
 			z[1] = xy[1] / zoomy + ptr->posy - ptr->size / 2;
-			while (++i < ptr->i_max && (z[0] * z[0] + z[1] * z[1] < 4))
+			while (++i[0] < ptr->i_max && (z[0] * z[0] + z[1] * z[1] < 4))
 			{
 				temp = z[0];
 				z[0] = z[0] * z[0] - z[1] * z[1] + c[0];
 				z[1] = 2 * z[1] * temp + c[1];
 			}
-			if (ptr->col == 1)
-				ptr->img[xy[1] * FRAC_L + xy[0]] = i * ptr->color / ptr->i_max;
-			else if (i < ptr->i_max)
-				ptr->img[xy[1] * FRAC_L + xy[0]] = 0xffffff;
+			//ptr->img[i[1]++] = i[0] * ptr->color / ptr->i_max;
+			ptr->img[i[1]++] = ptr->color[(int)((double)i[0] /ptr->i_max * 100)].colint;
 		}
 }
 

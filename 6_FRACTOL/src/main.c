@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:54:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 01:22:30 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 19:12:48 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,6 +37,7 @@ static void	ft_init_mlx(void *ptr, int choice)
 		ptr_bag->ft_init = &ft_initjulia;
 		ptr_bag->ft_frac = &ft_julia;
 	}
+	ft_initcol(ptr_bag);
 }
 
 int			main(int ac, char **av)

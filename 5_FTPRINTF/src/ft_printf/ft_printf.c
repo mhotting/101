@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:02:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 05:34:20 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 16:32:35 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -93,7 +93,7 @@ int					ft_printf(const char *format, ...)
 {
 	char	*str;
 	va_list	ap;
-	int		len_ret;
+	size_t	len_ret;
 	size_t	i;
 
 	if (format == NULL)
@@ -107,9 +107,9 @@ int					ft_printf(const char *format, ...)
 			ft_dispatch(&str, i, &ap);
 		i++;
 	}
-	ft_putstr(str);
+	i = ft_putstr_pf(str);
 	va_end(ap);
-	len_ret = (int)ft_strlen(str);
+	len_ret = (int)ft_strlen(str) - (i * ft_strlen("@@+NULL+@@")) + i;
 	free(str);
 	return (len_ret);
 }

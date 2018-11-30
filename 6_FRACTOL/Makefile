@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/13 19:10:45 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/27 16:10:00 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/29 19:18:12 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -18,7 +18,8 @@ SRCS =		./src/main.c			\
 			./src/error.c			\
 			./src/mandelbrot.c		\
 			./src/julia.c			\
-			./src/util.c
+			./src/util.c			\
+			./src/color.c
 OBJ =		$(SRCS:.c=.o)
 LFT =		./libft/
 MLX =		./minilibx/

@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 02:05:41 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 19:11:01 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,6 +27,14 @@
 # define FRAC_H		1250
 # define TOT_FRAC	3
 
+typedef struct	s_col
+{
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+	int				colint;
+}				t_col;
+
 typedef struct	s_bag
 {
 	void			*mlx;
@@ -39,7 +47,7 @@ typedef struct	s_bag
 	double			size;
 	double			posx;
 	double			posy;
-	int				color;
+	t_col			color[10];
 	char			col;
 	double			zoom;
 	void			(*ft_init)(struct s_bag *);
@@ -72,5 +80,10 @@ void			ft_initjulia(t_bag *ptr);
 */
 void			ft_context(void *ptr, int color);
 void			ft_resetimg(t_bag *ptr);
+
+/*
+**	COLOR FUNCTIONS
+*/
+void			ft_initcol(t_bag *ptr);
 
 #endif

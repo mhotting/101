@@ -6,12 +6,13 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 19:23:43 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 05:20:11 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 19:15:09 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../includes/fractol.h"
+#include <stdio.h>
 
 int	ft_zoom(t_bag *ptr, int button, int x, int y)
 {
@@ -58,24 +59,8 @@ int	ft_editparam(t_bag *ptr_bag, int key)
 
 int	ft_colormg(t_bag *ptr_bag)
 {
-	ptr_bag->col = 1;
-	if (ptr_bag->color == 0xffffff)
-		ptr_bag->color = 0xffff00;
-	else if (ptr_bag->color == 0xffff00)
-		ptr_bag->color = 0x113300;
-	else if (ptr_bag->color == 0x113300)
-		ptr_bag->color = 0x0000ff;
-	else if (ptr_bag->color == 0x0000ff)
-		ptr_bag->color = 0xff0000;
-	else if (ptr_bag->color == 0xff0000)
-		ptr_bag->color = 0x00ff00;
-	else if (ptr_bag->color == 0x00ff00)
-		ptr_bag->color = 0x551155;
-	else if (ptr_bag->color == 0x551155)
-		ptr_bag->color = 0x424242;
-	else
-		ptr_bag->color = 0xffffff;
-	(ptr_bag->ft_frac)((void *)ptr_bag);
+	if (ptr_bag)
+		;
 	return (0);
 }
 
