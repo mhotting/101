@@ -6,12 +6,13 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/23 11:41:53 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/07 15:28:22 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/07 15:55:35 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../../../includes/libft.h"
+#include <stdio.h>
 
 static void	ft_applyflag(char **res, long long unsigned addr,
 		t_attributes *att)
@@ -28,6 +29,8 @@ static void	ft_applyflag(char **res, long long unsigned addr,
 	}
 	else if (addr == 0 && att->prec > 0)
 		ft_enhance_right(res, '0', att->prec);
+	else if (att->prec > 0)
+		ft_enhance_left(res, '0', att->prec);
 	ft_enhance_left(res, 'x', ft_strlen(*res) + 1);
 	ft_enhance_left(res, '0', ft_strlen(*res) + 1);
 	if (att->width != -1)
