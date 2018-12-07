@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/20 17:54:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/30 18:07:51 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/07 15:33:43 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,6 +55,9 @@ void			ft_delzero(char **res);
 ** Extraction functions
 */
 char			*pf_int_arg(char *sub, va_list *ap, t_attributes *att);
+static char		*ft_toa1(char *sub, long long int x, t_attributes *att);
+static char		*ft_toa2(char *sub, long long int x, t_attributes *att);
+static char		*ft_toa3(char *sub, long long int x, t_attributes *att);
 char			*pf_c_arg(char *sub, va_list *ap, t_attributes *att);
 char			*pf_s_arg(char *sub, va_list *ap, t_attributes *att);
 char			*pf_p_arg(char *sub, va_list *ap, t_attributes *att);

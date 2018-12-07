@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:02:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/30 21:54:42 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/07 12:03:25 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,14 +66,14 @@ static t_pf_func	ft_select_func(char *sub)
 	return (NULL);
 }
 
-static void			ft_dispatch(char **str, size_t i, va_list *ap)
+static void			ft_dispatch(char **str, size_t *i, va_list *ap)
 {
 	char			*sub;
 	char			*res;
 	t_pf_func		f;
 	t_attributes	att;
 
-	sub = ft_extract(str, i);
+	sub = ft_extract(str, *i);
 	if (sub == NULL)
 		return ;
 	if (ft_strlen(sub) != 0)
@@ -89,7 +89,8 @@ static void			ft_dispatch(char **str, size_t i, va_list *ap)
 	else
 		res = ft_strdup(sub);
 	if (res != NULL)
-		ft_replace(str, i, res);
+		ft_replace(str, *i, res);
+	*i += ft_strlen(res) - 1;
 	free(res);
 	free(sub);
 }
@@ -104,12 +105,14 @@ int					ft_printf(const char *format, ...)
 	if (format == NULL)
 		return (0);
 	str = ft_strdup(format);
+	if (str == NULL)
+		return (-1);
 	va_start(ap, format);
 	i = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
-			ft_dispatch(&str, i, &ap);
+			ft_dispatch(&str, &i, &ap);
 		i++;
 	}
 	i = ft_putstr_pf(str);

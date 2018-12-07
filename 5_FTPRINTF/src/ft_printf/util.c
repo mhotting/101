@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/29 09:34:09 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/30 18:09:36 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/07 12:06:19 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ size_t	ft_putstr_pf(char *str)
 	cpt = 0;
 	add = ft_strstr(str, N);
 	if (add == NULL)
-		ft_putstr(str);
+		write(1, str, ft_strlen(str));
 	else
 	{
 		cpt++;
