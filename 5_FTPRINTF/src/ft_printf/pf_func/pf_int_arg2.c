@@ -6,14 +6,14 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/22 16:22:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/07 15:32:30 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/07 15:43:54 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../../../includes/libft.h"
 
-static char				*ft_toa1(char *sub, long long int x, t_attributes *att)
+char	*ft_toa1(char *sub, long long int x, t_attributes *att)
 {
 	char	end;
 	char	*res;
@@ -42,7 +42,7 @@ static char				*ft_toa1(char *sub, long long int x, t_attributes *att)
 	return (res == NULL ? NULL : res);
 }
 
-static char				*ft_toa2(char *sub, long long int x, t_attributes *att)
+char	*ft_toa2(char *sub, long long int x, t_attributes *att)
 {
 	char	end;
 	char	*res;
@@ -65,7 +65,7 @@ static char				*ft_toa2(char *sub, long long int x, t_attributes *att)
 	return (res);
 }
 
-static char				*ft_toa3(char *sub, long long int x, t_attributes *att)
+char	*ft_toa3(char *sub, long long int x, t_attributes *att)
 {
 	char	end;
 	char	*res;
