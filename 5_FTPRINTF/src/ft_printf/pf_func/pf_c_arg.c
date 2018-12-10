@@ -6,13 +6,12 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/23 11:29:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/30 21:13:34 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/10 13:03:18 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../../../includes/libft.h"
-#include <stdio.h>
 
 static void	ft_applyflag1(char **res, t_attributes *att, char c)
 {

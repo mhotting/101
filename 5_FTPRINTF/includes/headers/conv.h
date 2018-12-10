@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 10:21:29 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 21:25:24 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/10 12:23:59 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,6 +20,6 @@ char	*ft_uitoa(unsigned long long int n);
 char	*ft_itoabase(long long int n, int base);
 char	*ft_uitoabase(unsigned long long int n, int base);
 char	*ft_ctoa(char c);
-char	*ft_ldtoa(long double f, size_t prec);
+char	*ft_ldtoa(long double f, int prec);
 
 #endif

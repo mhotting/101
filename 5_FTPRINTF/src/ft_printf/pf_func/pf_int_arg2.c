@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/22 16:22:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/07 15:43:54 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/10 11:54:05 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,7 +56,7 @@ char	*ft_toa2(char *sub, long long int x, t_attributes *att)
 					: ft_uitoabase((unsigned short)x, 8));
 		else
 			res = (att->l == 0 && att->ll == 0 ?
-					ft_uitoabase((unsigned)x, 8) : ft_uitoabase(x, 8));
+					ft_uitoabase((unsigned int)x, 8) : ft_uitoabase(x, 8));
 	}
 	if (x == 0 && att->prec == 0)
 		ft_delzero(&res);
