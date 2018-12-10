@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:02:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/10 12:44:46 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/10 15:59:25 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -73,13 +73,11 @@ static void			ft_dispatch(char **str, size_t *i, va_list *ap)
 	t_pf_func		f;
 	t_attributes	att;
 
-	sub = ft_extract(str, *i);
-	if (sub == NULL)
+	if ((sub = ft_extract(str, *i)) == NULL)
 		return ;
 	if (ft_strlen(sub) != 0)
 	{
-		f = ft_select_func(sub);
-		if (*f == NULL)
+		if ((f = ft_select_func(sub)) == NULL)
 			return ;
 		ft_init_attributes(&att);
 		ft_eval_attributes(&att, sub);
@@ -89,8 +87,10 @@ static void			ft_dispatch(char **str, size_t *i, va_list *ap)
 	else
 		res = ft_strdup(sub);
 	if (res != NULL)
+	{
 		ft_replace(str, *i, res);
-	*i += ft_strlen(res) - 1;
+		*i += ft_strlen(res) - 1;
+	}
 	free(res);
 	free(sub);
 }
@@ -104,8 +104,7 @@ int					ft_printf(const char *format, ...)
 
 	if (format == NULL)
 		return (0);
-	str = ft_strdup(format);
-	if (str == NULL)
+	if ((str = ft_strdup(format)) == NULL)
 		return (-1);
 	va_start(ap, format);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/23 10:57:46 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 23:58:08 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/10 15:48:23 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,6 +49,8 @@ char		*pf_pc_arg(char *sub, va_list *ap, t_attributes *att)
 	if (sub != NULL && ap != NULL && att != NULL)
 		;
 	res = ft_strdup("%");
+	if (res == NULL)
+		return (NULL);
 	if (att->width != -1)
 		ft_addw(&res, att->width, att->opt4, att->opt1);
 	return (res);

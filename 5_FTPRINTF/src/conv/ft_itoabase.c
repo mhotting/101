@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/08 14:40:49 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 19:09:47 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/10 15:37:31 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,6 +33,8 @@ char		*ft_itoabase(long long int n, int base)
 	if (base == 10)
 		return (ft_itoa(n));
 	ref = ft_strdup("0123456789abcdefghijklmnopqrstuvwxyz");
+	if (ref == NULL)
+		return (NULL);
 	if (base < 2 || base > 30 || n < 0)
 		return (NULL);
 	res = ft_strnew(65);

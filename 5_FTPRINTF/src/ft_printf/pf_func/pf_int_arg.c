@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/22 16:22:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/10 12:52:06 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/10 15:24:23 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,7 +53,7 @@ static void				ft_applyflag(char **res, char *sub, long long int x,
 		ft_enhance_left(res, 'X', (int)ft_strlen(*res) + 1);
 		ft_enhance_left(res, '0', (int)ft_strlen(*res) + 1);
 	}
-	if (att->opt3 == 1 && end == 'o' && !(att->opt3 == 1 &&
+	if (att->opt3 == 1 && end == 'o' && att->prec < 1 && !(att->opt3 == 1 &&
 				end == 'o' && x == 0 && att->prec == -1))
 		ft_enhance_left(res, '0', (int)ft_strlen(*res) + 1);
 }

@@ -6,13 +6,12 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/29 09:34:09 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/10 12:54:15 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/10 15:46:02 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../../includes/libft.h"
-#include <stdio.h>
 
 size_t	ft_putstr_pf(char *str)
 {

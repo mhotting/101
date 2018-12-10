@@ -6,13 +6,12 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/27 21:08:09 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 03:16:53 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/10 15:38:42 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../../includes/libft.h"
-#include <stdio.h>
 
 static	size_t	ft_evalsize(unsigned long long int nb)
 {

@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/22 16:22:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/10 11:54:05 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/10 15:47:12 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,7 +39,7 @@ char	*ft_toa1(char *sub, long long int x, t_attributes *att)
 	}
 	if (res != NULL && x == 0 && att->prec == 0)
 		ft_delzero(&res);
-	return (res == NULL ? NULL : res);
+	return (res);
 }
 
 char	*ft_toa2(char *sub, long long int x, t_attributes *att)
@@ -60,8 +60,6 @@ char	*ft_toa2(char *sub, long long int x, t_attributes *att)
 	}
 	if (x == 0 && att->prec == 0)
 		ft_delzero(&res);
-	if (res == NULL)
-		return (NULL);
 	return (res);
 }
 
@@ -85,7 +83,5 @@ char	*ft_toa3(char *sub, long long int x, t_attributes *att)
 	}
 	if (x == 0 && att->prec == 0)
 		ft_delzero(&res);
-	if (res == NULL)
-		return (NULL);
 	return (res);
 }
