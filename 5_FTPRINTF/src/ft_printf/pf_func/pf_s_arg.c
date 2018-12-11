@@ -45,7 +45,9 @@ char		*pf_s_arg(char *sub, va_list *ap, t_attributes *att)
 	char	*res;
 
 	if (sub != NULL)
+	{
 		;
+	}
 	res = va_arg(*ap, char *);
 	if (res == NULL && att->prec == -1)
 		return (ft_strdup("(null)"));

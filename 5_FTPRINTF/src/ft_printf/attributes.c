@@ -30,7 +30,7 @@ static int	ft_evalwidth(char *sub)
 	int	res;
 
 	point = ft_charindexstr('.', sub);
-	point = (point == -1 ? ft_strlen(sub) : point);
+	point = (point == -1 ? (int)ft_strlen(sub) : point);
 	i = 1;
 	while (i < point)
 	{
@@ -48,7 +48,7 @@ static int	ft_evalzero(char *sub)
 	int	point;
 
 	point = ft_charindexstr('.', sub);
-	point = (point == -1 ? ft_strlen(sub) : point);
+	point = (point == -1 ? (int)ft_strlen(sub) : point);
 	i = 1;
 	while (i < point)
 	{

@@ -58,11 +58,8 @@ static void				ft_applyflag(char **res, char *sub, long long int x,
 		ft_enhance_left(res, '0', (int)ft_strlen(*res) + 1);
 }
 
-static void				ft_applyflag2(char **res, char *sub, t_attributes *att)
+static void				ft_applyflag2(char **res, t_attributes *att)
 {
-	char	end;
-
-	end = sub[ft_strlen(sub) - 1];
 	if (att->width != -1)
 	{
 		if (att->opt1 == 0)
@@ -83,8 +80,6 @@ char					*pf_int_arg(char *sub, va_list *ap, t_attributes *att)
 	char				*res;
 	long long int		x;
 
-	if (sub != NULL && att != NULL)
-		;
 	x = ft_ext(ap, att);
 	res = ft_toa1(sub, x, att);
 	if (res == NULL)
@@ -94,6 +89,6 @@ char					*pf_int_arg(char *sub, va_list *ap, t_attributes *att)
 	if (res == NULL)
 		return (NULL);
 	ft_applyflag(&res, sub, x, att);
-	ft_applyflag2(&res, sub, att);
+	ft_applyflag2(&res, att);
 	return (res);
 }

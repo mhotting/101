@@ -48,7 +48,9 @@ char		*pf_p_arg(char *sub, va_list *ap, t_attributes *att)
 	long long unsigned int	addr;
 
 	if (sub)
+	{
 		;
+	}
 	arg = va_arg(*ap, void *);
 	addr = (long long unsigned int)arg;
 	res = ft_uitoabase(addr, 16);

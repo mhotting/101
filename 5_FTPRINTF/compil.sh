@@ -1,4 +1,4 @@
 #!/bin/sh
 make -s;
-gcc -Wall -Werror -Wextra -L. -lftprintf main.c -o prog;
+gcc main.c -Wall -Werror -Wextra -L. -lftprintf -o prog;
 ./prog;

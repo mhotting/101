@@ -46,8 +46,10 @@ char		*pf_pc_arg(char *sub, va_list *ap, t_attributes *att)
 {
 	char	*res;
 
-	if (sub != NULL && ap != NULL && att != NULL)
+	if (sub != NULL && ap != NULL)
+	{
 		;
+	}
 	res = ft_strdup("%");
 	if (res == NULL)
 		return (NULL);
