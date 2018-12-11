@@ -6,13 +6,14 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 10:21:29 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/10 12:23:59 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/11 20:26:45 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef CONV_H
 # define CONV_H
+# define LDBLMAXSIZE 4980
 
 int		ft_atoi(const char *nptr);
 char	*ft_itoa(long long int n);

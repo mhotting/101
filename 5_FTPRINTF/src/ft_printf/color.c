@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   color.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/11 21:34:29 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/12/11 21:10:06 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/12/11 21:33:47 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
+#include "./../../includes/libft.h"
 
-int	main(void)
+static const char *g_col[11][2] =
 {
-	int		cpt1;
-	int		cpt2;
+	{ "{none}", C_NONE },
+	{ "{blue}", C_BLUE },
+	{ "{bold}", C_BOLD },
+	{ "{black}", C_BLACK },
+	{ "{red}", C_RED },
+	{ "{green}", C_GREEN },
+	{ "{brown}", C_BROWN },
+	{ "{magenta}", C_MAGENTA },
+	{ "{cyan}", C_CYAN },
+	{ "{gray}", C_GRAY },
+	{ "{yellow}", C_YELLOW }
+};
 
-	cpt1 = ft_printf("Mon float: %.50Lf\n", 50.L);
-	cpt2 = printf("Mon float: %.50Lf\n", 50.L);
-	printf("CPT1 = %d - CPT2 = %d\n", cpt1, cpt2);
-	return (0);
+void	ft_color_manager(char **format)
+{
+	if (format)
+		;
+	return ;
 }

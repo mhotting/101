@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/25 10:07:50 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/11 19:15:11 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/11 20:55:56 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -99,7 +99,7 @@ char		*ft_ldtoa(long double f, int prec)
 	long long int	int_part;
 
 	index[0] = 0;
-	if ((res = ft_strnew(30 + prec)) == NULL)
+	if ((res = ft_strnew(LDBLMAXSIZE)) == NULL)
 		return (NULL);
 	if ((index[1] = 0) == 0 && f < 0)
 		ft_neg(index, &f, res);

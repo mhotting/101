@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/20 17:54:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/07 15:42:32 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/11 21:27:11 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,6 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
-# define N	"@@+NULL+@@"
 
 typedef struct	s_attibutes
 {
@@ -63,5 +62,21 @@ char			*pf_s_arg(char *sub, va_list *ap, t_attributes *att);
 char			*pf_p_arg(char *sub, va_list *ap, t_attributes *att);
 char			*pf_f_arg(char *sub, va_list *ap, t_attributes *att);
 char			*pf_pc_arg(char *sub, va_list *ap, t_attributes *att);
+
+/*
+** Color define
+*/
+# define C_NONE         "\033[0m"
+# define C_BOLD         "\033[1m"
+# define C_BLACK        "\033[30m"
+# define C_RED          "\033[31m"
+# define C_GREEN        "\033[32m"
+# define C_BROWN        "\033[33m"
+# define C_BLUE         "\033[34m"
+# define C_MAGENTA      "\033[35m"
+# define C_CYAN         "\033[36m"
+# define C_GRAY         "\033[37m"
+# define C_YELLOW		"\033[0;33m"
+# define N				"@@+NULL+@@"
 
 #endif
