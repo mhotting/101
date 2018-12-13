@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   ft_fprintf.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:02:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/13 16:05:31 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/12/13 15:58:23 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/12/13 15:58:38 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -94,14 +94,14 @@ static void			ft_dispatch(char **str, size_t *i, va_list *ap)
 	free(sub);
 }
 
-int					ft_printf(const char *format, ...)
+int					ft_fprintf(int fd, const char *format, ...)
 {
 	char	*str;
 	va_list	ap;
 	size_t	len_ret;
 	size_t	i;
 
-	if (format == NULL)
+	if (format == NULL || fd == -1)
 		return (0);
 	if (ft_color_manager(format) == 1)
 		return (1);
@@ -115,7 +115,7 @@ int					ft_printf(const char *format, ...)
 			ft_dispatch(&str, &i, &ap);
 		i++;
 	}
-	i = ft_putstr_pf(str, 1);
+	i = ft_putstr_pf(str, fd);
 	va_end(ap);
 	len_ret = (int)ft_strlen(str) - (i * ft_strlen(N)) + i;
 	free(str);

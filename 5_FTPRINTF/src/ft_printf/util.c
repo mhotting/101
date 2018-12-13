@@ -6,14 +6,14 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/29 09:34:09 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/10 15:46:02 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/13 16:07:01 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../../includes/libft.h"
 
-size_t	ft_putstr_pf(char *str)
+size_t	ft_putstr_pf(char *str, int fd)
 {
 	char	*add;
 	int		cpt;
@@ -21,17 +21,17 @@ size_t	ft_putstr_pf(char *str)
 	cpt = 0;
 	add = ft_strstr(str, N);
 	if (add == NULL)
-		write(1, str, ft_strlen(str));
+		write(fd, str, ft_strlen(str));
 	else
 	{
 		cpt++;
 		while (str < add)
 		{
-			ft_putchar(*str);
+			ft_putchar_fd(*str, fd);
 			str++;
 		}
-		ft_putchar('\0');
-		cpt += ft_putstr_pf(str + ft_strlen(N));
+		ft_putchar_fd('\0', fd);
+		cpt += ft_putstr_pf(str + ft_strlen(N), fd);
 	}
 	return (cpt);
 }

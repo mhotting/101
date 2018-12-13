@@ -6,31 +6,66 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/12/11 21:10:06 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/11 21:33:47 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/13 15:51:33 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../../includes/libft.h"
 
-static const char *g_col[11][2] =
+static const char *g_col1[NB_COLOR] =
 {
-	{ "{none}", C_NONE },
-	{ "{blue}", C_BLUE },
-	{ "{bold}", C_BOLD },
-	{ "{black}", C_BLACK },
-	{ "{red}", C_RED },
-	{ "{green}", C_GREEN },
-	{ "{brown}", C_BROWN },
-	{ "{magenta}", C_MAGENTA },
-	{ "{cyan}", C_CYAN },
-	{ "{gray}", C_GRAY },
-	{ "{yellow}", C_YELLOW }
+	"{none}",
+	"{blue}",
+	"{bold}",
+	"{black}",
+	"{red}",
+	"{green}",
+	"{brown}",
+	"{magenta}",
+	"{cyan}",
+	"{gray}",
+	"{yellow}"
 };
 
-void	ft_color_manager(char **format)
+static const char *g_col2[NB_COLOR] =
 {
-	if (format)
-		;
-	return ;
+	C_NONE,
+	C_BLUE,
+	C_BOLD,
+	C_BLACK,
+	C_RED,
+	C_GREEN,
+	C_BROWN,
+	C_MAGENTA,
+	C_CYAN,
+	C_GRAY,
+	C_YELLOW
+};
+
+static int	ft_color_checker(const char *format)
+{
+	int	i;
+
+	i = 0;
+	while (i < NB_COLOR)
+	{
+		if (ft_strcmp(g_col1[i], (char *)format) == 0)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+int			ft_color_manager(const char *format)
+{
+	int	res;
+
+	res = ft_color_checker(format);
+	if (res != -1)
+	{
+		ft_putstr(g_col2[res]);
+		return (1);
+	}
+	return (0);
 }
