@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/20 17:54:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/13 16:44:04 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/13 17:38:00 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,8 @@ typedef struct	s_conf
 ** Printf function and attributes
 */
 int				ft_fprintf(int fd, const char *format, ...);
-int				ft_printf(const char *format, ...);// __attribute__((format(printf,1,2)));
+int				ft_printf(const char *format,
+		...) __attribute__((format(printf,1,2)));
 size_t			ft_putstr_pf(char *str, int fd);
 void			ft_init_attributes(t_attributes *ptr);
 void			ft_eval_attributes(t_attributes *ptr, char *sub);
