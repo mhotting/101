@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:02:32 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/13 16:05:31 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/13 16:46:15 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,7 @@
 
 static const t_conv	g_conv[] = {
 	{ "diouxX", pf_int_arg },
+	{ "b", pf_b_arg },
 	{ "c", pf_c_arg },
 	{ "s", pf_s_arg },
 	{ "p", pf_p_arg },
@@ -28,7 +29,7 @@ static char			*ft_extract(char **str, size_t i)
 	char	*sub;
 
 	j = i + 1;
-	while ((*str)[j] != '\0' && ft_charinstr((*str)[j], "diouxXcspf%") == 0)
+	while ((*str)[j] != '\0' && ft_charinstr((*str)[j], (char *)CONV_STR) == 0)
 		j++;
 	if ((*str)[j] == '\0')
 		return (ft_strdup(""));
@@ -56,7 +57,7 @@ static t_pf_func	ft_select_func(char *sub)
 	size_t	i;
 
 	i = 0;
-	while (i < 6)
+	while (i < (size_t)CONV_NB)
 	{
 		if (ft_charinstr(sub[ft_strlen(sub) - 1], g_conv[i].str) == 1)
 			return (g_conv[i].func);

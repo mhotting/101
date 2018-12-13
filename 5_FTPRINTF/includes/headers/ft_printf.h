@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/20 17:54:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/13 16:07:30 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/13 16:44:04 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,8 +41,7 @@ typedef struct	s_conf
 ** Printf function and attributes
 */
 int				ft_fprintf(int fd, const char *format, ...);
-int				ft_printf(const char *format,
-		...) __attribute__((format(printf,1,2)));
+int				ft_printf(const char *format, ...);// __attribute__((format(printf,1,2)));
 size_t			ft_putstr_pf(char *str, int fd);
 void			ft_init_attributes(t_attributes *ptr);
 void			ft_eval_attributes(t_attributes *ptr, char *sub);
@@ -59,6 +58,7 @@ char			*pf_int_arg(char *sub, va_list *ap, t_attributes *att);
 char			*ft_toa1(char *sub, long long int x, t_attributes *att);
 char			*ft_toa2(char *sub, long long int x, t_attributes *att);
 char			*ft_toa3(char *sub, long long int x, t_attributes *att);
+char			*pf_b_arg(char *sub, va_list *ap, t_attributes *att);
 char			*pf_c_arg(char *sub, va_list *ap, t_attributes *att);
 char			*pf_s_arg(char *sub, va_list *ap, t_attributes *att);
 char			*pf_p_arg(char *sub, va_list *ap, t_attributes *att);
@@ -66,9 +66,11 @@ char			*pf_f_arg(char *sub, va_list *ap, t_attributes *att);
 char			*pf_pc_arg(char *sub, va_list *ap, t_attributes *att);
 
 /*
-** Color define
+** Color and various  define
 */
 # define NB_COLOR		11
+# define CONV_NB		7
+# define CONV_STR		"diouxXbcspf%"
 # define C_NONE         "\033[0m"
 # define C_BOLD         "\033[1m"
 # define C_BLACK        "\033[30m"
