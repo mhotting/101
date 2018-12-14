@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 10:21:29 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/11 20:26:45 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/14 18:07:26 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,5 +22,6 @@ char	*ft_itoabase(long long int n, int base);
 char	*ft_uitoabase(unsigned long long int n, int base);
 char	*ft_ctoa(char c);
 char	*ft_ldtoa(long double f, int prec);
+void	ft_ldint_extract(char *res, long double *f)
 
 #endif
