@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/14 17:42:22 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/14 18:16:03 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,8 +22,8 @@ int	main(void)
 	int		cpt1;
 	int		cpt2;
 
-	cpt1 = ft_fprintf(1, "NOMBRE: %.2f\n", -254.5556);
-	cpt2 = printf("NOMBRE: %.2f\n", -254.5556);
+	cpt1 = ft_fprintf(1, "NOMBRE: %f\n", 1.42);
+	cpt2 = printf("NOMBRE: %f\n", 1.42);
 	printf("CPT1 = %d - CPT2 = %d\n", cpt1, cpt2);
 	return (0);
 }
