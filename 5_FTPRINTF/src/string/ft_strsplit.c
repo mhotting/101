@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 16:25:12 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 13:59:44 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/14 14:09:22 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,7 +49,7 @@ static	size_t	ft_evallen(char const *s, char c, size_t pos)
 	return (len);
 }
 
-static char		*ft_extract(char const *s, char c, size_t *pos)
+static char		*ft_extract_char(char const *s, char c, size_t *pos)
 {
 	size_t	i;
 	size_t	len;
@@ -88,7 +88,7 @@ char			**ft_strsplit(char const *s, char c)
 		pos = 0;
 		while (wd_i < tot)
 		{
-			temp = ft_extract(s, c, &pos);
+			temp = ft_extract_char(s, c, &pos);
 			res[wd_i] = temp;
 			wd_i++;
 		}

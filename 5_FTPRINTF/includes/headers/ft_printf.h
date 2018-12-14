@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/20 17:54:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/13 17:38:00 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/14 14:27:10 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,6 +36,11 @@ typedef struct	s_conf
 	char		*str;
 	t_pf_func	func;
 }				t_conv;
+
+/*
+** Printf format management
+*/
+void			ft_dispatch(char **str, size_t *i, va_list *ap);
 
 /*
 ** Printf function and attributes
