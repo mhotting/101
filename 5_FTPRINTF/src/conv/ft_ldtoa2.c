@@ -6,12 +6,13 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/12/14 18:05:15 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/14 18:15:46 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/17 18:07:34 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../../includes/libft.h"
+#include <stdio.h>
 
 static int	ft_eval_size(long double f)
 {
@@ -60,6 +61,7 @@ void		ft_ldint_extract(char *res, long double *f)
 	size -= 1;
 	while (size >= 0)
 	{
+		printf("F: %Lf\n", *f);
 		temp = *f;
 		ft_resize(&temp, size, -1);
 		ext = (int)temp;
