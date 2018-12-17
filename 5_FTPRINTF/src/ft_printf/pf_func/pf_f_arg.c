@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/23 12:07:54 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/14 15:56:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/17 16:16:56 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,19 +57,12 @@ char				*pf_f_arg(char *sub, va_list *ap, t_attributes *att)
 	char		*res;
 	long double	f;
 
+	if (sub != NULL)
+		;
 	f = ft_extract(ap, att);
 	res = ft_ldtoa(f, (att->prec == -1 ? 6 : att->prec));
 	if (res == NULL)
 		return (res);
-	if (sub[ft_strlen(sub) - 1] == 'e')
-	{
-		/*
-		if (f >= 10.)
-			ft_pfconvert_e1(&res, f);
-		else
-			ft_pfconvert_e2(&res, f);
-		*/
-	}
 	ft_applyflag(&res, att, f);
 	ft_applyflag2(&res, att);
 	return (res);
