@@ -1,0 +1,1 @@
+pgrep -f tail | xargs kill -9

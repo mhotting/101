@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/15 19:11:53 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 20:31:06 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/18 11:18:42 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,7 +49,7 @@ static void	ft_mandelbrot_calc(t_bag *ptr, double zoomx, double zoomy)
 				z[1] = 2 * z[1] * temp + c[1];
 			}
 			if (i[0] < ptr->i_max)
-				ptr->img[i[1]++] = ptr->color[(int)(i[0] * 100 / ptr->i_max)].colint;
+				ptr->img[i[1]++] = ptr->color[(int)(i[0] * 100 / ptr->i_max - 1)].colint;
 			else
 				ptr->img[i[1]++] = 0;
 		}

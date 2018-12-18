@@ -1,0 +1,2 @@
+# En root:
+du -sh /var/*
