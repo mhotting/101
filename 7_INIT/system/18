@@ -1,4 +1,4 @@
 #!/bin/sh
 # Arreter le service SSH
-# Alternative: service ssh stop, tout depend de ce que signifie la question
+# Alternative: systemctl stop sshd, tout depend de ce que signifie la question
 exit
