@@ -1,0 +1,50 @@
+#!/bin/sh
+# Script de suppression d'un user logue sur la machine
+:'
+# Function - checks if given user is logged
+# Return value: 1 if yes, else 0
+is_logged()
+{
+	LIST=($(who | cut -f1 -d' '))
+	for user in ${LIST[*]}
+	do
+		if ["$1" -eq "$user"]
+		then
+			return 1
+		fi
+	done
+	return 0
+}
+'
+# Check arguments
+if [ $# -eq 0 ] || [ $# -ge 2 ]
+then
+	echo "usage: $0 [user you want to delete]"
+	exit 1
+fi
+
+# Check root 1
+:'
+if [ "$(id -u)" -ne "0" ]
+then
+	echo "ERROR - permission denied."
+	exit 1
+fi
+'
+
+# Check root 2
+if [ "$(id -u $1)" -eq "0" ]
+then
+	echo "ERROR - root can't be deleted"
+	exit 1
+fi
+
+# Check log
+is_logged $1
+if [$? -eq 1]
+then
+	userdel -fr $1
+	echo "SUCCESS - User deleted"
+else
+	echo "ERROR - User is not logged or does not exist"
+fi
