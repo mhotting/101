@@ -1,1 +1,3 @@
+#!/bin/sh
+# Identifier l'IP du DNS du domaine slash16.org
 nslookup slash16.org
