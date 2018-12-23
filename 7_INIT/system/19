@@ -1,0 +1,15 @@
+# Les services dont il est question sont aussi appeles Daemon
+# # La commande pour les lister est: service --status-all | grep + | cut -f6 -d' '
+apache-htcacheclean
+apache2
+avahi-daemon
+cron
+cups
+cups-browsed
+dbus
+kmod
+networking
+procps
+rsyslog
+ssh
+udev
