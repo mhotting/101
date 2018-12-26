@@ -1,5 +1,5 @@
 # Les services dont il est question sont aussi appeles Daemon
-# # La commande pour les lister est: service --status-all | grep + | cut -f6 -d' '
+# # La commande pour les lister est: sudo service --status-all | grep + | cut -f6 -d' '
 apache-htcacheclean
 apache2
 avahi-daemon
