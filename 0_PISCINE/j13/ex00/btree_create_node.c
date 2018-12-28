@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   btree_create_node.c                              .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/20 08:55:09 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/20 09:01:36 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "ft_btree.h"
+#include <stdlib.h>
 
-int	main(void)
+t_btree	*btree_create_node(void *item)
 {
-	double	f;
+	t_btree	*tbt;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	tbt = (t_btree*)malloc(sizeof(t_btree));
+	if (!tbt)
+		return (0);
+	tbt->item = item;
+	tbt->left = 0;
+	tbt->right = 0;
+	return (tbt);
 }

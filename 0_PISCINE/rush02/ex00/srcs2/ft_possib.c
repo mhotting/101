@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_possib.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/22 01:32:00 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/22 02:03:30 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "../includes/my2.h"
 
-int	main(void)
+void	ft_result(int *possib, int line_num, int line_len)
 {
-	double	f;
+	int cpt;
+	int i;
+	int j;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	i = -1;
+	cpt = 0;
+	while (++i < 5)
+		if (possib[i] == 1)
+			cpt++;
+	if (cpt == 0)
+		ft_error();
+	i = 0;
+	j = 0;
+	while (++i && j < cpt)
+		if (possib[i - 1] == 1)
+		{
+			ft_disp((i - 1), line_num, line_len);
+			if (j < cpt - 1)
+				ft_putstr(" || ");
+			j++;
+		}
+	ft_putchar('\n');
 }

@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   rush01.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: jde-mour <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/08 13:39:02 by jde-mour     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/21 18:32:37 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "../includes/my.h"
 
-int	main(void)
+void	rush(int x, int y)
 {
-	double	f;
+	int cptl;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	if (x <= 0 || y <= 0)
+		return ;
+	cptl = 0;
+	if (y == 1)
+	{
+		ft_print_line(x, 'o', '-', 'o');
+		return ;
+	}
+	while (cptl < y)
+	{
+		if (cptl == 0 || cptl == (y - 1))
+			ft_print_line(x, 'o', '-', 'o');
+		else
+			ft_print_line(x, '|', ' ', '|');
+		++cptl;
+	}
 }

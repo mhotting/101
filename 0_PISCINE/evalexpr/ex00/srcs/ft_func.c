@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_func.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/22 22:12:48 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/22 22:18:07 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "../includes/ft_h.h"
 
-int	main(void)
+int	ft_count_op(char *str)
 {
-	double	f;
+	int i;
+	int cpt;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	i = 0;
+	cpt = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '+' || str[i] == '-' || str[i] == '*')
+			cpt++;
+		else if (str[i] == '/' || str[i] == '%')
+			cpt++;
+		i++;
+	}
+	return (cpt);
+}
+
+int	ft_is_operator(char c)
+{
+	if (c == '+' || c == '-' || c == '*' || c == '/' || c == '%')
+		return (1);
+	return (0);
 }

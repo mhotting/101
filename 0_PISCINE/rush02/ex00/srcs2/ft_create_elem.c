@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_create_elem.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/22 11:41:32 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/22 11:42:53 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "../includes/my2.h"
 
-int	main(void)
+t_list	*ft_create_elem(char c)
 {
-	double	f;
+	t_list	*new;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	new = (t_list*)malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->c = c;
+	new->next = NULL;
+	return (new);
 }

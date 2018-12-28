@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_destroy.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/13 01:47:15 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/13 01:48:49 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
-
-int	main(void)
+void	ft_destroy(char ***factory)
 {
-	double	f;
+	int i;
+	int j;
+	int k;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	i = 0;
+	while (factory[i] != NULL)
+	{
+		j = 0;
+		while (factory[i][j] != NULL)
+		{
+			k = 0;
+			while (factory[i][j][k] != NULL)
+			{
+				free(factory[i][j][k]);
+				k++;
+			}
+			free(factory[i][j]);
+			j++;
+		}
+		free(factory[i]);
+		i++;
+	}
 }

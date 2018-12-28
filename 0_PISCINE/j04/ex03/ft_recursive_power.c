@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_recursive_power.c                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/07 15:18:03 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/07 15:34:44 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
-
-int	main(void)
+int	ft_recursive_power(int nb, int power)
 {
-	double	f;
-
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	if (nb == 0 || nb == 1)
+		return (nb);
+	if (power == 1)
+		return (nb);
+	if (nb == -1)
+	{
+		if (power % 2 == 0)
+			return (1);
+		return (-1);
+	}
+	return (nb * ft_recursive_power(nb, power - 1));
 }

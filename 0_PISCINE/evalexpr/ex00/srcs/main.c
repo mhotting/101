@@ -5,23 +5,20 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/22 08:00:04 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/22 23:12:04 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "../includes/ft_h.h"
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	double	f;
-
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	if (ac > 1)
+	{
+		ft_putnbr(eval_expr(av[1]));
+		ft_putchar('\n');
+	}
+	return (0);
 }

@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_sqrt.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/07 15:52:15 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/07 16:38:16 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
-
-int	main(void)
+int	ft_sqrt(int nb)
 {
-	double	f;
+	long	i;
+	long	test;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	if (nb < 0)
+		return (0);
+	if (nb == 0 || nb == 1)
+		return (nb);
+	i = 2;
+	while (1)
+	{
+		test = i * i;
+		if (test == nb)
+			return ((int)i);
+		else if (test > nb)
+			return (0);
+		i++;
+	}
+	return (0);
 }

@@ -1,27 +1,43 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_build_grid.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/15 00:17:40 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/15 16:26:09 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "ft_sudoku.h"
 
-int	main(void)
+int	**ft_build_grid(char **argv)
 {
-	double	f;
+	int	i;
+	int	j;
+	int	**tab;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	if (!(tab = (int**)malloc(SIZE * sizeof(int*))))
+		return (NULL);
+	i = 0;
+	while (i < SIZE)
+	{
+		if (!(tab[i] = (int*)malloc(SIZE * sizeof(int))))
+			return (NULL);
+		j = 0;
+		while (j < SIZE)
+		{
+			if (argv[i + 1][j] >= '0' && argv[i + 1][j] <= '9')
+				tab[i][j] = argv[i + 1][j] - '0';
+			else if (argv[i + 1][j] == '.')
+				tab[i][j] = 0;
+			else
+				return (NULL);
+			j++;
+		}
+		i++;
+	}
+	return (tab);
 }

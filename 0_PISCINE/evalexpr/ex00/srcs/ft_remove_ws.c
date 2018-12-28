@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_remove_ws.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/22 22:21:23 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/22 22:26:56 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "../includes/ft_h.h"
 
-int	main(void)
+char	*ft_remove_ws(char *str)
 {
-	double	f;
+	int		i;
+	int		j;
+	char	*res;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	i = 0;
+	j = 0;
+	res = malloc((ft_strlen(str) + 1) * sizeof(char));
+	if (!res)
+		return (0);
+	while (str[i] != '\0')
+	{
+		if (str[i] != ' ')
+		{
+			res[j] = str[i];
+			j++;
+		}
+		i++;
+	}
+	res[j] = '\0';
+	return (res);
 }

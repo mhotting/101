@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_strncat.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/10 04:25:01 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/10 04:36:27 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
-
-int	main(void)
+int		len_str(char *str)
 {
-	double	f;
+	int cpt;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	cpt = 0;
+	while (str[cpt] != '\0')
+		cpt++;
+	return (cpt);
+}
+
+char	*ft_strncat(char *dest, char *src, int nb)
+{
+	int i;
+	int size_dest;
+
+	size_dest = len_str(dest);
+	i = 0;
+	while (i < nb && src[i] != '\0')
+	{
+		dest[size_dest + i] = src[i];
+		i++;
+	}
+	dest[size_dest + i] = '\0';
+	return (dest);
 }

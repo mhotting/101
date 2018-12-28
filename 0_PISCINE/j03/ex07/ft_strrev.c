@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_strrev.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/06 09:31:12 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/06 14:33:18 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
-
-int	main(void)
+char	*ft_strrev(char *str)
 {
-	double	f;
+	int		cpt;
+	int		cpt_bis;
+	char	c;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	cpt = 0;
+	cpt_bis = 0;
+	while (str[cpt] != '\0')
+		cpt++;
+	cpt--;
+	while (cpt_bis < cpt)
+	{
+		c = str[cpt];
+		str[cpt] = str[cpt_bis];
+		str[cpt_bis] = c;
+		cpt--;
+		cpt_bis++;
+	}
+	return (str);
 }

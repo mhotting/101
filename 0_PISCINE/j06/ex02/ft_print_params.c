@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_print_params.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/11 17:00:29 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/11 17:08:21 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+void	ft_putchar(char c);
 
-int	main(void)
+void	my_putstr(char *str)
 {
-	double	f;
+	int i;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+}
+
+int		main(int argc, char *argv[])
+{
+	int i;
+
+	if (argc == 1)
+		return (0);
+	i = 1;
+	while (i < argc)
+	{
+		my_putstr(argv[i]);
+		ft_putchar('\n');
+		i++;
+	}
+	return (0);
 }

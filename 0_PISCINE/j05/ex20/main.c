@@ -5,23 +5,34 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/10 14:23:29 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/10 23:29:44 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include	<stdio.h>
 
-int	main(void)
+void	ft_putnbr_base(int nbr, char *str);
+
+int		main(void)
 {
-	double	f;
+	int		nbr;
+	char	str[79] = {'\0'};
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	do
+	{
+		printf("Saisir un nombre: ");
+		scanf("%d", &nbr);
+		if (nbr == -1)
+			break ;
+		while (getchar() != '\n');
+		printf("Saisir une base: ");
+		gets(str);
+
+		printf("\n");
+		ft_putnbr_base(nbr, str);
+		printf("\n");
+	}while (1);
+	return (0);
 }

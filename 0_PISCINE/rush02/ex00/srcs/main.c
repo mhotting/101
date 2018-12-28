@@ -3,25 +3,28 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: jde-mour <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/08 13:39:24 by jde-mour     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/21 20:27:41 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "../includes/my.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	double	f;
+	int		a;
+	int		b;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	if (argc != 3)
+		return (0);
+	a = ft_atoi(argv[1]);
+	b = ft_atoi(argv[2]);
+	if (argc == 3)
+		rush(a, b);
+	else if (a <= 0 || b <= 0)
+		return (0);
+	return (0);
 }

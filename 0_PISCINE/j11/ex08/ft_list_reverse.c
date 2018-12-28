@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_list_reverse.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/18 14:54:50 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/18 17:13:41 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "ft_list.h"
 
-int	main(void)
+void	ft_list_reverse(t_list **begin_list)
 {
-	double	f;
+	t_list	*current;
+	t_list	*next_one;
+	t_list	*prev;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	if (*begin_list == 0 || (*begin_list)->next == 0)
+		return ;
+	prev = 0;
+	current = *begin_list;
+	while (current != 0)
+	{
+		next_one = current->next;
+		current->next = prev;
+		prev = current;
+		current = next_one;
+	}
+	*begin_list = prev;
 }

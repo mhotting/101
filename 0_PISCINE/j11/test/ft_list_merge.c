@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_list_merge.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/18 20:51:35 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/18 21:03:26 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "ft_list.h"
 
-int	main(void)
+void	ft_list_merge(t_list **begin_list1, t_list *begin_list2)
 {
-	double	f;
+	t_list	*current;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	if (*begin_list1 == 0)
+	{
+		*begin_list1 = begin_list2;
+		return ;
+	}
+	current = *begin_list1;
+	while (current->next != 0)
+		current = current->next;
+	current->next = begin_list2;
 }

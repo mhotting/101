@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_compact.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/13 13:56:17 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/13 15:07:07 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
-
-int	main(void)
+int	ft_compact(char **tab, int length)
 {
-	double	f;
+	int		i;
+	int		j;
+	int		cpt_rem;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	if (length == 0)
+		return (0);
+	i = 0;
+	cpt_rem = 0;
+	while (i < length)
+	{
+		if (tab[i] == 0 && i != (length - 1))
+		{
+			j = i;
+			while (j++ < (length - 1))
+			{
+				tab[j - 1] = tab[(j - 1) + 1];
+				length--;
+			}
+			continue ;
+		}
+		else if (tab[i] == 0 && i == (length - 1))
+			length--;
+		i++;
+	}
+	return (length);
 }

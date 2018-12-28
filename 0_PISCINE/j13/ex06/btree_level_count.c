@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   btree_level_count.c                              .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/20 13:57:37 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/20 14:19:21 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "ft_btree.h"
 
-int	main(void)
+int	ft_max(int a, int b)
 {
-	double	f;
+	if (a > b)
+		return (a);
+	else
+		return (b);
+}
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+int	btree_level_count(t_btree *root)
+{
+	if (root == 0)
+		return (0);
+	if (root->left == 0 && root->right == 0)
+		return (1);
+	return (1 + ft_max(
+				btree_level_count(root->left),
+				btree_level_count(root->right)));
 }

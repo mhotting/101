@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_strcat.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/10 03:52:00 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/10 04:17:55 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
-
-int	main(void)
+int		s_len(char *str)
 {
-	double	f;
+	int	cpt;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	cpt = 0;
+	while (str[cpt] != '\0')
+		cpt++;
+	return (cpt);
+}
+
+char	*ft_strcat(char *dest, char *src)
+{
+	int	i;
+	int size_dest;
+
+	size_dest = s_len(dest);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i + size_dest] = src[i];
+		i++;
+	}
+	dest[i + size_dest] = '\0';
+	return (dest);
 }

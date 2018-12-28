@@ -1,27 +1,43 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_fill_list.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/22 11:47:34 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/22 16:56:28 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "../includes/my2.h"
 
-int	main(void)
+int	ft_fill_list(t_list **begin, int *tot_char)
 {
-	double	f;
+	int		cpt_line;
+	char	c;
+	t_list	*current;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	cpt_line = 0;
+	while (read(0, &c, 1))
+	{
+		if (*tot_char == 0)
+		{
+			*begin = ft_create_elem(c);
+			current = *begin;
+		}
+		else
+		{
+			current->next = ft_create_elem(c);
+			current = current->next;
+		}
+		if (c == '\n')
+			cpt_line++;
+		else
+			*tot_char = *tot_char + 1;
+	}
+	if (*begin != 0)
+		current->next = ft_create_elem('\n');
+	return (cpt_line);
 }

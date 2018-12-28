@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_scrambler.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/13 06:45:24 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/13 10:16:09 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
-
-int	main(void)
+void	ft_scrambler(int ***a, int *b, int *******c, int ****d)
 {
-	double	f;
+	int tempa;
+	int tempb;
+	int tempc;
+	int tempd;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	tempa = ***a;
+	tempb = *b;
+	tempc = *******c;
+	tempd = ****d;
+	*******c = tempa;
+	****d = tempc;
+	*b = tempd;
+	***a = tempb;
 }

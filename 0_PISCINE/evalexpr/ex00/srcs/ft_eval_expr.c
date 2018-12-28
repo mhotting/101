@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_eval_expr.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/22 08:01:33 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/22 22:26:28 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "../includes/ft_h.h"
 
-int	main(void)
+int	eval_expr(char *str)
 {
-	double	f;
+	int	tot_par;
+	int	res;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	str = ft_remove_ws(str);
+	tot_par = ft_count_par(str);
+	while (tot_par != 0)
+	{
+		str = ft_extract_par(str, tot_par);
+		tot_par = ft_count_par(str);
+	}
+	res = ft_eval_subexpr(str);
+	return (res);
 }

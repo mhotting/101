@@ -5,23 +5,30 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/17 02:34:11 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/17 02:47:21 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
 #include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
 
-int	main(void)
+char	**ft_split_whitespaces(char *str);
+void	ft_print_word_tables(char **tab);
+void	ft_sort_wordtab(char **tab);
+
+int		main(int argc, char **argv)
 {
-	double	f;
+	char **tab;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	if (argc != 2)
+		return (0);
+	tab = ft_split_whitespaces(argv[1]);
+	printf("Voici le tableau de mots:\n");
+	ft_print_word_tables(tab);
+	printf("\n");
+	ft_sort_wordtab(tab);
+	printf("Voici le tableau trie:\n");
+	ft_print_word_tables(tab);
+	return (0);
 }

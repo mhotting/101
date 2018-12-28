@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_print_comb2.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/05 13:14:26 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/05 15:27:26 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+void	ft_putchar(char c);
 
-int	main(void)
+void	ft_print_comb2(void)
 {
-	double	f;
+	int	num1;
+	int	num2;
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	num1 = -1;
+	while (++num1 <= 99)
+	{
+		num2 = num1;
+		while (++num2 <= 99)
+		{
+			if (num1 < num2)
+			{
+				ft_putchar(num1 / 10 + 48);
+				ft_putchar(num1 % 10 + 48);
+				ft_putchar(' ');
+				ft_putchar(num2 / 10 + 48);
+				ft_putchar(num2 % 10 + 48);
+				if (num1 != 98 || num2 != 99)
+				{
+					ft_putchar(',');
+					ft_putchar(' ');
+				}
+			}
+		}
+	}
 }

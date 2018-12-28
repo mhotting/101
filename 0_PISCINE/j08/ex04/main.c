@@ -5,23 +5,23 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/12 13:59:13 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/12 13:59:42 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#include "ft_point.h"
 
-int	main(void)
+void set_point(t_point *point)
 {
-	double	f;
+	point->x = 42;
+	point->y = 21;
+}
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+int main(void)
+{
+	t_point point;
+	set_point(&point);
+	return (0);
 }

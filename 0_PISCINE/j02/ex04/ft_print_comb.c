@@ -1,27 +1,43 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_print_comb.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/05 10:55:56 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/05 13:09:24 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+void	ft_putchar(char c);
 
-int	main(void)
+void	ft_print_comb(void)
 {
-	double	f;
+	int	tab[3];
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
+	tab[0] = '0' - 1;
+	while (++tab[0] <= '7')
+	{
+		tab[1] = tab[0];
+		while (++tab[1] <= '9')
+		{
+			tab[2] = tab[1];
+			while (++tab[2] <= '9')
+			{
+				if (tab[0] < tab[1] && tab[1] < tab[2])
+				{
+					ft_putchar(tab[0]);
+					ft_putchar(tab[1]);
+					ft_putchar(tab[2]);
+					if (tab[0] != '7')
+					{
+						ft_putchar(',');
+						ft_putchar(' ');
+					}
+				}
+			}
+		}
+	}
 }

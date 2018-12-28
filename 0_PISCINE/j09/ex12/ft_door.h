@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   ft_door.h                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 14:11:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/28 15:58:26 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/07/13 12:51:56 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/13 13:53:14 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
-#include <stdio.h>
-#include <limits.h>
-#include <float.h>
-#include <fcntl.h>
+#ifndef FT_DOOR_H
+# define FT_DOOR_H
+# define TRUE 1
+# define FALSE 0
+# define CLOSE 0
+# define OPEN 1
+# include <unistd.h>
 
-int	main(void)
+typedef unsigned char	t_bool;
+typedef	struct			s_door
 {
-	double	f;
+	t_bool state;
+}						t_door;
+void					ft_putstr(char *str);
+t_bool					open_door(t_door *door);
+t_bool					close_door(t_door *door);
+t_bool					is_door_open(t_door *door);
+t_bool					is_door_close(t_door *door);
 
-	f = 1.42;
-	ft_printf("%.3lf\n", f);
-	printf("%.3lf\n", f);
-}
+#endif
