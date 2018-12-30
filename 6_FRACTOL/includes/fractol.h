@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/18 10:40:59 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/30 22:40:12 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,7 @@
 # define FRACTOL_H
 # include "../libft/includes/libft.h"
 # include "../minilibx/mlx.h"
+# include <time.h>
 # include <math.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -26,13 +27,14 @@
 # define FRAC_L		1250
 # define FRAC_H		1250
 # define TOT_FRAC	3
+# define COL_RANGE	6
 
 typedef struct	s_col
 {
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-	int				colint;
+	int	color[11];
+	int	mode;
+	int	range;
+	int	random;
 }				t_col;
 
 typedef struct	s_bag
@@ -47,8 +49,7 @@ typedef struct	s_bag
 	double			size;
 	double			posx;
 	double			posy;
-	t_col			color[10];
-	char			col;
+	t_col			col;
 	double			zoom;
 	void			(*ft_init)(struct s_bag *);
 	void			(*ft_frac)(void *);
@@ -85,5 +86,13 @@ void			ft_resetimg(t_bag *ptr);
 **	COLOR FUNCTIONS
 */
 void			ft_initcol(t_bag *ptr);
+void			ft_lblue(t_bag *ptr);
+void			ft_lgreen(t_bag *ptr);
+void			ft_red(t_bag *ptr);
+void			ft_brown(t_bag *ptr);
+void			ft_yellow(t_bag *ptr);
+void			ft_teal(t_bag *ptr);
+int				ft_colormg(t_bag *ptr_bag);
+int				ft_colormg_reverse(t_bag *ptr_bag);
 
 #endif
