@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:54:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/31 10:57:19 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/31 11:37:29 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@ static void	ft_init_mlx(void *ptr, int choice)
 	mlx_hook(ptr_bag->win, 6, 0, &ft_motionmg, ptr);
 	mlx_hook(ptr_bag->win, 4, (1L << 2), &ft_bpress, ptr);
 	mlx_hook(ptr_bag->win, 5, (1L << 3), &ft_brelease, ptr);
-	if (choice >= 1 && choice <= 4)
+	if ((choice >= 1 && choice <= 4) || choice == 6)
 	{
 		ptr_bag->ft_init = &ft_initmand;
 		ptr_bag->ft_frac = &ft_mandelbrot;

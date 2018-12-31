@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/15 19:11:53 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/31 11:11:10 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/31 12:06:08 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,35 +23,47 @@ void			ft_initmand(t_bag *ptr_bag)
 	ptr_bag->zoom = 1;
 }
 
-static double	ft_mand_re(t_bag *ptr, double z[2])
+static double	ft_mand_re(t_bag *ptr, double z[2], double c)
 {
 	if (ptr->choice == 1)
-		return (z[0] * z[0] - z[1] * z[1]);
+		return (z[0] * z[0] - z[1] * z[1] + c);
+	else if (ptr->choice == 6)
+	{
+		z[0] = ft_abs(z[0]);
+		z[1] = ft_abs(z[1]);
+		return (z[0] * z[0] - z[1] * z[1] + c);
+	}
 	else if (ptr->choice == 2)
-		return (z[0] * z[0] * z[0] - 3 * z[0] * z[1] * z[1]);
+		return (z[0] * z[0] * z[0] - 3 * z[0] * z[1] * z[1] + c);
 	else if (ptr->choice == 3)
 		return (z[0] * z[0] * z[0] * z[0] + z[1] * z[1] * z[1] * z[1] -
-				6 * z[0] * z[0] * z[1] * z[1]);
+				6 * z[0] * z[0] * z[1] * z[1] + c);
 	else
 	{
-		return (z[0] * z[0] * z[0] * z[0] * z[0] - 10 * z[0] * z[0] *
-				z[0] * z[1] * z[1] + 5 * z[0] * z[1] * z[1] * z[1] * z[1]);
+		return (z[0] * z[0] * z[0] * z[0] * z[0] - 10 * z[0] * z[0] * z[0] *
+				z[1] * z[1] + 5 * z[0] * z[1] * z[1] * z[1] * z[1] + c);
 	}
 	return (0);
 }
 
-static double	ft_mand_im(t_bag *ptr, double z1, double temp)
+static double	ft_mand_im(t_bag *ptr, double z1, double temp, double c)
 {
 	if (ptr->choice == 1)
-		return (2 * z1 * temp);
+		return (2 * z1 * temp + c);
+	else if (ptr->choice == 6)
+	{
+		z1 = ft_abs(z1);
+		temp = ft_abs(temp);
+		return (ft_abs(2 * z1 * temp + c));
+	}
 	else if (ptr->choice == 2)
-		return (-1 * z1 * z1 * z1 + 3 * temp * temp * z1);
+		return (-1 * z1 * z1 * z1 + 3 * temp * temp * z1 + c);
 	else if (ptr->choice == 3)
-		return (4 * temp * temp * temp * z1 - 4 * temp * z1 * z1 * z1);
+		return (4 * temp * temp * temp * z1 - 4 * temp * z1 * z1 * z1 + c);
 	else
 	{
 		return (5 * temp * temp * temp * temp * z1 - 10 * temp *
-				temp * z1 * z1 * z1 + z1 * z1 * z1 * z1 * z1);
+				temp * z1 * z1 * z1 + z1 * z1 * z1 * z1 * z1 + c);
 	}
 	return (0);
 }
@@ -76,8 +88,8 @@ static void		ft_mandelbrot_calc(t_bag *ptr, double zoomx, double zoomy)
 			while (++i[0] < ptr->i_max && (z[0] * z[0] + z[1] * z[1] < 4))
 			{
 				temp = z[0];
-				z[0] = ft_mand_re(ptr, z) + c[0];
-				z[1] = ft_mand_im(ptr, z[1], temp) + c[1];
+				z[0] = ft_mand_re(ptr, z, c[0]);
+				z[1] = ft_mand_im(ptr, z[1], temp, c[1]);
 			}
 			temp = i[0] * 1. / ptr->i_max;
 			ptr->img[i[1]++] = (ptr->col.mode == 1 ?
