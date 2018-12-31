@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/15 19:33:33 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 19:50:58 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/31 10:47:54 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,10 +16,12 @@
 int	ft_usage(void)
 {
 	ft_putstr("usage:");
-	ft_putendl("\t./fractol [1 | 2 | 3]");
+	ft_putendl("\t./fractol [1 | 2 | 3 | 4 | 5]");
 	ft_putendl("  - 1: Madelbrot set");
-	ft_putendl("  - 2: Julia set");
-	ft_putendl("  - 3: Unknown set");
+	ft_putendl("  - 2: Mandelbrot three heads");
+	ft_putendl("  - 3: Mandelbrot four heads");
+	ft_putendl("  - 4: Mandelbrot five heads");
+	ft_putendl("  - 5: Julia set");
 	return (0);
 }
 

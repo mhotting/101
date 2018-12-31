@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/31 04:33:23 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/31 11:07:31 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@
 # define WIN_H		1100
 # define FRAC_L		1000
 # define FRAC_H		1000
-# define TOT_FRAC	3
+# define TOT_FRAC	5
 # define COL_RANGE	6
 
 typedef struct	s_col
@@ -44,6 +44,7 @@ typedef struct	s_bag
 	void			*img_ptr;
 	unsigned int	*img;
 	int				trash[3];
+	int				choice;
 	int				i_max;
 	double			lim;
 	double			size;
@@ -80,6 +81,10 @@ void			ft_mandelbrot(void *ptr);
 void			ft_initmand(t_bag *ptr);
 void			ft_julia(void *ptr);
 void			ft_initjulia(t_bag *ptr);
+void			ft_mandelbrot_custom(void *ptr);
+void			ft_initmand_custom(t_bag *ptr);
+void			ft_mandelbrot_custom2(void *ptr);
+void			ft_initmand_custom2(t_bag *ptr);
 
 /*
 **	VARIOUS FUNCTIONS
