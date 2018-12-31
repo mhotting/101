@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 19:32:13 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 05:19:58 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/30 23:19:16 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,21 +19,21 @@ static void	ft_sidelines2(t_bag *ptr, int color)
 	size_t	j;
 
 	i = 0;
-	while (i < 3)
+	while (i < 4)
 	{
 		j = 50;
-		while (j < 1300)
+		while (j < 1050)
 		{
 			mlx_pixel_put(ptr->mlx, ptr->win, i, j, color);
 			j++;
 		}
 		i++;
 	}
-	i = 1996;
-	while (i < 2001)
+	i = 1746;
+	while (i < 1751)
 	{
 		j = 50;
-		while (j < 1300)
+		while (j < 1050)
 		{
 			mlx_pixel_put(ptr->mlx, ptr->win, i, j, color);
 			j++;
@@ -51,18 +51,18 @@ static void	ft_sidelines(t_bag *ptr, int color)
 	while (i < 400)
 	{
 		j = 50;
-		while (j < 1300)
+		while (j < 1050)
 		{
 			mlx_pixel_put(ptr->mlx, ptr->win, i, j, color);
 			j++;
 		}
 		i++;
 	}
-	i = 1650;
-	while (i < 1655)
+	i = 1400;
+	while (i < 1405)
 	{
 		j = 50;
-		while (j < 1300)
+		while (j < 1050)
 		{
 			mlx_pixel_put(ptr->mlx, ptr->win, i, j, color);
 			j++;
@@ -77,7 +77,7 @@ static void	ft_header_footer(t_bag *ptr, int color)
 	size_t	j;
 
 	i = 0;
-	while (i < 2001)
+	while (i < 1751)
 	{
 		j = 0;
 		while (j < 50)
@@ -88,10 +88,10 @@ static void	ft_header_footer(t_bag *ptr, int color)
 		i++;
 	}
 	i = 0;
-	while (i < 2001)
+	while (i < 1751)
 	{
-		j = 1349;
-		while (j > 1299)
+		j = 1099;
+		while (j > 1049)
 		{
 			mlx_pixel_put(ptr->mlx, ptr->win, i, j, color);
 			j--;
@@ -102,9 +102,9 @@ static void	ft_header_footer(t_bag *ptr, int color)
 
 static void	ft_write_header_footer(t_bag *ptr)
 {
-	mlx_string_put(ptr->mlx, ptr->win, 940, 15, 0,
+	mlx_string_put(ptr->mlx, ptr->win, 710, 15, 0,
 			"FRACTOL: A WAY TO INFINITY");
-	mlx_string_put(ptr->mlx, ptr->win, 1800, 1315, 0, "2018 - 101 project");
+	mlx_string_put(ptr->mlx, ptr->win, 1550, 1065, 0, "2018 - 101 project");
 }
 
 void		ft_context(void *ptr, int color)

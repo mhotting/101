@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   event_manager.c                                  .::    .:/ .      .::   */
+/*   mouse_manager.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/13 19:23:43 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/30 22:39:17 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/12/31 02:01:23 by mhotting     #+#   ##    ##    #+#       */
+/*   Updated: 2018/12/31 04:45:31 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,55 +29,67 @@ int	ft_zoom(t_bag *ptr, int button, int x, int y)
 			ptr->size - ptr->size / 2;
 		ptr->posy = ptr->posy + ((double)y / (double)FRAC_H) *
 			ptr->size - ptr->size / 2;
+		ptr->move_value /= 2;
+		return (0);
 	}
-	else
+	ptr->size = ptr->size * 2;
+	ptr->zoom = ptr->zoom / 2;
+	ptr->posx = ptr->posx + ((double)x / (double)FRAC_L) *
+		ptr->size - ptr->size / 2;
+	ptr->posy = ptr->posy + ((double)y / (double)FRAC_H) *
+		ptr->size - ptr->size / 2;
+	ptr->move_value *= 2;
+	return (0);
+}
+
+int	ft_bpress(int button, int x, int y, void *ptr)
+{
+	t_bag	*ptr_bag;
+
+	ptr_bag = (t_bag *)ptr;
+	if (button == 1)
+		ptr_bag->edit = 1;
+	else if (button == 5 || button == 4)
 	{
-		ptr->size = ptr->size * 2;
-		ptr->zoom = ptr->zoom / 2;
-		ptr->posx = ptr->posx + ((double)x / (double)FRAC_L) *
-			ptr->size - ptr->size / 2;
-		ptr->posy = ptr->posy + ((double)y / (double)FRAC_H) *
-			ptr->size - ptr->size / 2;
+		ft_zoom(ptr_bag, button, x, y);
+		(ptr_bag->ft_frac)((void *)ptr_bag);
 	}
 	return (0);
 }
 
-int	ft_editparam(t_bag *ptr_bag, int key)
+int	ft_brelease(int button, int x, int y, void *ptr)
 {
-	if (key == 69)
-		ptr_bag->i_max += 5;
-	else if (key == 78 && ptr_bag->i_max > 5)
-		ptr_bag->i_max -= 5;
+	t_bag	*ptr_bag;
+
+	if (x || y)
+		;
+	ptr_bag = (t_bag *)ptr;
+	if (button == 1)
+		ptr_bag->edit = 0;
 	return (0);
 }
 
 int	ft_motionmg(int x, int y, void *ptr)
 {
-	t_bag	*ptr_bag;
+	t_bag		*ptr_bag;
+	static int	oldx = 0;
+	static int	oldy = 0;
 
 	ptr_bag = (t_bag *)ptr;
-	if (x == 36 && ptr_bag != NULL)
-		printf("POS: %d - %d\n", x, y);
-	return (0);
-}
-
-int	ft_keymg(int key, void *ptr)
-{
-	t_bag	*ptr_bag;
-
-	printf("KEY: %d\n", key);
-	ptr_bag = (t_bag *)ptr;
-	if (key == 69 || key == 78)
-		ft_editparam(ptr_bag, key);
-	else if (key == 15 && ptr_bag->col.mode == 1)
-		ft_colormg_reverse(ptr_bag);
-	else if (key == 8)
-		ft_colormg(ptr_bag);
-	else if (key == 46)
-		ptr_bag->col.mode = (ptr_bag->col.mode == 1 ? 2 : 1);
-	else if (key == 53)
-		exit(0);
-	(ptr_bag->ft_frac)((void *)ptr_bag);
+	if (ptr_bag->edit == 1)
+	{
+		if (x > oldx)
+			ptr_bag->julia_param[0] *= 1.005;
+		else if (x < oldx)
+			ptr_bag->julia_param[0] /= 1.005;
+		if (y > oldy)
+			ptr_bag->julia_param[1] *= 1.008;
+		else if (y < oldy)
+			ptr_bag->julia_param[1] /= 1.008;
+		(ptr_bag->ft_frac)((void *)ptr_bag);
+	}
+	oldx = x;
+	oldy = y;
 	return (0);
 }
 

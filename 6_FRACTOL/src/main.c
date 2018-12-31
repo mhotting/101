@@ -6,13 +6,12 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:54:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/30 22:06:45 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/31 04:43:37 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../includes/fractol.h"
-#include <stdio.h>
 
 static void	ft_init_mlx(void *ptr, int choice)
 {
@@ -23,10 +22,12 @@ static void	ft_init_mlx(void *ptr, int choice)
 	ptr_bag->win = mlx_new_window(ptr_bag->mlx,
 			WIN_L, WIN_H, "FRACTOL: A WAY TO INFINITY");
 	ptr_bag->img_ptr = NULL;
+	ptr_bag->move_value = 0.10;
 	ft_context(ptr, 16777215);
 	mlx_key_hook(ptr_bag->win, &ft_keymg, ptr);
-	mlx_mouse_hook(ptr_bag->win, &ft_mousemg, ptr);
 	mlx_hook(ptr_bag->win, 6, 0, &ft_motionmg, ptr);
+	mlx_hook(ptr_bag->win, 4, (1L << 2), &ft_bpress, ptr);
+	mlx_hook(ptr_bag->win, 5, (1L << 3), &ft_brelease, ptr);
 	if (choice == 1)
 	{
 		ptr_bag->ft_init = &ft_initmand;

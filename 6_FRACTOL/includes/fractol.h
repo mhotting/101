@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/30 22:40:12 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/31 04:33:23 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,10 +22,10 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 
-# define WIN_L		2000
-# define WIN_H		1350
-# define FRAC_L		1250
-# define FRAC_H		1250
+# define WIN_L		1750
+# define WIN_H		1100
+# define FRAC_L		1000
+# define FRAC_H		1000
 # define TOT_FRAC	3
 # define COL_RANGE	6
 
@@ -49,8 +49,11 @@ typedef struct	s_bag
 	double			size;
 	double			posx;
 	double			posy;
+	int				edit;
+	double			julia_param[2];
 	t_col			col;
 	double			zoom;
+	double			move_value;
 	void			(*ft_init)(struct s_bag *);
 	void			(*ft_frac)(void *);
 }				t_bag;
@@ -67,6 +70,8 @@ int				ft_puterror(char *str);
 int				ft_keymg(int key, void *ptr);
 int				ft_mousemg(int button, int x, int y, void *param);
 int				ft_motionmg(int x, int y, void *ptr);
+int				ft_bpress(int button, int x, int y, void *ptr);
+int				ft_brelease(int button, int x, int y, void *ptr);
 
 /*
 **	FRACTAL FUNCTIONS
