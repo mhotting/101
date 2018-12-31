@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/31 11:07:31 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/31 11:12:53 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -81,10 +81,6 @@ void			ft_mandelbrot(void *ptr);
 void			ft_initmand(t_bag *ptr);
 void			ft_julia(void *ptr);
 void			ft_initjulia(t_bag *ptr);
-void			ft_mandelbrot_custom(void *ptr);
-void			ft_initmand_custom(t_bag *ptr);
-void			ft_mandelbrot_custom2(void *ptr);
-void			ft_initmand_custom2(t_bag *ptr);
 
 /*
 **	VARIOUS FUNCTIONS
