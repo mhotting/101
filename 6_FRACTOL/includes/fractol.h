@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/31 11:37:02 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/31 14:43:55 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@
 # define WIN_H		1100
 # define FRAC_L		1000
 # define FRAC_H		1000
-# define TOT_FRAC	6
+# define TOT_FRAC	9
 # define COL_RANGE	6
 
 typedef struct	s_col

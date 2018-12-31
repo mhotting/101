@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/15 19:11:53 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/31 12:06:08 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/31 13:27:41 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,15 +25,14 @@ void			ft_initmand(t_bag *ptr_bag)
 
 static double	ft_mand_re(t_bag *ptr, double z[2], double c)
 {
-	if (ptr->choice == 1)
-		return (z[0] * z[0] - z[1] * z[1] + c);
-	else if (ptr->choice == 6)
+	if (ptr->choice == 6 || ptr->choice == 7)
 	{
 		z[0] = ft_abs(z[0]);
 		z[1] = ft_abs(z[1]);
-		return (z[0] * z[0] - z[1] * z[1] + c);
 	}
-	else if (ptr->choice == 2)
+	if (ptr->choice == 1 || ptr->choice == 6)
+		return (z[0] * z[0] - z[1] * z[1] + c);
+	else if (ptr->choice == 2 || ptr->choice == 7)
 		return (z[0] * z[0] * z[0] - 3 * z[0] * z[1] * z[1] + c);
 	else if (ptr->choice == 3)
 		return (z[0] * z[0] * z[0] * z[0] + z[1] * z[1] * z[1] * z[1] -
@@ -48,15 +47,14 @@ static double	ft_mand_re(t_bag *ptr, double z[2], double c)
 
 static double	ft_mand_im(t_bag *ptr, double z1, double temp, double c)
 {
-	if (ptr->choice == 1)
-		return (2 * z1 * temp + c);
-	else if (ptr->choice == 6)
+	if (ptr->choice == 6 || ptr->choice == 7)
 	{
 		z1 = ft_abs(z1);
 		temp = ft_abs(temp);
-		return (ft_abs(2 * z1 * temp + c));
 	}
-	else if (ptr->choice == 2)
+	if (ptr->choice == 1 || ptr->choice == 6)
+		return (2 * z1 * temp + c);
+	else if (ptr->choice == 2 || ptr->choice == 7)
 		return (-1 * z1 * z1 * z1 + 3 * temp * temp * z1 + c);
 	else if (ptr->choice == 3)
 		return (4 * temp * temp * temp * z1 - 4 * temp * z1 * z1 * z1 + c);

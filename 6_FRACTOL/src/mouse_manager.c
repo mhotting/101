@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/12/31 02:01:23 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/31 04:45:31 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/31 15:05:42 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,17 +79,17 @@ int	ft_motionmg(int x, int y, void *ptr)
 	if (ptr_bag->edit == 1)
 	{
 		if (x > oldx)
-			ptr_bag->julia_param[0] *= 1.005;
+			ptr_bag->julia_param[0] += 0.0005;
 		else if (x < oldx)
-			ptr_bag->julia_param[0] /= 1.005;
+			ptr_bag->julia_param[0] -= 0.0005;
 		if (y > oldy)
-			ptr_bag->julia_param[1] *= 1.008;
+			ptr_bag->julia_param[1] += 0.0005;
 		else if (y < oldy)
-			ptr_bag->julia_param[1] /= 1.008;
+			ptr_bag->julia_param[1] -= 0.0005;
 		(ptr_bag->ft_frac)((void *)ptr_bag);
+		oldx = x;
+		oldy = y;
 	}
-	oldx = x;
-	oldy = y;
 	return (0);
 }
 
