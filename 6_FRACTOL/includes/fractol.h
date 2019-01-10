@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/31 14:43:55 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/10 16:03:40 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,9 +18,7 @@
 # include <time.h>
 # include <math.h>
 # include <stdlib.h>
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/stat.h>
+# include <pthread.h>
 
 # define WIN_L		1750
 # define WIN_H		1100

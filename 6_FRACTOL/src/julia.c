@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/26 01:17:26 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/31 14:57:05 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/10 18:32:19 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,8 +19,8 @@ void		ft_initjulia(t_bag *ptr_bag)
 	ptr_bag->edit = 0;
 	if (ptr_bag->choice == 5)
 	{
-		ptr_bag->julia_param[0] = 0.281;
-		ptr_bag->julia_param[1] = 0.01;
+		ptr_bag->julia_param[0] = -0.75;
+		ptr_bag->julia_param[1] = -0.14;
 	}
 	else if (ptr_bag->choice == 8)
 	{

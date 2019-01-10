@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/12/31 02:01:23 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/31 15:07:00 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/10 20:42:51 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,8 +47,12 @@ int	ft_bpress(int button, int x, int y, void *ptr)
 	t_bag	*ptr_bag;
 
 	ptr_bag = (t_bag *)ptr;
-	if (button == 1)
+	if (button == 1 && ptr_bag->edit != 2)
 		ptr_bag->edit = 1;
+	else if (button == 2 && ptr_bag->edit != 1)
+		ptr_bag->edit = 2;
+	else if (button == 1 || button == 2)
+		ptr_bag->edit = 3;
 	else if (button == 5 || button == 4)
 	{
 		ft_zoom(ptr_bag, button, x, y);
@@ -64,8 +68,14 @@ int	ft_brelease(int button, int x, int y, void *ptr)
 	if (x || y)
 		;
 	ptr_bag = (t_bag *)ptr;
-	if (button == 1)
+	if (button == 1 && ptr_bag->edit == 1)
 		ptr_bag->edit = 0;
+	else if (button == 1 && ptr_bag->edit == 3)
+		ptr_bag->edit = 2;
+	else if (button == 2 && ptr_bag->edit == 2)
+		ptr_bag->edit = 0;
+	else if (button == 2 && ptr_bag->edit != 3)
+		ptr_bag->edit = 1;
 	return (0);
 }
 
@@ -74,22 +84,29 @@ int	ft_motionmg(int x, int y, void *ptr)
 	t_bag		*ptr_bag;
 	static int	oldx = 0;
 	static int	oldy = 0;
+	double		param[2];
 
+	param[0] = 1.005;
+	param[1] = 1.01;
 	ptr_bag = (t_bag *)ptr;
-	if (ptr_bag->edit == 1)
+	if (ptr_bag->edit == 1 || ptr_bag->edit == 3)
 	{
-		if (x > oldx)
-			ptr_bag->julia_param[0] += 0.0005;
-		else if (x < oldx)
-			ptr_bag->julia_param[0] -= 0.0005;
-		if (y > oldy)
-			ptr_bag->julia_param[1] += 0.0005;
-		else if (y < oldy)
-			ptr_bag->julia_param[1] -= 0.0005;
-		(ptr_bag->ft_frac)((void *)ptr_bag);
-		oldx = x;
-		oldy = y;
+		if (x > oldx || y > oldy)
+			ptr_bag->julia_param[0] *= param[0];
+		else if (x < oldx || y < oldy)
+			ptr_bag->julia_param[0] /= param[0];
 	}
+	else if (ptr_bag->edit == 2 || ptr_bag->edit == 3)
+	{
+		if (x > oldx || y > oldy)
+			ptr_bag->julia_param[1] *= param[1];
+		else if (x < oldx || y < oldy)
+			ptr_bag->julia_param[1] /= param[1];
+	}
+	if (ptr_bag->edit != 0)
+		(ptr_bag->ft_frac)((void *)ptr_bag);
+	oldx = x;
+	oldy = y;
 	return (0);
 }
 
