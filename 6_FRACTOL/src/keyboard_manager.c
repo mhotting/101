@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/12/31 02:00:52 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/31 04:34:38 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/11 19:24:50 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,6 +53,6 @@ int	ft_keymg(int key, void *ptr)
 		ptr_bag->col.mode = (ptr_bag->col.mode == 1 ? 2 : 1);
 	else if (key == 53)
 		exit(0);
-	(ptr_bag->ft_frac)((void *)ptr_bag);
+	ft_sync_frac(ptr);
 	return (0);
 }

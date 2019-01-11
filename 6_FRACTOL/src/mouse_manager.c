@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/12/31 02:01:23 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/10 20:42:51 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/11 19:31:39 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,7 +56,7 @@ int	ft_bpress(int button, int x, int y, void *ptr)
 	else if (button == 5 || button == 4)
 	{
 		ft_zoom(ptr_bag, button, x, y);
-		(ptr_bag->ft_frac)((void *)ptr_bag);
+		ft_sync_frac(ptr);
 	}
 	return (0);
 }
@@ -84,27 +84,24 @@ int	ft_motionmg(int x, int y, void *ptr)
 	t_bag		*ptr_bag;
 	static int	oldx = 0;
 	static int	oldy = 0;
-	double		param[2];
 
-	param[0] = 1.005;
-	param[1] = 1.01;
 	ptr_bag = (t_bag *)ptr;
 	if (ptr_bag->edit == 1 || ptr_bag->edit == 3)
 	{
 		if (x > oldx || y > oldy)
-			ptr_bag->julia_param[0] *= param[0];
+			ptr_bag->julia_param[0] *= 1.005;
 		else if (x < oldx || y < oldy)
-			ptr_bag->julia_param[0] /= param[0];
+			ptr_bag->julia_param[0] /= 1.005;
 	}
 	else if (ptr_bag->edit == 2 || ptr_bag->edit == 3)
 	{
 		if (x > oldx || y > oldy)
-			ptr_bag->julia_param[1] *= param[1];
+			ptr_bag->julia_param[1] *= 1.01;
 		else if (x < oldx || y < oldy)
-			ptr_bag->julia_param[1] /= param[1];
+			ptr_bag->julia_param[1] /= 1.01;
 	}
 	if (ptr_bag->edit != 0)
-		(ptr_bag->ft_frac)((void *)ptr_bag);
+		ft_sync_frac(ptr);
 	oldx = x;
 	oldy = y;
 	return (0);
@@ -117,6 +114,6 @@ int	ft_mousemg(int button, int x, int y, void *param)
 	ptr_bag = (t_bag *)param;
 	if (button == 4 || button == 5)
 		ft_zoom(ptr_bag, button, x, y);
-	(ptr_bag->ft_frac)((void *)ptr_bag);
+	ft_sync_frac((void *)ptr_bag);
 	return (0);
 }

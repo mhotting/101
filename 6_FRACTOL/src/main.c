@@ -6,12 +6,13 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:54:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/31 14:46:02 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/11 19:25:03 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../includes/fractol.h"
+#include <stdio.h>
 
 static void	ft_init_mlx(void *ptr, int choice)
 {
@@ -57,7 +58,7 @@ int			main(int ac, char **av)
 	ptr_bag = (void *)&bag;
 	ft_init_mlx(ptr_bag, choice);
 	(bag.ft_init)((t_bag *)ptr_bag);
-	(bag.ft_frac)(ptr_bag);
+	ft_sync_frac(ptr_bag);
 	mlx_loop(bag.mlx);
 	return (0);
 }

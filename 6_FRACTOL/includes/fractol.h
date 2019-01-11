@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/10 16:03:40 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/11 18:49:48 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,8 +54,17 @@ typedef struct	s_bag
 	double			zoom;
 	double			move_value;
 	void			(*ft_init)(struct s_bag *);
-	void			(*ft_frac)(void *);
+	void			(*ft_frac)(struct s_bag *, double, double, int);
 }				t_bag;
+
+typedef struct	s_thread_info
+{
+	t_bag	*ptr_bag;
+	double	zoomx;
+	double	zoomy;
+	int		y_start;
+	int		y_end;
+}				t_thread_info;
 
 /*
 **	ERROR FUNCTIONS
@@ -75,10 +84,11 @@ int				ft_brelease(int button, int x, int y, void *ptr);
 /*
 **	FRACTAL FUNCTIONS
 */
-void			ft_mandelbrot(void *ptr);
+void			ft_sync_frac(void *ptr);
 void			ft_initmand(t_bag *ptr);
-void			ft_julia(void *ptr);
+void			ft_mandelbrot(t_bag *ptr, double zoomx, double zoomy, int y);
 void			ft_initjulia(t_bag *ptr);
+void			ft_julia(t_bag *ptr, double zoomx, double zoomy, int y);
 
 /*
 **	VARIOUS FUNCTIONS
