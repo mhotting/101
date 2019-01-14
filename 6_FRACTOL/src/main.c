@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:54:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/14 12:21:39 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/14 14:18:17 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,7 +38,7 @@ static void	ft_init_mlx(void *ptr, int choice)
 		ptr_bag->ft_init = &ft_initjulia;
 		ptr_bag->ft_frac = &ft_julia;
 	}
-	ft_context(ptr, 0xE0E1E2);
+	ft_context(ptr, 0xFFFFFF);
 	ft_initcol(ptr_bag);
 }
 
@@ -57,6 +57,7 @@ int			main(int ac, char **av)
 	ptr_bag = (void *)&bag;
 	ft_init_mlx(ptr_bag, choice);
 	(bag.ft_init)((t_bag *)ptr_bag);
+	ft_info_panel(ptr_bag);
 	ft_sync_frac(ptr_bag);
 	mlx_loop(bag.mlx);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/12/30 22:37:50 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/30 23:00:43 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/14 15:26:35 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -85,6 +85,7 @@ int		ft_colormg(t_bag *ptr_bag)
 			ft_teal(ptr_bag);
 		else
 			ft_initcol(ptr_bag);
+		ft_info_color(ptr_bag);
 	}
 	else
 		ptr_bag->col.random = (rand() + 100) % 0xFFFFFF;

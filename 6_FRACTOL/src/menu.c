@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/01/14 10:47:59 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/14 12:19:52 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/14 14:18:27 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,6 +60,7 @@ void		ft_reinit(t_bag *ptr_bag, int choice)
 	}
 	ptr_bag->move_value = 0.10;
 	(ptr_bag->ft_init)(ptr_bag);
+	ft_info_panel(ptr_bag);
 	ft_sync_frac(ptr_bag);
 	ft_commands(ptr_bag, 0xFFFFFF, x, y);
 }

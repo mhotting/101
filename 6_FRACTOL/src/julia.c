@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/26 01:17:26 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/14 10:06:36 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/14 13:14:58 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 void			ft_initjulia(t_bag *ptr_bag)
 {
-	ptr_bag->edit = 0;
+	ptr_bag->edit = -1;
 	if (ptr_bag->choice == 5)
 	{
 		ptr_bag->julia_param[0] = -0.75;
@@ -78,7 +78,7 @@ void			ft_julia(t_bag *ptr, double zoomx, double zoomy, int y)
 	{
 		z[0] = x / zoomx + ptr->posx - ptr->size / 2;
 		z[1] = y / zoomy + ptr->posy - ptr->size / 2;
-		while (++i[0] < ptr->i_max && (z[0] * z[0] + z[1] * z[1] < 2))
+		while (++i[0] < ptr->i_max && (z[0] * z[0] + z[1] * z[1] < 4))
 		{
 			temp = z[0];
 			z[0] = ft_julia_re(ptr, z, ptr->julia_param[0]);

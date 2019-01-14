@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/14 11:41:47 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/14 15:23:47 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -97,6 +97,10 @@ void			ft_julia(t_bag *ptr, double zoomx, double zoomy, int y);
 */
 void			ft_context(void *ptr, int color);
 void			ft_commands(t_bag *ptr, int color, int x[2], int y[2]);
+void			ft_info_panel(t_bag *ptr_bag);
+void			ft_info_iter(t_bag *ptr_bag);
+void			ft_info_color(t_bag *ptr_bag);
+void			ft_info_color_random(t_bag *ptr_bag);
 void			ft_draw_rectangle(t_bag *ptr, int x[2], int y[2], int color);
 void			ft_resetimg(t_bag *ptr);
 double			ft_abs(double f);

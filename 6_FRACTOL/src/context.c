@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 19:32:13 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/14 12:16:01 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/14 14:02:26 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,7 +48,7 @@ static void	ft_write_header_footer(t_bag *ptr_bag, int color,
 			"2019 - 101 project");
 }
 
-static void	ft_commands2(t_bag *ptr, int color)
+static void	ft_commands2(t_bag *ptr, int color, int x[2], int y[2])
 {
 	if (ptr->choice == 5 || ptr->choice == 8 || ptr->choice == 9)
 	{
@@ -61,6 +61,16 @@ static void	ft_commands2(t_bag *ptr, int color)
 		mlx_string_put(ptr->mlx, ptr->win, 1415, 160, color,
 				"- l: lock parameters");
 	}
+	x[0] = 1545;
+	x[1] = 1625;
+	y[0] = 80;
+	y[1] = 82;
+	ft_draw_rectangle(ptr, x, y, color);
+	x[0] = 1555;
+	x[1] = 1605;
+	y[0] = 360;
+	y[1] = 362;
+	ft_draw_rectangle(ptr, x, y, color);
 }
 
 void		ft_commands(t_bag *ptr, int color, int x[2], int y[2])
@@ -68,9 +78,9 @@ void		ft_commands(t_bag *ptr, int color, int x[2], int y[2])
 	x[0] = 1405;
 	x[1] = 1745;
 	y[0] = 53;
-	y[1] = 1040;
+	y[1] = 500;
 	ft_draw_rectangle(ptr, x, y, 0);
-	mlx_string_put(ptr->mlx, ptr->win, 1510, 60, color, "KEYBOARD");
+	mlx_string_put(ptr->mlx, ptr->win, 1545, 60, color, "KEYBOARD");
 	mlx_string_put(ptr->mlx, ptr->win, 1415, 100, color,
 			"- Arrows: move the fractal");
 	mlx_string_put(ptr->mlx, ptr->win, 1415, 120, color,
@@ -85,10 +95,10 @@ void		ft_commands(t_bag *ptr, int color, int x[2], int y[2])
 			"- r: reverse color");
 	mlx_string_put(ptr->mlx, ptr->win, 1415, 280, color,
 			"- esc: exit");
-	mlx_string_put(ptr->mlx, ptr->win, 1520, 340, color, "MOUSE");
+	mlx_string_put(ptr->mlx, ptr->win, 1555, 340, color, "MOUSE");
 	mlx_string_put(ptr->mlx, ptr->win, 1415, 380, color,
 			"- Scroll to zoom in or zoom out");
-	ft_commands2(ptr, color);
+	ft_commands2(ptr, color, x, y);
 }
 
 void		ft_context(void *ptr, int color)
