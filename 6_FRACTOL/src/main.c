@@ -6,13 +6,12 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:54:47 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/11 19:25:03 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/14 12:21:39 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../includes/fractol.h"
-#include <stdio.h>
 
 static void	ft_init_mlx(void *ptr, int choice)
 {
@@ -25,7 +24,6 @@ static void	ft_init_mlx(void *ptr, int choice)
 	ptr_bag->img_ptr = NULL;
 	ptr_bag->choice = choice;
 	ptr_bag->move_value = 0.10;
-	ft_context(ptr, 16777215);
 	mlx_key_hook(ptr_bag->win, &ft_keymg, ptr);
 	mlx_hook(ptr_bag->win, 6, 0, &ft_motionmg, ptr);
 	mlx_hook(ptr_bag->win, 4, (1L << 2), &ft_bpress, ptr);
@@ -40,6 +38,7 @@ static void	ft_init_mlx(void *ptr, int choice)
 		ptr_bag->ft_init = &ft_initjulia;
 		ptr_bag->ft_frac = &ft_julia;
 	}
+	ft_context(ptr, 0xE0E1E2);
 	ft_initcol(ptr_bag);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/26 01:17:26 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/11 19:26:01 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/14 10:06:36 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,6 +69,7 @@ void			ft_julia(t_bag *ptr, double zoomx, double zoomy, int y)
 	int		x;
 	double	z[2];
 	double	temp;
+	int		temp2;
 	int		i[2];
 
 	i[1] = y * FRAC_L;
@@ -77,14 +78,15 @@ void			ft_julia(t_bag *ptr, double zoomx, double zoomy, int y)
 	{
 		z[0] = x / zoomx + ptr->posx - ptr->size / 2;
 		z[1] = y / zoomy + ptr->posy - ptr->size / 2;
-		while (++i[0] < ptr->i_max && (z[0] * z[0] + z[1] * z[1] < 4))
+		while (++i[0] < ptr->i_max && (z[0] * z[0] + z[1] * z[1] < 2))
 		{
 			temp = z[0];
 			z[0] = ft_julia_re(ptr, z, ptr->julia_param[0]);
 			z[1] = ft_julia_im(ptr, z[1], temp, ptr->julia_param[1]);
 		}
-		temp = i[0] * 1. / ptr->i_max;
+		temp2 = (100 * i[0] / ptr->i_max) / 10;
 		ptr->img[i[1]++] = (ptr->col.mode == 1 ?
-		ptr->col.color[(int)(temp * 10)] : (int)(temp * ptr->col.random));
+			ptr->col.color[temp2] :
+			(int)((double)i[0] / ptr->i_max * ptr->col.random));
 	}
 }

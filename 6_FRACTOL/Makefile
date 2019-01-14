@@ -6,7 +6,7 @@
 #    By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/13 19:10:45 by mhotting     #+#   ##    ##    #+#        #
-#    Updated: 2019/01/11 18:40:04 by mhotting    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/01/14 10:54:07 by mhotting    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,6 +16,7 @@ SRCS =		./src/main.c				\
 			./src/keyboard_manager.c	\
 			./src/mouse_manager.c		\
 			./src/context.c				\
+			./src/menu.c				\
 			./src/error.c				\
 			./src/init_frac.c			\
 			./src/mandelbrot.c			\

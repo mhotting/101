@@ -6,14 +6,14 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/01/11 18:19:21 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/11 19:24:33 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/14 09:04:43 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../includes/fractol.h"
 
-void		*ft_thread_func(void *mlx)
+static void	*ft_thread_func(void *mlx)
 {
 	int				y;
 	t_thread_info	*ptr;
@@ -29,7 +29,7 @@ void		*ft_thread_func(void *mlx)
 	return (NULL);
 }
 
-void		*ft_cpy_thread_info(t_thread_info *ptr)
+static void	*ft_cpy_thread_info(t_thread_info *ptr)
 {
 	t_thread_info	*cpy;
 
@@ -44,23 +44,25 @@ void		*ft_cpy_thread_info(t_thread_info *ptr)
 	return ((void *)cpy);
 }
 
-void		ft_launch_threading(t_thread_info *tmp)
+static void	ft_launch_threading(t_thread_info *tmp)
 {
-	pthread_t	th[8];
+	pthread_t	th[NB_THREAD];
 	int			i;
+	int			gap;
 
 	i = 0;
+	gap = (int)FRAC_H / NB_THREAD;
 	tmp->y_start = 0;
-	tmp->y_end = 125;
+	tmp->y_end = gap;
 	while (tmp->y_end <= FRAC_H)
 	{
 		pthread_create(&th[i], NULL, &ft_thread_func, ft_cpy_thread_info(tmp));
-		tmp->y_start += 125;
-		tmp->y_end += 125;
+		tmp->y_start += gap;
+		tmp->y_end += gap;
 		i++;
 	}
 	i = 0;
-	while (i < 8)
+	while (i < NB_THREAD)
 	{
 		pthread_join(th[i], NULL);
 		i++;

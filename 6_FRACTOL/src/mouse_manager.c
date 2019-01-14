@@ -6,13 +6,12 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/12/31 02:01:23 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/11 19:31:39 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/14 10:40:30 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "./../includes/fractol.h"
-#include <stdio.h>
 
 int	ft_zoom(t_bag *ptr, int button, int x, int y)
 {
@@ -23,22 +22,22 @@ int	ft_zoom(t_bag *ptr, int button, int x, int y)
 	old_size = ptr->size;
 	if (button == 5)
 	{
-		ptr->size = ptr->size / 2;
-		ptr->zoom = ptr->zoom * 2;
+		ptr->size = ptr->size / ZOOM_VAL;
+		ptr->zoom = ptr->zoom * ZOOM_VAL;
 		ptr->posx = ptr->posx + ((double)x / (double)FRAC_L) *
-			ptr->size - ptr->size / 2;
+			ptr->size - ptr->size / ZOOM_VAL;
 		ptr->posy = ptr->posy + ((double)y / (double)FRAC_H) *
-			ptr->size - ptr->size / 2;
-		ptr->move_value /= 2;
+			ptr->size - ptr->size / ZOOM_VAL;
+		ptr->move_value /= ZOOM_VAL;
 		return (0);
 	}
-	ptr->size = ptr->size * 2;
-	ptr->zoom = ptr->zoom / 2;
+	ptr->size = ptr->size * ZOOM_VAL;
+	ptr->zoom = ptr->zoom / ZOOM_VAL;
 	ptr->posx = ptr->posx + ((double)x / (double)FRAC_L) *
-		ptr->size - ptr->size / 2;
+		ptr->size - ptr->size / ZOOM_VAL;
 	ptr->posy = ptr->posy + ((double)y / (double)FRAC_H) *
-		ptr->size - ptr->size / 2;
-	ptr->move_value *= 2;
+		ptr->size - ptr->size / ZOOM_VAL;
+	ptr->move_value *= ZOOM_VAL;
 	return (0);
 }
 
@@ -47,9 +46,11 @@ int	ft_bpress(int button, int x, int y, void *ptr)
 	t_bag	*ptr_bag;
 
 	ptr_bag = (t_bag *)ptr;
-	if (button == 1 && ptr_bag->edit != 2)
+	if (button == 1 && (x >= 4 && x <= 394) && (y >= 50 && y <= 1049))
+		ft_menu_selector(ptr_bag, y);
+	else if (button == 1 && ptr_bag->edit == 0)
 		ptr_bag->edit = 1;
-	else if (button == 2 && ptr_bag->edit != 1)
+	else if (button == 2 && ptr_bag->edit == 0)
 		ptr_bag->edit = 2;
 	else if (button == 1 || button == 2)
 		ptr_bag->edit = 3;
@@ -74,7 +75,7 @@ int	ft_brelease(int button, int x, int y, void *ptr)
 		ptr_bag->edit = 2;
 	else if (button == 2 && ptr_bag->edit == 2)
 		ptr_bag->edit = 0;
-	else if (button == 2 && ptr_bag->edit != 3)
+	else if (button == 2 && ptr_bag->edit == 3)
 		ptr_bag->edit = 1;
 	return (0);
 }

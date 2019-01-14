@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 18:56:35 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/11 18:49:48 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/14 11:41:47 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,8 +24,10 @@
 # define WIN_H		1100
 # define FRAC_L		1000
 # define FRAC_H		1000
+# define ZOOM_VAL	2
 # define TOT_FRAC	9
 # define COL_RANGE	6
+# define NB_THREAD	10
 
 typedef struct	s_col
 {
@@ -94,8 +96,18 @@ void			ft_julia(t_bag *ptr, double zoomx, double zoomy, int y);
 **	VARIOUS FUNCTIONS
 */
 void			ft_context(void *ptr, int color);
+void			ft_commands(t_bag *ptr, int color, int x[2], int y[2]);
+void			ft_draw_rectangle(t_bag *ptr, int x[2], int y[2], int color);
 void			ft_resetimg(t_bag *ptr);
 double			ft_abs(double f);
+
+/*
+**	MENU FUNCTIONS
+*/
+void			ft_menu_selector(t_bag *ptr_bag, int y);
+void			ft_reinit(t_bag *ptr_bag, int choice);
+void			ft_menu(t_bag *ptr_bag, int x[2], int y[2], int color);
+void			ft_menu2(t_bag *ptr_bag, int x[2], int y[2], int color);
 
 /*
 **	COLOR FUNCTIONS

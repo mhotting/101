@@ -6,7 +6,7 @@
 /*   By: mhotting <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/15 19:11:53 by mhotting     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/11 19:28:07 by mhotting    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/14 10:04:45 by mhotting    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,28 +68,29 @@ static double	ft_mand_im(t_bag *ptr, double z1, double temp, double c)
 
 void			ft_mandelbrot(t_bag *ptr, double zoomx, double zoomy, int y)
 {
-	int		x;
+	int		x[2];
 	double	c[2];
 	double	z[2];
 	double	temp;
 	int		i[2];
 
 	i[1] = y * FRAC_L;
-	x = -1;
-	while (++x < FRAC_L && (i[0] = -1))
+	x[0] = -1;
+	while (++x[0] < FRAC_L && (i[0] = -1))
 	{
-		c[0] = x / zoomx + ptr->posx - ptr->size / 2;
+		c[0] = x[0] / zoomx + ptr->posx - ptr->size / 2;
 		c[1] = y / zoomy + ptr->posy - ptr->size / 2;
 		z[0] = 0;
 		z[1] = 0;
-		while (++i[0] < ptr->i_max && (z[0] * z[0] + z[1] * z[1] < 4))
+		while (++i[0] < ptr->i_max && (z[0] * z[0] + z[1] * z[1] < 3))
 		{
 			temp = z[0];
 			z[0] = ft_mand_re(ptr, z, c[0]);
 			z[1] = ft_mand_im(ptr, z[1], temp, c[1]);
 		}
-		temp = i[0] * 1. / ptr->i_max;
+		x[1] = (100 * i[0] / ptr->i_max) / 10;
 		ptr->img[i[1]++] = (ptr->col.mode == 1 ?
-		ptr->col.color[(int)(temp * 10)] : (int)(temp * ptr->col.random));
+			ptr->col.color[x[1]] :
+			(int)(i[0] * 1. / ptr->i_max * ptr->col.random));
 	}
 }
