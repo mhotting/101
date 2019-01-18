@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./../../../includes/libft.h"
+#include "libft.h"
 
 static void	ft_applyflag(char **res, long long unsigned addr,
 		t_attributes *att)

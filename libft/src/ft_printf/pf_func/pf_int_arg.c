@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./../../../includes/libft.h"
+#include "libft.h"
 
 static long long int	ft_ext(va_list *ap, t_attributes *att)
 {

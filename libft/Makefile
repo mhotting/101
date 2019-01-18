@@ -111,7 +111,14 @@ HEADER =	./includes
 CFLAGS =	-Wall -Werror -Wextra -I $(HEADER)
 CC =		gcc
 
-all: $(NAME)
+all: compile move
+
+compile:
+	@$(MAKE) -s $(NAME)
+
+move:
+	@mkdir obj
+	@mv $(OBJ) ./obj/
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
@@ -122,6 +129,7 @@ $(OBJ): %.o : %.c $(HEADER)
 
 clean:
 	@/bin/rm -f $(OBJ)
+	@/bin/rm -rf ./obj
 
 fclean: clean
 	@/bin/rm -f $(NAME)

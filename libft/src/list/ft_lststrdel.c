@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./../../includes/libft.h"
+#include "libft.h"
 #include <stdio.h>
 
 void	ft_lststrdel(void *ptr, size_t size)

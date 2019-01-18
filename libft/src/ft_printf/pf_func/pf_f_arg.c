@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./../../../includes/libft.h"
+#include "libft.h"
 
 static long double	ft_extract(va_list *ap, t_attributes *att)
 {
@@ -58,7 +58,9 @@ char				*pf_f_arg(char *sub, va_list *ap, t_attributes *att)
 	long double	f;
 
 	if (sub != NULL)
+	{
 		;
+	}
 	f = ft_extract(ap, att);
 	res = ft_ldtoa(f, (att->prec == -1 ? 6 : att->prec));
 	if (res == NULL)

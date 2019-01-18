@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./../../includes/libft.h"
+#include "libft.h"
 #include <stdio.h>
 
 static int	ft_eval_size(long double f)

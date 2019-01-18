@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./../../../includes/libft.h"
+#include "libft.h"
 
 static void				ft_cleanb(char **str, int index)
 {
@@ -38,9 +38,10 @@ static long long int	ft_ext(va_list *ap, t_attributes *att)
 static void				ft_applyflag(char **res, char *sub, long long int x,
 		t_attributes *att)
 {
-	char	end;
-
-	end = sub[ft_strlen(sub) - 1];
+	if (sub != NULL)
+	{
+		;
+	}
 	if (att->prec != -1)
 		ft_enhance_left(res, '0', (x < 0 ? att->prec + 1 : att->prec));
 	if (att->opt5 == 1)

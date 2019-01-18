@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./../../includes/libft.h"
+#include "libft.h"
 
 int					ft_fprintf(int fd, const char *format, ...)
 {

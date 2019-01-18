@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./../../includes/libft.h"
+#include "libft.h"
 
 char	*ft_strnstr(const char *str, const char *sub, size_t len)
 {

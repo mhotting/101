@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./../../../includes/libft.h"
+#include "libft.h"
 
 char	*ft_toa1(char *sub, long long int x, t_attributes *att)
 {

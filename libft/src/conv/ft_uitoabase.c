@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "./../../includes/libft.h"
+#include "libft.h"
 
 static void	ft_convert(unsigned long long int n, int base, char *ref, char *res)
 {
